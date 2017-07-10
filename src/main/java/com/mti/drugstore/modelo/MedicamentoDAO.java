@@ -43,7 +43,7 @@ public class MedicamentoDAO implements CRUD
         String rptaRegistro = null;
         
         Connection accesoDB = conexion.getConexion();
-        CallableStatement cs = accesoDB.prepareCall("call med")
+        //CallableStatement cs = accesoDB.prepareCall("call med")
         
         return rptaRegistro;
     }
