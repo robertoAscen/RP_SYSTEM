@@ -11,25 +11,23 @@ package com.mti.drugstore.modelo;
  */
 public class Medicamento 
 {
-    private int codBarra;
+    private String codBarra;
     private String nombreMed;
     private String laboratorio;
-    private float costo;
     
     public Medicamento()
     {
-        codBarra=0;
+        codBarra="";
         nombreMed="";
         laboratorio="";
-        costo=0;
     }
 
-    public int getCodBarra() 
+    public String getCodBarra() 
     {
         return codBarra;
     }
 
-    public void setCodBarra(int codBarra) 
+    public void setCodBarra(String codBarra) 
     {
         this.codBarra = codBarra;
     }
@@ -52,15 +50,5 @@ public class Medicamento
     public void setLaboratorio(String laboratorio) 
     {
         this.laboratorio = laboratorio;
-    }
-
-    public float getCosto() 
-    {
-        return costo;
-    }
-
-    public void setCosto(float costo) 
-    {
-        this.costo = costo;
-    }    
+    }   
 }

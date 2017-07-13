@@ -38,21 +38,15 @@ public class ViewCreate extends JFrame
     private TitledBorder ttbCrearProducto;
     private JLabel jlCodBarraMedicamento;
     private JLabel jlNomMedicamento;
-    private JLabel jlSusAct_1;
-    private JLabel jlSusAct_2;
-    private JLabel jlSusAct_3;
-    private JLabel jlSusAct_4;
-    private JLabel jlSusAct_5;
+    private JLabel jlLaboratorio;
+    private JLabel jlCantidad;
     private JLabel jlPresentacion;
     private JLabel jlUnidadMedida;
     
     public JTextField jtfCodBarraMedicamento;
     public JTextField jtfNomMedicamento;
-    public JTextField jtfSusAct_1;
-    public JTextField jtfSusAct_2;
-    public JTextField jtfSusAct_3;
-    public JTextField jtfSusAct_4;
-    public JTextField jtfSusAct_5;
+    public JTextField jtfLaboratorio;
+    public JTextField jtfCantidad;
     public JComboBox<String> jcbPresentacion;
     private DefaultComboBoxModel<String> dcbmPresentacion;
     private String[] strPresentacion = {"Seleccione una","Tableta", "Capsula", 
@@ -65,6 +59,7 @@ public class ViewCreate extends JFrame
     private DefaultComboBoxModel<String> dcbmUnidadMedida;
     private String[] strUnidadMedida = {"Seleccione una","mcg","mg","g","ui","ml"};
     
+    public JButton jbSusActiva;
     public JButton jbCrear;
     public JButton jbLimpiar;
     
@@ -91,90 +86,91 @@ public class ViewCreate extends JFrame
         ttbCrearProducto = new TitledBorder("Crear Producto");
         jlCodBarraMedicamento = new JLabel();       
         jlNomMedicamento = new JLabel();
-        jlSusAct_1 = new JLabel();
-        jlSusAct_2 = new JLabel();
-        jlSusAct_3 = new JLabel();
-        jlSusAct_4 = new JLabel();
-        jlSusAct_5 = new JLabel();
+        jlLaboratorio = new JLabel();
+        jlCantidad = new JLabel();
         jlPresentacion = new JLabel();
         jlUnidadMedida = new JLabel();
 
         jtfCodBarraMedicamento = new JTextField();
         jtfNomMedicamento = new JTextField();
-        jtfSusAct_1 = new JTextField();
-        jtfSusAct_2 = new JTextField();
-        jtfSusAct_3 = new JTextField();
-        jtfSusAct_4 = new JTextField();
-        jtfSusAct_5 = new JTextField();
+        jtfLaboratorio = new JTextField();
+        jtfCantidad = new JTextField();
         jcbPresentacion = new JComboBox<String>();
         dcbmPresentacion = new DefaultComboBoxModel<String>(strPresentacion);
         jtfUnidadMedida = new JTextField();
         jcbUnidadMedida = new JComboBox<String>();
         dcbmUnidadMedida = new DefaultComboBoxModel<String>(strUnidadMedida);
 
+        jbSusActiva = new JButton();
         jbCrear = new JButton();
         jbLimpiar = new JButton();
         
-        jMenuBar.setBounds(0, 0, 900, 20);       
+        jMenuBar.setBounds(0, 0, 640, 20);       
         
         jmAdd.setText("Productos");
         jmHelp.setText("Ayuda");
         jmiAddProduct.setText("Crear Producto");
+        jmiAddProduct.setToolTipText("Agregar medicamento a la base de datos");
         jmiClearFiels.setText("Limpiar");
+        jmiClearFiels.setToolTipText("Limpiar todos los campos");
         jmiBack.setText("Regresar");
+        jmiBack.setToolTipText("Regresar a menú principal");
         jmiExit.setText("Salir");
-        jmiAbout.setText("Acerca de");       
+        jmiExit.setToolTipText("Salir de la aplicación");
+        jmiAbout.setText("Acerca de");  
+        jmiAbout.setToolTipText("Información del software");
         
         jpCrearProducto.setLayout(null);
         jpCrearProducto.setBorder(ttbCrearProducto);
-        jpCrearProducto.setBounds(10, 30, 870, 180);        
+        jpCrearProducto.setBounds(10, 30, 610, 220);        
         
         jlCodBarraMedicamento.setText("Código de Barras");
-        jlCodBarraMedicamento.setBounds(10, 30, 130, 20);
-        jtfCodBarraMedicamento.setBounds(140, 30, 130, 20);
+        jlCodBarraMedicamento.setBounds(10, 30, 130, 25);
+        jtfCodBarraMedicamento.setBounds(140, 30, 130, 25);
+        jtfCodBarraMedicamento.setToolTipText("Escanea el código de barras del medicamento");
                 
         jlNomMedicamento.setText("Nombre Comercial");
-        jlNomMedicamento.setBounds(290, 30, 130, 20);
-        jtfNomMedicamento.setBounds(430, 30, 130, 20);
+        jlNomMedicamento.setBounds(290, 30, 130, 25);
+        jtfNomMedicamento.setBounds(430, 30, 170, 25);
+        jtfNomMedicamento.setToolTipText("Ingresa el nombre comercial del medicamento");
         
-        jlSusAct_1.setText("Sustancia Activa 1");
-        jlSusAct_1.setBounds(580, 30, 130, 20);
-        jtfSusAct_1.setBounds(720, 30, 130, 20);
-        
-        jlSusAct_2.setText("Sustancia Activa 2");
-        jlSusAct_2.setBounds(10, 60, 130, 20);
-        jtfSusAct_2.setBounds(140, 60, 130, 20);
-                
-        jlSusAct_3.setText("Sustancia Activa 3");
-        jlSusAct_3.setBounds(290, 60, 130, 20);
-        jtfSusAct_3.setBounds(430, 60, 130, 20);
-        
-        jlSusAct_4.setText("Sustancia Activa 4");
-        jlSusAct_4.setBounds(580, 60, 130, 20);
-        jtfSusAct_4.setBounds(720, 60, 130, 20);
-        
-        jlSusAct_5.setText("Sustancia Activa 5");
-        jlSusAct_5.setBounds(10, 90, 130, 20);
-        jtfSusAct_5.setBounds(140, 90, 130, 20);
+        jlLaboratorio.setText("Nombre Lab.");
+        jlLaboratorio.setBounds(10, 70, 130, 25);
+        jtfLaboratorio.setBounds(140, 70, 130, 25);
+        jtfLaboratorio.setToolTipText("Ingresa el nombre del laboratorio fabricante del medicamento");
         
         jlPresentacion.setText("Presentación");
-        jlPresentacion.setBounds(290, 90, 130, 20);
+        jlPresentacion.setBounds(290, 70, 130, 25);
         
         jcbPresentacion.setModel(dcbmPresentacion);
-        jcbPresentacion.setBounds(430, 90, 130, 20);
+        jcbPresentacion.setBounds(430, 70, 170, 25);
+        jcbPresentacion.setToolTipText("Elige una opción");
+        
+        jlCantidad.setText("Cantidad");
+        jlCantidad.setBounds(10, 110, 130, 25);        
+        jtfCantidad.setBounds(140, 110, 130, 25);
+        jtfCantidad.setToolTipText("Ingresa de cantidad neta de producto que contiene el empaque");
         
         jlUnidadMedida.setText("Unidad Medida");
-        jlUnidadMedida.setBounds(580, 90, 130, 20);
-        jtfUnidadMedida.setBounds(720, 90, 65, 20);   
+        jlUnidadMedida.setBounds(290, 110, 130, 25);
+        jtfUnidadMedida.setBounds(430, 110, 65, 25); 
+        jtfUnidadMedida.setToolTipText("Ingresa la cantidad según la presentación");
         
         jcbUnidadMedida.setModel(dcbmUnidadMedida);
-        jcbUnidadMedida.setBounds(795, 90, 65, 20);
+        jcbUnidadMedida.setBounds(505, 110, 95, 25);
+        jcbUnidadMedida.setToolTipText("Elige una opción");
+        
+        jbSusActiva.setText("Sustancia Activa");
+        jbSusActiva.setToolTipText("Ingresa las sustancias activas que componen el medicamento");
+        jbSusActiva.setBounds(10, 170, 150, 30);
         
         jbLimpiar.setText("Limpiar");
-        jbLimpiar.setBounds(530, 130, 150, 30);
+        jbLimpiar.setToolTipText("Limpia todos los campos");
+        jbLimpiar.setBounds(280, 170, 150, 30);
         
         jbCrear.setText("Crear Producto");
-        jbCrear.setBounds(700, 130, 150, 30);
+        jbCrear.setToolTipText("Guarda todos los datos en la base de datos del medicamento");
+        jbCrear.setBounds(450, 170, 150, 30);
         
         add(jMenuBar);
         jMenuBar.add(jmAdd);
@@ -188,27 +184,24 @@ public class ViewCreate extends JFrame
         jpCrearProducto.add(jlCodBarraMedicamento);
         jpCrearProducto.add(jtfCodBarraMedicamento);
         jpCrearProducto.add(jlNomMedicamento);
-        jpCrearProducto.add(jtfNomMedicamento);
-        jpCrearProducto.add(jlSusAct_1);
-        jpCrearProducto.add(jtfSusAct_1);
-        jpCrearProducto.add(jlSusAct_2);
-        jpCrearProducto.add(jtfSusAct_2);
-        jpCrearProducto.add(jlSusAct_3);
-        jpCrearProducto.add(jtfSusAct_3);
-        jpCrearProducto.add(jlSusAct_4);
-        jpCrearProducto.add(jtfSusAct_4);
-        jpCrearProducto.add(jlSusAct_5);
-        jpCrearProducto.add(jtfSusAct_5);
+        jpCrearProducto.add(jtfNomMedicamento);        
+        jpCrearProducto.add(jlCantidad);
+        jpCrearProducto.add(jtfCantidad);
         jpCrearProducto.add(jlPresentacion);
         jpCrearProducto.add(jcbPresentacion);
         jpCrearProducto.add(jlUnidadMedida);
         jpCrearProducto.add(jtfUnidadMedida);
         jpCrearProducto.add(jcbUnidadMedida);
+        jpCrearProducto.add(jlLaboratorio);
+        jpCrearProducto.add(jtfLaboratorio);
+        jpCrearProducto.add(jbSusActiva);
         jpCrearProducto.add(jbCrear);
         jpCrearProducto.add(jbLimpiar);
         
-        setSize(900, 250);
+        setSize(640, 290);
         setResizable(false);
+        setTitle("Salutem");
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }    
 }

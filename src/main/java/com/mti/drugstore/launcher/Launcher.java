@@ -5,8 +5,10 @@
  */
 package com.mti.drugstore.launcher;
 
-import com.mti.drugstore.controlador.ControlatorMedCreate;
+import com.mti.drugstore.controlador.ControCrear;
+import com.mti.drugstore.controlador.ControMain;
 import com.mti.drugstore.modelo.MedicamentoDAO;
+import com.mti.drugstore.vista.JFrameMain;
 import com.mti.drugstore.vista.ViewCreate;
 
 /**
@@ -18,13 +20,8 @@ public class Launcher
     
     public static void main(String[] args)
     {
-        ViewCreate vistaCrear = new ViewCreate();
-        MedicamentoDAO medDAO = new MedicamentoDAO();
-        ControlatorMedCreate cmc = new ControlatorMedCreate(vistaCrear, medDAO);
-        
-        vistaCrear.setVisible(true);
-        vistaCrear.setTitle("Salutem");
-        vistaCrear.setLocationRelativeTo(null);
-    }
-    
+        JFrameMain frameMain = new JFrameMain();
+        ControMain controMain = new ControMain(frameMain);        
+        frameMain.setVisible(true);
+    }    
 }

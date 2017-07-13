@@ -6,7 +6,9 @@
 package com.mti.drugstore.controlador;
 
 import com.mti.drugstore.modelo.MedicamentoDAO;
+import com.mti.drugstore.vista.JFrameMain;
 import com.mti.drugstore.vista.ViewCreate;
+import com.mti.drugstore.vista.ViewSusAct;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
@@ -15,17 +17,18 @@ import javax.swing.JOptionPane;
  *
  * @author rascencio
  */
-public class ControlatorMedCreate implements ActionListener
+public class ControCrear implements ActionListener
 {
     ViewCreate vistaCrear = new ViewCreate();
     MedicamentoDAO medDAO = new MedicamentoDAO();
     
-    public ControlatorMedCreate(ViewCreate vistaCrear, MedicamentoDAO medDAO)
+    public ControCrear(ViewCreate vistaCrear, MedicamentoDAO medDAO)
     {
         this.medDAO = medDAO;
         this.vistaCrear = vistaCrear;
         this.vistaCrear.jbCrear.addActionListener(this);
         this.vistaCrear.jbLimpiar.addActionListener(this);
+        this.vistaCrear.jbSusActiva.addActionListener(this);
         this.vistaCrear.jmiAbout.addActionListener(this);
         this.vistaCrear.jmiAddProduct.addActionListener(this);
         this.vistaCrear.jmiBack.addActionListener(this);
@@ -37,11 +40,8 @@ public class ControlatorMedCreate implements ActionListener
     {
         vistaCrear.jtfCodBarraMedicamento.setText("");
         vistaCrear.jtfNomMedicamento.setText("");
-        vistaCrear.jtfSusAct_1.setText("");
-        vistaCrear.jtfSusAct_2.setText("");
-        vistaCrear.jtfSusAct_3.setText("");
-        vistaCrear.jtfSusAct_4.setText("");
-        vistaCrear.jtfSusAct_5.setText("");
+        vistaCrear.jtfLaboratorio.setText("");
+        vistaCrear.jtfCantidad.setText("");
         vistaCrear.jtfUnidadMedida.setText("");
         vistaCrear.jcbPresentacion.setSelectedIndex(0);
         vistaCrear.jcbUnidadMedida.setSelectedIndex(0);
@@ -66,8 +66,8 @@ public class ControlatorMedCreate implements ActionListener
                     + "Roberto Ascencio\nCompañia: Enviromentec\nwww.enviromentec.com.mx\nFecha: 09/07/2017");
         }
         if(e.getSource() == vistaCrear.jbCrear || e.getSource() == vistaCrear.jmiAddProduct)
-        {
-            String barCode = vistaCrear.jtfCodBarraMedicamento.getText();
+        {           
+            /*String barCode = vistaCrear.jtfCodBarraMedicamento.getText();
             String nameMed = vistaCrear.jtfNomMedicamento.getText();
             String susAct_1 = vistaCrear.jtfSusAct_1.getText();
             String susAct_2 = vistaCrear.jtfSusAct_2.getText();
@@ -76,8 +76,21 @@ public class ControlatorMedCreate implements ActionListener
             String susAct_5 = vistaCrear.jtfSusAct_5.getText();
             String presentacion = (String) vistaCrear.jcbPresentacion.getSelectedItem();
             String cantUnidadMed = vistaCrear.jtfUnidadMedida.getText();
-            String unidadMed = (String) vistaCrear.jcbUnidadMedida.getSelectedItem();
-        }        
+            String unidadMed = (String) vistaCrear.jcbUnidadMedida.getSelectedItem();*/
+        }   
+        if(e.getSource() == vistaCrear.jbSusActiva)
+        {
+            vistaCrear.dispose();
+            ViewSusAct viewSusAct = new ViewSusAct(vistaCrear.jtfNomMedicamento.getText());            
+            viewSusAct.setVisible(true);
+        }
+        if(e.getSource() == vistaCrear.jmiBack)
+        {
+            vistaCrear.dispose();
+            JFrameMain frameMain = new JFrameMain();
+            ControMain controMain = new ControMain(frameMain);        
+            frameMain.setVisible(true);
+        }
     }
     
 }
