@@ -9,6 +9,34 @@ package com.mti.drugstore.modelo;
  *
  * @author rascencio
  */
-public class SustanciaAct {
+public class SustanciaAct 
+{
+    private String idSustanciaActiva;
+    private String descripcion;
     
+    public SustanciaAct()
+    {
+        idSustanciaActiva="";
+        descripcion="";
+    }
+
+    public String getIdSustanciaActiva() 
+    {
+        return idSustanciaActiva;
+    }
+
+    public void setIdSustanciaActiva(String idSustanciaActiva) 
+    {
+        this.idSustanciaActiva = idSustanciaActiva;
+    }
+
+    public String getDescripcion() 
+    {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) 
+    {
+        this.descripcion = descripcion;
+    } 
 }

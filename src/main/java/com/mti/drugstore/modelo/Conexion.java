@@ -25,7 +25,7 @@ public class Conexion
         try 
         {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/medSalutem", "root", "Ascencio1234");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_farmacia", "root", "Ascencio1234");
             System.out.println("Conexión exitosa!!!");
         }
         catch (Exception e) 

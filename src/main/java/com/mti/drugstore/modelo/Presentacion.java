@@ -11,6 +11,28 @@ package com.mti.drugstore.modelo;
  */
 public class Presentacion
 {
+    private String idPresentacion;
     private String descripPresentacion;
-    private String cantidad;    
+    
+    public Presentacion()
+    {
+        idPresentacion="";
+        descripPresentacion="";
+    }
+
+    public String getIdPresentacion() {
+        return idPresentacion;
+    }
+
+    public void setIdPresentacion(String idPresentacion) {
+        this.idPresentacion = idPresentacion;
+    }
+
+    public String getDescripPresentacion() {
+        return descripPresentacion;
+    }
+
+    public void setDescripPresentacion(String descripPresentacion) {
+        this.descripPresentacion = descripPresentacion;
+    }   
 }

@@ -5,8 +5,13 @@
  */
 package com.mti.drugstore.modelo;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 
 /**
  *
@@ -35,19 +40,7 @@ public class MedicamentoDAO implements CRUD
     public String insertInTable(String uno, String dos, String tres) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
-    @Override
-    public String insertInTable(String codBarra, String nombreMed, String laboratorio, String costo) 
-    {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        String rptaRegistro = null;
-        
-        Connection accesoDB = conexion.getConexion();
-        //CallableStatement cs = accesoDB.prepareCall("call med")
-        
-        return rptaRegistro;
-    }
-
+    
     @Override
     public ArrayList listOfTalbe() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -80,6 +73,48 @@ public class MedicamentoDAO implements CRUD
 
     @Override
     public ArrayList findInTable(String uno) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public DefaultComboBoxModel findInTable() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String insertInTable(String barCode, String nombreMed, String nombreLab, String contenido, String umContenido, String imagen, int presentacion)
+    {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String rptaRegistro=null;
+            
+        try
+        {
+            Connection accesoDB = conexion.getConexion();
+            CallableStatement cs = accesoDB.prepareCall("{call sp_insertMed(?,?,?,?,?,?,?)}");
+            cs.setString(1, barCode);
+            cs.setString(2, nombreMed);
+            cs.setString(3, nombreLab);
+            cs.setString(4, contenido);
+            cs.setString(5, umContenido);
+            cs.setString(6, imagen);
+            cs.setInt(7, presentacion);
+            
+            int numFAfectadas = cs.executeUpdate();
+            
+            if(numFAfectadas>0)
+            {
+                rptaRegistro="Registro exitoso!!!";
+            }
+        } 
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(MedicamentoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return rptaRegistro;
+    }
+
+    @Override
+    public String insertInTable(String uno, String dos, String tres, String cuatro) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

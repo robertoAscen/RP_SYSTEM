@@ -6,6 +6,7 @@
 package com.mti.drugstore.modelo;
 
 import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
 
 /**
  *
@@ -21,6 +22,8 @@ public interface CRUD
     
     public String insertInTable(String uno, String dos, String tres, String cuatro);    
     
+    public String insertInTable(String uno, String dos, String tres, String cuatro, String cinco, String seis, int siete);  
+    
     public ArrayList listOfTalbe();
     
     public int deleteInTable(String uno);
@@ -34,4 +37,6 @@ public interface CRUD
     public int editInTable(String uno, String dos, String tres, String cuatro);
     
     public ArrayList findInTable(String uno);
+    
+    public DefaultComboBoxModel findInTable();
 }

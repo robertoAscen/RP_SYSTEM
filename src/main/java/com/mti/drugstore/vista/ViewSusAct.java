@@ -38,7 +38,7 @@ public class ViewSusAct extends JFrame
     private TitledBorder ttbContenedor;
     
     private JLabel jlSusAct_1;
-    private JLabel jlSusAct_2;
+    /*private JLabel jlSusAct_2;
     private JLabel jlSusAct_3;
     private JLabel jlSusAct_4;
     private JLabel jlSusAct_5;
@@ -46,10 +46,10 @@ public class ViewSusAct extends JFrame
     private JLabel jlSusAct_7;
     private JLabel jlSusAct_8;
     private JLabel jlSusAct_9;
-    private JLabel jlSusAct_10;
+    private JLabel jlSusAct_10;*/
     
     public JTextField jtfSusAct_1;
-    public JTextField jtfSusAct_2;
+    /*public JTextField jtfSusAct_2;
     public JTextField jtfSusAct_3;
     public JTextField jtfSusAct_4;
     public JTextField jtfSusAct_5;
@@ -57,9 +57,9 @@ public class ViewSusAct extends JFrame
     public JTextField jtfSusAct_7;
     public JTextField jtfSusAct_8;
     public JTextField jtfSusAct_9;
-    public JTextField jtfSusAct_10;
+    public JTextField jtfSusAct_10;*/
     
-    public JTextField jtfCantidad_1;
+    /*public JTextField jtfCantidad_1;
     public JTextField jtfCantidad_2;
     public JTextField jtfCantidad_3;
     public JTextField jtfCantidad_4;
@@ -68,10 +68,10 @@ public class ViewSusAct extends JFrame
     public JTextField jtfCantidad_7;
     public JTextField jtfCantidad_8;
     public JTextField jtfCantidad_9;
-    public JTextField jtfCantidad_10;
+    public JTextField jtfCantidad_10;*/
     
     public JComboBox<String> jcbUnidadMedida_1;
-    public JComboBox<String> jcbUnidadMedida_2;
+    /*public JComboBox<String> jcbUnidadMedida_2;
     public JComboBox<String> jcbUnidadMedida_3;
     public JComboBox<String> jcbUnidadMedida_4;
     public JComboBox<String> jcbUnidadMedida_5;
@@ -89,7 +89,7 @@ public class ViewSusAct extends JFrame
     private DefaultComboBoxModel<String> dcbmUnidadMedida_7;
     private DefaultComboBoxModel<String> dcbmUnidadMedida_8;
     private DefaultComboBoxModel<String> dcbmUnidadMedida_9;
-    private DefaultComboBoxModel<String> dcbmUnidadMedida_10;
+    private DefaultComboBoxModel<String> dcbmUnidadMedida_10;*/
     private String[] strUnidadMedida = {"","mcg","mg","g","ui","ml"};
     
     public JButton jbSave;
@@ -119,7 +119,7 @@ public class ViewSusAct extends JFrame
         ttbContenedor= new TitledBorder("Crear Producto");
         
         jlSusAct_1 = new JLabel();
-        jlSusAct_2 = new JLabel();
+        /*jlSusAct_2 = new JLabel();
         jlSusAct_3 = new JLabel();
         jlSusAct_4 = new JLabel();
         jlSusAct_5 = new JLabel();
@@ -127,10 +127,10 @@ public class ViewSusAct extends JFrame
         jlSusAct_7 = new JLabel();
         jlSusAct_8 = new JLabel();
         jlSusAct_9 = new JLabel();
-        jlSusAct_10 = new JLabel();
+        jlSusAct_10 = new JLabel();*/
         
         jtfSusAct_1 = new JTextField();
-        jtfSusAct_2 = new JTextField();
+        /*jtfSusAct_2 = new JTextField();
         jtfSusAct_3 = new JTextField();
         jtfSusAct_4 = new JTextField();
         jtfSusAct_5 = new JTextField();
@@ -138,10 +138,10 @@ public class ViewSusAct extends JFrame
         jtfSusAct_7 = new JTextField();
         jtfSusAct_8 = new JTextField();
         jtfSusAct_9 = new JTextField();
-        jtfSusAct_10 = new JTextField();
+        jtfSusAct_10 = new JTextField();*/
         
-        jtfCantidad_1 = new JTextField();
-        jtfCantidad_2 = new JTextField();
+        //jtfCantidad_1 = new JTextField();
+        /*jtfCantidad_2 = new JTextField();
         jtfCantidad_3 = new JTextField();
         jtfCantidad_4 = new JTextField();
         jtfCantidad_5 = new JTextField();
@@ -149,10 +149,10 @@ public class ViewSusAct extends JFrame
         jtfCantidad_7 = new JTextField();
         jtfCantidad_8 = new JTextField();
         jtfCantidad_9 = new JTextField();
-        jtfCantidad_10 = new JTextField();
+        jtfCantidad_10 = new JTextField();*/
         
         jcbUnidadMedida_1 = new JComboBox<String>();
-        jcbUnidadMedida_2 = new JComboBox<String>();
+        /*jcbUnidadMedida_2 = new JComboBox<String>();
         jcbUnidadMedida_3 = new JComboBox<String>();
         jcbUnidadMedida_4 = new JComboBox<String>();
         jcbUnidadMedida_5 = new JComboBox<String>();
@@ -170,7 +170,7 @@ public class ViewSusAct extends JFrame
         dcbmUnidadMedida_7 = new DefaultComboBoxModel<String>(strUnidadMedida);
         dcbmUnidadMedida_8 = new DefaultComboBoxModel<String>(strUnidadMedida);
         dcbmUnidadMedida_9 = new DefaultComboBoxModel<String>(strUnidadMedida);
-        dcbmUnidadMedida_10 = new DefaultComboBoxModel<String>(strUnidadMedida);    
+        dcbmUnidadMedida_10 = new DefaultComboBoxModel<String>(strUnidadMedida); */   
         
         jbSave = new JButton();
         
@@ -196,13 +196,13 @@ public class ViewSusAct extends JFrame
         jlSusAct_1.setBounds(10, 30, 130, 25);
         jtfSusAct_1.setBounds(150, 30, 130, 25);   
         jtfSusAct_1.setToolTipText("Ingresa la sustancia activa");
-        jcbUnidadMedida_1.setModel(dcbmUnidadMedida_1);
-        jtfCantidad_1.setBounds(290, 30, 65, 25);
-        jtfCantidad_1.setToolTipText("Ingresa la cantidad de sustancia activa");
+        //jcbUnidadMedida_1.setModel(dcbmUnidadMedida_1);
+        //jtfCantidad_1.setBounds(290, 30, 65, 25);
+        //jtfCantidad_1.setToolTipText("Ingresa la cantidad de sustancia activa");
         jcbUnidadMedida_1.setBounds(365, 30, 65, 25);
         jcbUnidadMedida_1.setToolTipText("Selecciona la unidad de medida de la sustancia activa");
         
-        jlSusAct_2.setText("Sustancia Activa 2");
+        /*jlSusAct_2.setText("Sustancia Activa 2");
         jlSusAct_2.setBounds(10, 70, 130, 25);
         jtfSusAct_2.setBounds(150, 70, 130, 25);    
         jtfSusAct_2.setToolTipText("Ingresa la sustancia activa");
@@ -290,7 +290,7 @@ public class ViewSusAct extends JFrame
         jtfCantidad_10.setToolTipText("Ingresa la cantidad de sustancia activa");
         jtfCantidad_10.setBounds(290, 390, 65, 25);
         jcbUnidadMedida_10.setBounds(365, 390, 65, 25);
-        jcbUnidadMedida_10.setToolTipText("Selecciona la unidad de medida de la sustancia activa");
+        jcbUnidadMedida_10.setToolTipText("Selecciona la unidad de medida de la sustancia activa");*/
         
         jbSave.setText("Guardar");
         jbSave.setToolTipText("Guardar las sustancias activas del medicamento a crear");
@@ -307,9 +307,9 @@ public class ViewSusAct extends JFrame
         add(jpContenedor);
         jpContenedor.add(jlSusAct_1);
         jpContenedor.add(jtfSusAct_1);
-        jpContenedor.add(jtfCantidad_1);
+        //jpContenedor.add(jtfCantidad_1);
         jpContenedor.add(jcbUnidadMedida_1);        
-        jpContenedor.add(jlSusAct_2);
+        /*jpContenedor.add(jlSusAct_2);
         jpContenedor.add(jtfSusAct_2);
         jpContenedor.add(jtfCantidad_2);
         jpContenedor.add(jcbUnidadMedida_2);        
@@ -344,7 +344,7 @@ public class ViewSusAct extends JFrame
         jpContenedor.add(jlSusAct_10);
         jpContenedor.add(jtfSusAct_10);
         jpContenedor.add(jtfCantidad_10);
-        jpContenedor.add(jcbUnidadMedida_10);
+        jpContenedor.add(jcbUnidadMedida_10);*/
         jpContenedor.add(jbSave);
         
         setSize(480, 540);

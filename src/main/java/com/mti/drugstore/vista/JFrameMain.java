@@ -54,10 +54,12 @@ public class JFrameMain extends JFrame
         jpContenedor.setBounds(10, 10, 420, 370);
         
         jbCrearNP.setText("Crear Producto");
+        jbCrearNP.setToolTipText("Agregar un producto");
         jbCrearNP.setIcon(imageIconAdd);
         jbCrearNP.setBounds(20, 300, 180, 50);
         
         jbViewProduct.setText("Ver Productos");
+        jbViewProduct.setToolTipText("Ver los productos de la base de datos");
         jbViewProduct.setIcon(imageIconView);
         jbViewProduct.setBounds(220, 300, 180, 50);
         

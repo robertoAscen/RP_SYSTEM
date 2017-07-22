@@ -41,27 +41,35 @@ public class ViewCreate extends JFrame
     private JLabel jlLaboratorio;
     private JLabel jlCantidad;
     private JLabel jlPresentacion;
-    private JLabel jlUnidadMedida;
     
     public JTextField jtfCodBarraMedicamento;
     public JTextField jtfNomMedicamento;
     public JTextField jtfLaboratorio;
     public JTextField jtfCantidad;
     public JComboBox<String> jcbPresentacion;
-    private DefaultComboBoxModel<String> dcbmPresentacion;
-    private String[] strPresentacion = {"Seleccione una","Tableta", "Capsula", 
-                                        "Suspención","Gota", "Sobre", 
-                                        "Ampula","Supositorio", "Crema", 
-                                        "Ovulos","Gel", "Polvo", 
-                                        "Shampoo","Pasta", "Jarabe"};
-    public JTextField jtfUnidadMedida;
+    public JButton jbAgregarImagen;
     public JComboBox<String> jcbUnidadMedida;
     private DefaultComboBoxModel<String> dcbmUnidadMedida;
-    private String[] strUnidadMedida = {"Seleccione una","mcg","mg","g","ui","ml"};
+    private String[] strUnidadMedida = {"","mcg","mg","g","ui","ml","pz"};
     
-    public JButton jbSusActiva;
     public JButton jbCrear;
     public JButton jbLimpiar;
+    
+    private JPanel jpFormula;
+    private TitledBorder ttbFormula;
+    private JLabel jlSusActFormula;
+    public JComboBox<String> jcbSusActDB;
+    public JButton jbAgregarSusAct;
+    private JLabel jlCantSusAct;
+    public JTextField jtfCantSusAct;
+    public JComboBox<String> jcbUmSusAct;
+    private DefaultComboBoxModel<String> dcbmUmSusAct;
+    public JButton jbAgregarFormula;
+    
+    private JPanel jpImagen;
+    private TitledBorder ttbImagen;
+    public JLabel jlImagen;
+    public JLabel jlRutaImagen;
     
     
     public ViewCreate()
@@ -89,19 +97,32 @@ public class ViewCreate extends JFrame
         jlLaboratorio = new JLabel();
         jlCantidad = new JLabel();
         jlPresentacion = new JLabel();
-        jlUnidadMedida = new JLabel();
 
         jtfCodBarraMedicamento = new JTextField();
         jtfNomMedicamento = new JTextField();
         jtfLaboratorio = new JTextField();
         jtfCantidad = new JTextField();
         jcbPresentacion = new JComboBox<String>();
-        dcbmPresentacion = new DefaultComboBoxModel<String>(strPresentacion);
-        jtfUnidadMedida = new JTextField();
+        jbAgregarImagen = new JButton();
         jcbUnidadMedida = new JComboBox<String>();
         dcbmUnidadMedida = new DefaultComboBoxModel<String>(strUnidadMedida);
+        
+        jpImagen = new JPanel();
+        ttbImagen = new TitledBorder("Imagen");
+        jlImagen = new JLabel();   
+        jlRutaImagen = new JLabel();
+        
+        jpFormula = new JPanel();
+        ttbFormula = new TitledBorder("Formula Medicamento");
+        jlSusActFormula = new JLabel();
+        jcbSusActDB = new JComboBox<String>();
+        jbAgregarSusAct = new JButton();
+        jlCantSusAct = new JLabel();
+        jtfCantSusAct = new JTextField();
+        jcbUmSusAct = new JComboBox<String>();
+        dcbmUmSusAct = new DefaultComboBoxModel<String>(strUnidadMedida);
+        jbAgregarFormula = new JButton();
 
-        jbSusActiva = new JButton();
         jbCrear = new JButton();
         jbLimpiar = new JButton();
         
@@ -122,7 +143,17 @@ public class ViewCreate extends JFrame
         
         jpCrearProducto.setLayout(null);
         jpCrearProducto.setBorder(ttbCrearProducto);
-        jpCrearProducto.setBounds(10, 30, 610, 220);        
+        jpCrearProducto.setBounds(10, 30, 610, 500);      
+        
+        jpImagen.setLayout(null);
+        jpImagen.setBorder(ttbImagen);
+        jpImagen.setBounds(10, 150, 590, 280);
+        
+        jlImagen.setText("Agrega imagen");
+        jlImagen.setBounds(10, 10, 570, 220);
+        
+        jlRutaImagen.setText("Ruta imagen");
+        jlRutaImagen.setBounds(10, 240, 400, 20);
         
         jlCodBarraMedicamento.setText("Código de Barras");
         jlCodBarraMedicamento.setBounds(10, 30, 130, 25);
@@ -139,38 +170,57 @@ public class ViewCreate extends JFrame
         jtfLaboratorio.setBounds(140, 70, 130, 25);
         jtfLaboratorio.setToolTipText("Ingresa el nombre del laboratorio fabricante del medicamento");
         
-        jlPresentacion.setText("Presentación");
-        jlPresentacion.setBounds(290, 70, 130, 25);
-        
-        jcbPresentacion.setModel(dcbmPresentacion);
-        jcbPresentacion.setBounds(430, 70, 170, 25);
-        jcbPresentacion.setToolTipText("Elige una opción");
-        
         jlCantidad.setText("Cantidad");
-        jlCantidad.setBounds(10, 110, 130, 25);        
-        jtfCantidad.setBounds(140, 110, 130, 25);
+        jlCantidad.setBounds(290, 70, 130, 25);        
+        jtfCantidad.setBounds(370, 70, 85, 25);
         jtfCantidad.setToolTipText("Ingresa de cantidad neta de producto que contiene el empaque");
         
-        jlUnidadMedida.setText("Unidad Medida");
-        jlUnidadMedida.setBounds(290, 110, 130, 25);
-        jtfUnidadMedida.setBounds(430, 110, 65, 25); 
-        jtfUnidadMedida.setToolTipText("Ingresa la cantidad según la presentación");
-        
         jcbUnidadMedida.setModel(dcbmUnidadMedida);
-        jcbUnidadMedida.setBounds(505, 110, 95, 25);
+        jcbUnidadMedida.setBounds(475, 70, 125, 25);
         jcbUnidadMedida.setToolTipText("Elige una opción");
         
-        jbSusActiva.setText("Sustancia Activa");
-        jbSusActiva.setToolTipText("Ingresa las sustancias activas que componen el medicamento");
-        jbSusActiva.setBounds(10, 170, 150, 30);
+        jlPresentacion.setText("Presentación");
+        jlPresentacion.setBounds(10, 110, 130, 25);
+        
+        jcbPresentacion.setBounds(140, 110, 130, 25);
+        jcbPresentacion.setToolTipText("Elige una opción");   
+        
+        jbAgregarImagen.setText("Agregar imagen");
+        jbAgregarImagen.setBounds(350, 110, 250, 25);
         
         jbLimpiar.setText("Limpiar");
         jbLimpiar.setToolTipText("Limpia todos los campos");
-        jbLimpiar.setBounds(280, 170, 150, 30);
+        jbLimpiar.setBounds(10, 450, 250, 40);
         
         jbCrear.setText("Crear Producto");
         jbCrear.setToolTipText("Guarda todos los datos en la base de datos del medicamento");
-        jbCrear.setBounds(450, 170, 150, 30);
+        jbCrear.setBounds(350, 450, 250, 40);
+        
+        jpFormula.setLayout(null);
+        jpFormula.setBorder(ttbFormula);
+        jpFormula.setBounds(10, 540, 610, 130);
+        
+        jlSusActFormula.setText("Sustancia Activa");
+        jlSusActFormula.setBounds(10, 30, 130, 25);
+        jcbSusActDB.setBounds(140, 30, 130, 25);
+        jcbSusActDB.setToolTipText("Elige una sustancia activa de la lista");
+        
+        jbAgregarSusAct.setText("...");
+        jbAgregarSusAct.setBounds(290, 30, 50, 25);
+        jbAgregarSusAct.setToolTipText("Presiona para agregar sustancia activa a la base de datos");
+        
+        jlCantSusAct.setText("Cant Sust Act");
+        jlCantSusAct.setBounds(360, 30, 130, 25);
+        jtfCantSusAct.setBounds(470, 30, 60, 25);
+        jtfCantSusAct.setToolTipText("Ingresa la cantidad de sustancia activa en este medicamento");
+                
+        jcbUmSusAct.setModel(dcbmUmSusAct);
+        jcbUmSusAct.setBounds(540, 30, 60, 25);
+        jcbUmSusAct.setToolTipText("Elige una unidad de medida de la sustancia activa");
+        
+        jbAgregarFormula.setText("Add Formula");
+        jbAgregarFormula.setBounds(350, 80, 250, 40);
+        jbAgregarFormula.setToolTipText("Presionar para agregar formula a este medicamento");
         
         add(jMenuBar);
         jMenuBar.add(jmAdd);
@@ -187,18 +237,27 @@ public class ViewCreate extends JFrame
         jpCrearProducto.add(jtfNomMedicamento);        
         jpCrearProducto.add(jlCantidad);
         jpCrearProducto.add(jtfCantidad);
-        jpCrearProducto.add(jlPresentacion);
-        jpCrearProducto.add(jcbPresentacion);
-        jpCrearProducto.add(jlUnidadMedida);
-        jpCrearProducto.add(jtfUnidadMedida);
         jpCrearProducto.add(jcbUnidadMedida);
         jpCrearProducto.add(jlLaboratorio);
         jpCrearProducto.add(jtfLaboratorio);
-        jpCrearProducto.add(jbSusActiva);
+        jpCrearProducto.add(jlPresentacion);
+        jpCrearProducto.add(jcbPresentacion);
+        jpCrearProducto.add(jbAgregarImagen);
         jpCrearProducto.add(jbCrear);
         jpCrearProducto.add(jbLimpiar);
+        jpCrearProducto.add(jpImagen);
+        jpImagen.add(jlImagen);
+        jpImagen.add(jlRutaImagen);
+        add(jpFormula);
+        jpFormula.add(jlSusActFormula);
+        jpFormula.add(jcbSusActDB);
+        jpFormula.add(jbAgregarSusAct);
+        jpFormula.add(jlCantSusAct);
+        jpFormula.add(jtfCantSusAct);
+        jpFormula.add(jcbUmSusAct);
+        jpFormula.add(jbAgregarFormula);
         
-        setSize(640, 290);
+        setSize(630, 700);
         setResizable(false);
         setTitle("Salutem");
         setLocationRelativeTo(null);
