@@ -28,8 +28,29 @@ public class PresentacionDAO implements CRUD
     }
 
     @Override
-    public String insertInTable(String uno) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String insertInTable(String presentacion)
+    {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String rptaRegistro=null;
+            
+        try
+        {
+            Connection accesoDB = conexion.getConexion();
+            CallableStatement cs = accesoDB.prepareCall("{call sp_insertPresentacion(?)}");
+            cs.setString(1, presentacion);
+            
+            int numFAfectadas = cs.executeUpdate();
+            
+            if(numFAfectadas>0)
+            {
+                rptaRegistro="Registro exitoso!!!";
+            }
+        } 
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(MedicamentoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return rptaRegistro;
     }
 
     @Override
@@ -78,9 +99,39 @@ public class PresentacionDAO implements CRUD
     }
 
     @Override
-    public ArrayList findInTable(String uno) 
+    public ArrayList findInTable(String strPresentacion) 
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.        
+        
+    }
+    
+    @Override
+    public String findInTablee(String strPresentacion) 
+    {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.        
+        
+        //ArrayList listaPresentacion = new ArrayList();
+        String idPresentacion=null;
+        Presentacion presentacion;
+        try {
+            Connection acceDB = conexion.getConexion();
+            CallableStatement cs = acceDB.prepareCall("{call sp_buscaIdPresentacion(?)}");
+            cs.setString(1, strPresentacion);
+            ResultSet rs = cs.executeQuery();
+            while(rs.next())
+            {
+                presentacion = new Presentacion();
+                presentacion.setIdPresentacion(rs.getString(1));
+                //presentacion.setDescripPresentacion(rs.getString(2));
+                //listaPresentacion.add(presentacion);
+                idPresentacion = presentacion.getIdPresentacion();
+            }
+        } 
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(PresentacionDAO.class.getName()).log(Level.SEVERE, null, ex); 
+        }
+        return idPresentacion;
     }
 
     @Override
@@ -99,7 +150,7 @@ public class PresentacionDAO implements CRUD
             while(rs.next())
             {
                 presentacion = new Presentacion();
-                presentacion.setDescripPresentacion(rs.getString(1));
+                presentacion.setIdPresentacion(rs.getString(1));
                 presentacion.setDescripPresentacion(rs.getString(2));
                 listaPresentacion.addElement(presentacion.getDescripPresentacion());
             }
@@ -115,6 +166,9 @@ public class PresentacionDAO implements CRUD
     public String insertInTable(String uno, String dos, String tres, String cuatro, String cinco, String seis, int siete) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    
+
+    @Override
+    public String insertInTable(String uno, String dos, String tres, String cuatro, String cinco, String seis, String siete, String ocho, String nueve) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }    
 }

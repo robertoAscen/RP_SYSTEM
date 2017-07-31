@@ -20,9 +20,13 @@ public interface CRUD
     
     public String insertInTable(String uno, String dos, String tres);
     
-    public String insertInTable(String uno, String dos, String tres, String cuatro);    
+    public String insertInTable(String uno, String dos, String tres, String cuatro);  
+    
+    //public String insertInTable(String uno, String dos, String tres, String cuatro, String cinco);  
     
     public String insertInTable(String uno, String dos, String tres, String cuatro, String cinco, String seis, int siete);  
+    
+    public String insertInTable(String uno, String dos, String tres, String cuatro, String cinco, String seis, String siete, String ocho, String nueve);
     
     public ArrayList listOfTalbe();
     
@@ -36,7 +40,10 @@ public interface CRUD
     
     public int editInTable(String uno, String dos, String tres, String cuatro);
     
+    public String findInTablee(String uno);
+    
     public ArrayList findInTable(String uno);
     
-    public DefaultComboBoxModel findInTable();
+    public DefaultComboBoxModel findInTable();    
+    
 }

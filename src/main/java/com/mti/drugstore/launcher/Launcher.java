@@ -5,11 +5,8 @@
  */
 package com.mti.drugstore.launcher;
 
-import com.mti.drugstore.controlador.ControCrear;
-import com.mti.drugstore.controlador.ControMain;
-import com.mti.drugstore.modelo.MedicamentoDAO;
-import com.mti.drugstore.vista.JFrameMain;
-import com.mti.drugstore.vista.ViewCreate;
+import com.mti.drugstore.controlador.ControMainMenu;
+import com.mti.drugstore.vista.ViewMainMenu;
 
 /**
  *
@@ -20,8 +17,9 @@ public class Launcher
     
     public static void main(String[] args)
     {
-        JFrameMain frameMain = new JFrameMain();
-        ControMain controMain = new ControMain(frameMain);        
-        frameMain.setVisible(true);
+        ViewMainMenu menuPrincipal = new ViewMainMenu();
+        ControMainMenu controMainMenu = new ControMainMenu(menuPrincipal);
+        
+        menuPrincipal.setVisible(true);
     }    
 }

@@ -82,7 +82,19 @@ public class MedicamentoDAO implements CRUD
     }
 
     @Override
-    public String insertInTable(String barCode, String nombreMed, String nombreLab, String contenido, String umContenido, String imagen, int presentacion)
+    public String insertInTable(String uno, String dos, String tres, String cuatro, String cinco, String seis, int siete)
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+    }
+
+    @Override
+    public String insertInTable(String uno, String dos, String tres, String cuatro) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String insertInTable(String idMed, String barCode, String nombreMed, String nombreLab, String cant_neta, String idPresentacion, String cantMed, String umCantMed, String imagen)
     {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         String rptaRegistro=null;
@@ -90,14 +102,16 @@ public class MedicamentoDAO implements CRUD
         try
         {
             Connection accesoDB = conexion.getConexion();
-            CallableStatement cs = accesoDB.prepareCall("{call sp_insertMed(?,?,?,?,?,?,?)}");
-            cs.setString(1, barCode);
-            cs.setString(2, nombreMed);
-            cs.setString(3, nombreLab);
-            cs.setString(4, contenido);
-            cs.setString(5, umContenido);
-            cs.setString(6, imagen);
-            cs.setInt(7, presentacion);
+            CallableStatement cs = accesoDB.prepareCall("{call sp_insertMed(?,?,?,?,?,?,?,?,?)}");
+            cs.setString(1, idMed);
+            cs.setString(2, barCode);
+            cs.setString(3, nombreMed);
+            cs.setString(4, nombreLab);
+            cs.setString(5, cant_neta);
+            cs.setString(6, idPresentacion);
+            cs.setString(7, cantMed);
+            cs.setString(8, umCantMed);
+            cs.setString(9, imagen);
             
             int numFAfectadas = cs.executeUpdate();
             
@@ -111,11 +125,10 @@ public class MedicamentoDAO implements CRUD
             Logger.getLogger(MedicamentoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return rptaRegistro;
-    }
+    }    
 
     @Override
-    public String insertInTable(String uno, String dos, String tres, String cuatro) {
+    public String findInTablee(String uno) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
 }

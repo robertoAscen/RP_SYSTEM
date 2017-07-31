@@ -5,11 +5,13 @@
  */
 package com.mti.drugstore.controlador;
 
+import com.mti.drugstore.modelo.FormulaDAO;
 import com.mti.drugstore.modelo.MedicamentoDAO;
 import com.mti.drugstore.modelo.PresentacionDAO;
 import com.mti.drugstore.modelo.SustanciaActDAO;
 import com.mti.drugstore.vista.JFrameMain;
-import com.mti.drugstore.vista.ViewCreate;
+import com.mti.drugstore.vista.ViewCreateProduct;
+import com.mti.drugstore.vista.ViewMainMenu;
 import com.mti.drugstore.vista.ViewSusAct;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -26,41 +28,106 @@ import java.util.ArrayList;
  */
 public class ControCrear implements ActionListener
 {
-    ViewCreate vistaCrear = new ViewCreate();
+    ViewCreateProduct vistaCrear = new ViewCreateProduct();
     MedicamentoDAO medDAO = new MedicamentoDAO();
     PresentacionDAO presentacionDAO = new PresentacionDAO();
+    SustanciaActDAO sustanciaDAO = new SustanciaActDAO();
+    FormulaDAO formulaDAO = new FormulaDAO();
     
-    public ControCrear(ViewCreate vistaCrear, MedicamentoDAO medDAO)
+    public ControCrear(ViewCreateProduct vistaCrear, MedicamentoDAO medDAO, PresentacionDAO presentacionDAO, SustanciaActDAO sustanciaDAO, FormulaDAO formulaDAO)
     {
         this.medDAO = medDAO;
         this.presentacionDAO = presentacionDAO;
+        this.sustanciaDAO = sustanciaDAO;
+        this.formulaDAO = formulaDAO;
         this.vistaCrear = vistaCrear;
-        this.vistaCrear.jbCrear.addActionListener(this);
-        this.vistaCrear.jbLimpiar.addActionListener(this);
         this.vistaCrear.jmiAbout.addActionListener(this);
-        this.vistaCrear.jmiAddProduct.addActionListener(this);
-        this.vistaCrear.jmiBack.addActionListener(this);
-        this.vistaCrear.jmiClearFiels.addActionListener(this);
-        this.vistaCrear.jmiExit.addActionListener(this);   
+        this.vistaCrear.jbGuardar.addActionListener(this);
+        this.vistaCrear.jmiBack.addActionListener(this); 
         this.vistaCrear.jbAgregarImagen.addActionListener(this);
         this.vistaCrear.jcbPresentacion.setModel(presentacionDAO.findInTable());
+        this.vistaCrear.jbAgregarPresentacion.addActionListener(this);
+        this.vistaCrear.jbAgregarSusAct.addActionListener(this);
+        this.vistaCrear.jbAgregarFormula.addActionListener(this);
+        this.vistaCrear.jmiNewProduct.addActionListener(this);
     }
     
-    public void CleanFiels()
+    public void CleanFielsUP()
     {
         vistaCrear.jtfCodBarraMedicamento.setText("");
         vistaCrear.jtfNomMedicamento.setText("");
         vistaCrear.jtfLaboratorio.setText("");
         vistaCrear.jtfCantidad.setText("");
+        vistaCrear.jtfCantMed.setText("");
         vistaCrear.jcbPresentacion.setSelectedIndex(0);
         vistaCrear.jcbUnidadMedida.setSelectedIndex(0);
         vistaCrear.jlImagen.setText("Agrega imagen");
+        vistaCrear.jlImagen.setIcon(null);
+        vistaCrear.jlRutaImagen.setText("Ruta imagen");
+    }
+    
+    public void CleanFielsDown()
+    {
+        vistaCrear.jcbSusActDB.setSelectedIndex(0);
+        vistaCrear.jtfCantSusAct.setText("");
+        vistaCrear.jcbUmSusAct.setSelectedIndex(0);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) 
     {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(e.getSource() == vistaCrear.jbGuardar)
+        {     
+            if(vistaCrear.jtfCodBarraMedicamento.getText().length() !=0
+                    && vistaCrear.jtfNomMedicamento.getText().length() !=0
+                    && vistaCrear.jtfLaboratorio.getText().length() !=0
+                    && vistaCrear.jtfCantidad.getText().length() !=0
+                    && vistaCrear.jcbPresentacion.getSelectedIndex() !=0
+                    && vistaCrear.jtfCantMed.getText().length() !=0
+                    && vistaCrear.jcbUnidadMedida.getSelectedIndex() !=0)
+            {
+                String idMed = vistaCrear.jtfCodBarraMedicamento.getText();
+                String barCode = vistaCrear.jtfCodBarraMedicamento.getText();
+                String nameMed = vistaCrear.jtfNomMedicamento.getText();
+                String nameFab = vistaCrear.jtfLaboratorio.getText();
+                String present = (String)vistaCrear.jcbPresentacion.getSelectedItem();
+                System.out.println(present);
+                String idPresent = presentacionDAO.findInTablee(present);
+                System.out.println(idPresent);
+                String cantNeta = vistaCrear.jtfCantidad.getText();
+                String cantMed = vistaCrear.jtfCantMed.getText();
+                String umCant = (String) vistaCrear.jcbUnidadMedida.getSelectedItem();
+                String rutaImag = vistaCrear.jlRutaImagen.getText();
+            
+                if(medDAO.insertInTable(idMed, barCode, nameMed, nameFab, cantNeta, idPresent, cantMed, umCant, rutaImag).equals("Registro exitoso!!!"))
+                {
+                    JOptionPane.showMessageDialog(vistaCrear, "Producto guardado exitosamente",
+                            "Información", JOptionPane.INFORMATION_MESSAGE);
+                    
+                    vistaCrear.jtfNomMedicamento.setEnabled(false);
+                    vistaCrear.jtfLaboratorio.setEnabled(false);
+                    vistaCrear.jtfCodBarraMedicamento.setEnabled(false);
+                    vistaCrear.jtfCantidad.setEnabled(false);
+                    vistaCrear.jtfCantMed.setEnabled(false);
+                    vistaCrear.jcbPresentacion.setEnabled(false);
+                    vistaCrear.jcbUnidadMedida.setEnabled(false);
+                    vistaCrear.jbAgregarImagen.setEnabled(false);
+                    vistaCrear.jbAgregarPresentacion.setEnabled(false);
+                    vistaCrear.jcbSusActDB.setEnabled(true);
+                    vistaCrear.jbAgregarSusAct.setEnabled(true);
+                    vistaCrear.jtfCantSusAct.setEnabled(true);
+                    vistaCrear.jcbSusActDB.setModel(sustanciaDAO.findInTable());
+                    vistaCrear.jcbUmSusAct.setEnabled(true);            
+                    vistaCrear.jbAgregarFormula.setEnabled(true);    
+                    vistaCrear.jmiNewProduct.setEnabled(true);
+                }                
+            }          
+            else
+            {
+                JOptionPane.showMessageDialog(vistaCrear, "Debes llenar todos los campos para guardar el producto",
+                        "Advertencia", JOptionPane.WARNING_MESSAGE);
+            }
+        }
         
         if(e.getSource() == vistaCrear.jbAgregarImagen)
         {
@@ -76,100 +143,148 @@ public class ControCrear implements ActionListener
                 vistaCrear.jlRutaImagen.setText(ruta);
             }
         }
-        if(e.getSource() == vistaCrear.jbLimpiar || e.getSource() == vistaCrear.jmiClearFiels)
-        {
-            CleanFiels();
-        }
-        if(e.getSource() == vistaCrear.jmiExit)
-        {
-            vistaCrear.dispose();
-        }
+        
         if(e.getSource() == vistaCrear.jmiAbout)
         {
             JOptionPane.showMessageDialog(vistaCrear, "Software para control de inventarios farmacéuticos\nAutor:"
-                    + "Roberto Ascencio\nCompañia: Enviromentec\nwww.enviromentec.com.mx\nFecha: 09/07/2017");
+                    + "Roberto Ascencio\nCompañia: Enviromentec\nwww.enviromentec.com.mx\nFecha: 09/07/2017",
+                    "Información",JOptionPane.INFORMATION_MESSAGE);
         }
-        if(e.getSource() == vistaCrear.jbCrear || e.getSource() == vistaCrear.jmiAddProduct)
-        {           
-            String barCode = vistaCrear.jtfCodBarraMedicamento.getText();
-            String nameMed = vistaCrear.jtfNomMedicamento.getText();
-            String nameFab = vistaCrear.jtfLaboratorio.getText();
-            String cant = vistaCrear.jtfCantidad.getText();
-            String umCant = (String) vistaCrear.jcbUnidadMedida.getSelectedItem();
-            String rutaImag = vistaCrear.jlRutaImagen.getText();
-            
-            if(vistaCrear.jcbPresentacion.getSelectedItem().equals("AMPULA"))
-            {
-                int presentacion = 100; 
-                medDAO.insertInTable(barCode, nameMed, nameFab, cant, umCant, rutaImag, presentacion);
-            }
-            else if(vistaCrear.jcbPresentacion.getSelectedItem().equals("CAPSULA"))
-            {
-                int presentacion = 101; 
-                medDAO.insertInTable(barCode, nameMed, nameFab, cant, umCant, rutaImag, presentacion);
-            }
-            else if(vistaCrear.jcbPresentacion.getSelectedItem().equals("CREMA"))
-            {
-                int presentacion = 102; 
-                medDAO.insertInTable(barCode, nameMed, nameFab, cant, umCant, rutaImag, presentacion);
-            }
-            else if(vistaCrear.jcbPresentacion.getSelectedItem().equals("GEL"))
-            {
-                int presentacion = 103; 
-                medDAO.insertInTable(barCode, nameMed, nameFab, cant, umCant, rutaImag, presentacion);
-            }
-            else if(vistaCrear.jcbPresentacion.getSelectedItem().equals("GOTA"))
-            {
-                int presentacion = 104; 
-                medDAO.insertInTable(barCode, nameMed, nameFab, cant, umCant, rutaImag, presentacion);
-            }
-            else if(vistaCrear.jcbPresentacion.getSelectedItem().equals("JARABE"))
-            {
-                int presentacion = 105; 
-                medDAO.insertInTable(barCode, nameMed, nameFab, cant, umCant, rutaImag, presentacion);
-            }
-            else if(vistaCrear.jcbPresentacion.getSelectedItem().equals("SHAMPOO"))
-            {
-                int presentacion = 106; 
-                medDAO.insertInTable(barCode, nameMed, nameFab, cant, umCant, rutaImag, presentacion);
-            }
-            else if(vistaCrear.jcbPresentacion.getSelectedItem().equals("SUSPENCIÓN"))
-            {
-                int presentacion = 107; 
-                medDAO.insertInTable(barCode, nameMed, nameFab, cant, umCant, rutaImag, presentacion);
-            }
-            else if(vistaCrear.jcbPresentacion.getSelectedItem().equals("SUPOSITORIO"))
-            {
-                int presentacion = 108; 
-                medDAO.insertInTable(barCode, nameMed, nameFab, cant, umCant, rutaImag, presentacion);
-            }
-            else if(vistaCrear.jcbPresentacion.getSelectedItem().equals("TABLETA"))
-            {
-                int presentacion = 109; 
-                medDAO.insertInTable(barCode, nameMed, nameFab, cant, umCant, rutaImag, presentacion);
-            }
-            else if(vistaCrear.jcbPresentacion.getSelectedItem().equals("OVULOS"))
-            {
-                int presentacion = 110; 
-                medDAO.insertInTable(barCode, nameMed, nameFab, cant, umCant, rutaImag, presentacion);
-            }    
-            
-        }   
-        /*if(e.getSource() == vistaCrear.jbSusActiva)
+        
+        if(e.getSource() == vistaCrear.jbAgregarPresentacion)
         {
-            vistaCrear.dispose();
-            ViewSusAct viewSusAct = new ViewSusAct(vistaCrear.jtfNomMedicamento.getText());     
-            SustanciaActDAO susActDAO = new SustanciaActDAO();
-            ControSusAct controSusAct = new ControSusAct(viewSusAct, susActDAO);
+            String strPresentacion = JOptionPane.showInputDialog(vistaCrear, "Ingresa la presentación");
             
-            viewSusAct.setVisible(true);
-        }*/
+            if(strPresentacion.length()!=0)
+            {
+                presentacionDAO.insertInTable(strPresentacion);
+                vistaCrear.jcbPresentacion.setModel(presentacionDAO.findInTable());
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(vistaCrear, "Debe ingresar una presentación valida para poder continuar",
+                        "Advertencia",JOptionPane.WARNING_MESSAGE);
+            }
+        }
+        
+        if(e.getSource() == vistaCrear.jbAgregarSusAct)
+        {
+            String strSusAct = JOptionPane.showInputDialog(vistaCrear, "Ingresa la sustancia activa");
+            
+            if(strSusAct.length()!=0)
+            {
+                sustanciaDAO.insertInTable(strSusAct);
+                vistaCrear.jcbSusActDB.setModel(sustanciaDAO.findInTable());
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(vistaCrear, "Debe ingresar una Sustancia Activa valida para poder continuar",
+                        "Advertencia",JOptionPane.WARNING_MESSAGE);
+            }            
+        }
+        
+        if(e.getSource() == vistaCrear.jbAgregarFormula)
+        {
+            if(vistaCrear.jcbSusActDB.getSelectedIndex() !=0 
+                    && vistaCrear.jtfCantSusAct.getText().length() !=0
+                    && vistaCrear.jcbUmSusAct.getSelectedIndex() !=0)
+            {
+                String idMed = vistaCrear.jtfCodBarraMedicamento.getText();
+                String susAct = (String)vistaCrear.jcbSusActDB.getSelectedItem();
+                System.out.println(susAct);
+                String idSusAct = sustanciaDAO.findInTablee(susAct);
+                System.out.println(idSusAct);
+                String contenido = vistaCrear.jtfCantSusAct.getText();
+                String umSusAct = (String)vistaCrear.jcbUmSusAct.getSelectedItem();
+
+                if(formulaDAO.insertInTable(idMed, idSusAct, contenido, umSusAct).equals("Registro exitoso!!!"))
+                {
+                    JOptionPane.showMessageDialog(vistaCrear, "Formula guardada exitosamente",
+                            "Información",JOptionPane.INFORMATION_MESSAGE);
+                    CleanFielsDown();
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(vistaCrear, "El guardado de la formula fue erroneo",
+                            "Error",JOptionPane.ERROR_MESSAGE);
+                }
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(vistaCrear, "Debes de llenar todos los campos para guardar la formula",
+                        "Advertencia",JOptionPane.WARNING_MESSAGE);
+            }            
+        }
+        
+        if(e.getSource() == vistaCrear.jmiNewProduct)
+        {
+            int rpta = JOptionPane.showConfirmDialog(vistaCrear, "Si sale de este medicamento y no capturó todos los datos correspondientes"
+                    + "\nno podrá regresar a modificarlo\n¿Esta seguro que quiere salir de este medicamento e ingresar uno nuevo?");
+            switch(rpta)
+            {
+                case 0:
+                    CleanFielsDown();
+                    vistaCrear.jcbSusActDB.setEnabled(false);
+                    vistaCrear.jbAgregarSusAct.setEnabled(false);
+                    vistaCrear.jtfCantSusAct.setEnabled(false);
+                    vistaCrear.jcbUmSusAct.setEnabled(false);
+                    vistaCrear.jbAgregarFormula.setEnabled(false);
+                    CleanFielsUP();
+                    vistaCrear.jtfCodBarraMedicamento.setEnabled(true);
+                    vistaCrear.jtfNomMedicamento.setEnabled(true);
+                    vistaCrear.jtfLaboratorio.setEnabled(true);
+                    vistaCrear.jtfCantidad.setEnabled(true);
+                    vistaCrear.jcbPresentacion.setEnabled(true);
+                    vistaCrear.jbAgregarPresentacion.setEnabled(true);
+                    vistaCrear.jtfCantMed.setEnabled(true);
+                    vistaCrear.jcbUnidadMedida.setEnabled(true);
+                    vistaCrear.jbAgregarImagen.setEnabled(true);
+                    vistaCrear.jlImagen.setEnabled(true);
+                    vistaCrear.jlImagen.setIcon(null);
+                    vistaCrear.jlRutaImagen.setText("Ruta imagen");
+                    vistaCrear.jlRutaImagen.setEnabled(true);                    
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    break;
+            }            
+        }
+        
+        
         if(e.getSource() == vistaCrear.jmiBack)
         {
-            vistaCrear.dispose();
-            JFrameMain frameMain = new JFrameMain();
-            ControMain controMain = new ControMain(frameMain);        
-            frameMain.setVisible(true);
+            if(vistaCrear.jtfCodBarraMedicamento.getText().length() ==0
+                    && vistaCrear.jtfNomMedicamento.getText().length() ==0
+                    && vistaCrear.jtfLaboratorio.getText().length() ==0
+                    && vistaCrear.jtfCantidad.getText().length() ==0
+                    && vistaCrear.jcbPresentacion.getSelectedIndex() ==0
+                    && vistaCrear.jtfCantMed.getText().length() ==0
+                    && vistaCrear.jcbUnidadMedida.getSelectedIndex() ==0)
+            {
+                vistaCrear.dispose();
+                ViewMainMenu mainMenu = new ViewMainMenu();
+                ControMainMenu controMain = new ControMainMenu(mainMenu);        
+                mainMenu.setVisible(true);
+            }
+            else
+            {
+                int rpta = JOptionPane.showConfirmDialog(vistaCrear, "Esta a punto de salir de la venta para guardar productos\n"
+                        + "y aun no termina el registro del producto actual\n¿Esta seguro que desea regresar al menú principal?");
+                switch(rpta)
+                {
+                    case 0:
+                        vistaCrear.dispose();
+                        ViewMainMenu mainMenu = new ViewMainMenu();
+                        ControMainMenu controMain = new ControMainMenu(mainMenu);        
+                        mainMenu.setVisible(true);
+                        break;
+                    case 1:
+                        break;
+                    case 2:
+                        break;
+                }
+            }
         }
     }
     

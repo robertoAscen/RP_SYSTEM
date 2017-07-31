@@ -15,20 +15,24 @@ public class Medicamento
     private String codBarra;
     private String nombreMed;
     private String laboratorio;
-    private String contenido;
-    private String umContenido;
-    private String imagen;
+    private String cantNeta;
     private Presentacion presentacion;
+    private String cantMed;
+    private String umCantMed;
+    private String imagen;
+    
     
     public Medicamento(Presentacion presentacion)
     {
+        idMedicamento="";
         codBarra="";
         nombreMed="";
         laboratorio="";
-        contenido="";
-        umContenido="";
+        cantNeta="";
+        this.presentacion=presentacion;
+        cantMed="";
+        umCantMed="";
         imagen="";
-        this.presentacion = presentacion;
     }
 
     public String getIdMedicamento() {
@@ -63,28 +67,12 @@ public class Medicamento
         this.laboratorio = laboratorio;
     }
 
-    public String getContenido() {
-        return contenido;
+    public String getCantNeta() {
+        return cantNeta;
     }
 
-    public void setContenido(String contenido) {
-        this.contenido = contenido;
-    }
-
-    public String getUmContenido() {
-        return umContenido;
-    }
-
-    public void setUmContenido(String umContenido) {
-        this.umContenido = umContenido;
-    }
-
-    public String getImagen() {
-        return imagen;
-    }
-
-    public void setImagen(String imagen) {
-        this.imagen = imagen;
+    public void setCantNeta(String cantNeta) {
+        this.cantNeta = cantNeta;
     }
 
     public Presentacion getPresentacion() {
@@ -94,5 +82,28 @@ public class Medicamento
     public void setPresentacion(Presentacion presentacion) {
         this.presentacion = presentacion;
     }
-    
+
+    public String getCantMed() {
+        return cantMed;
+    }
+
+    public void setCantMed(String cantMed) {
+        this.cantMed = cantMed;
+    }
+
+    public String getUmCantMed() {
+        return umCantMed;
+    }
+
+    public void setUmCantMed(String umCantMed) {
+        this.umCantMed = umCantMed;
+    }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }   
 }

@@ -12,16 +12,16 @@ package com.mti.drugstore.modelo;
 public class Formula
 {
     private String idFormula;
-    private Medicamento medicamento;
-    private SustanciaAct sustanciaAct;
+    private String medicamento;
+    private String sustanciaAct;
     private String contenido;
     private String umContenido;
     
-    public Formula(Medicamento medicamento, SustanciaAct sustanciaAct)
+    public Formula()
     {
         idFormula="";
-        this.medicamento = medicamento;
-        this.sustanciaAct = sustanciaAct;
+        medicamento="";
+        sustanciaAct="";
         contenido="";
         umContenido="";
     }
@@ -34,19 +34,19 @@ public class Formula
         this.idFormula = idFormula;
     }
 
-    public Medicamento getMedicamento() {
+    public String getMedicamento() {
         return medicamento;
     }
 
-    public void setMedicamento(Medicamento medicamento) {
+    public void setMedicamento(String medicamento) {
         this.medicamento = medicamento;
     }
 
-    public SustanciaAct getSustanciaAct() {
+    public String getSustanciaAct() {
         return sustanciaAct;
     }
 
-    public void setSustanciaAct(SustanciaAct sustanciaAct) {
+    public void setSustanciaAct(String sustanciaAct) {
         this.sustanciaAct = sustanciaAct;
     }
 
