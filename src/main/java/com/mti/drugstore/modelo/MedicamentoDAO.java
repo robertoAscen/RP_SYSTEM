@@ -7,6 +7,8 @@ package com.mti.drugstore.modelo;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -17,7 +19,7 @@ import javax.swing.DefaultComboBoxModel;
  *
  * @author rascencio
  */
-public class MedicamentoDAO implements CRUD
+public class MedicamentoDAO
 {
     Conexion conexion;
     
@@ -25,75 +27,77 @@ public class MedicamentoDAO implements CRUD
     {
         conexion = new Conexion();
     }
-
-    @Override
-    public String insertInTable(String uno) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public String insertInTable(String uno, String dos) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public String insertInTable(String uno, String dos, String tres) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
-    @Override
-    public ArrayList listOfTalbe() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public int deleteInTable(String uno) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public int editInTable(String uno) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public int editInTable(String uno, String dos) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public int editInTable(String uno, String dos, String tres) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public int editInTable(String uno, String dos, String tres, String cuatro) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public ArrayList findInTable(String uno) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public DefaultComboBoxModel findInTable() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public String insertInTable(String uno, String dos, String tres, String cuatro, String cinco, String seis, int siete)
+    public ArrayList<Medicamento> buscaMedicamento(String strNombreMed)
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ArrayList arrayMedicamento = new ArrayList();
+        Medicamento medicamento;
+            
+        try
+        {
+            Connection acceDB = conexion.getConexion();
+            CallableStatement cs = acceDB.prepareCall("{call sp_buscaMedXNombre(?)}");
+            cs.setString(1,strNombreMed);
+            ResultSet rs = cs.executeQuery();
+            
+            while(rs.next())
+            {
+                medicamento = new Medicamento();
+                medicamento.setIdMedicamento(rs.getString(1));
+                medicamento.setCodBarra(rs.getString(2));
+                medicamento.setNombreMed(rs.getString(3));
+                medicamento.setLaboratorio(rs.getString(4));
+                medicamento.setCantNeta(rs.getString(5));
+                medicamento.setPresentacion(rs.getString(6));
+                medicamento.setCantMed(rs.getString(7));
+                medicamento.setUmCantMed(rs.getString(8));
+                medicamento.setImagen(rs.getString(9));   
+                arrayMedicamento.add(medicamento);
+            }            
+        }
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(MedicamentoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return arrayMedicamento;
         
     }
-
-    @Override
-    public String insertInTable(String uno, String dos, String tres, String cuatro) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+    public ArrayList<Medicamento> listaMedicamento()
+    {
+        ArrayList arrayMedicamento = new ArrayList();
+        Medicamento medicamento;
+            
+        try
+        {
+            Connection acceDB = conexion.getConexion();
+            PreparedStatement ps = acceDB.prepareStatement("select * from MEDICAMENTO");
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next())
+            {
+                medicamento = new Medicamento();
+                medicamento.setIdMedicamento(rs.getString(1));
+                medicamento.setCodBarra(rs.getString(2));
+                medicamento.setNombreMed(rs.getString(3));
+                medicamento.setLaboratorio(rs.getString(4));
+                medicamento.setCantNeta(rs.getString(5));
+                medicamento.setPresentacion(rs.getString(6));
+                medicamento.setCantMed(rs.getString(7));
+                medicamento.setUmCantMed(rs.getString(8));
+                medicamento.setImagen(rs.getString(9));  
+                arrayMedicamento.add(medicamento);
+            }            
+        }
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(MedicamentoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return arrayMedicamento;
     }
-
-    @Override
+    
     public String insertInTable(String idMed, String barCode, String nombreMed, String nombreLab, String cant_neta, String idPresentacion, String cantMed, String umCantMed, String imagen)
     {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -126,9 +130,4 @@ public class MedicamentoDAO implements CRUD
         }
         return rptaRegistro;
     }    
-
-    @Override
-    public String findInTablee(String uno) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

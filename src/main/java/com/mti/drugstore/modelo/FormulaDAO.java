@@ -17,7 +17,7 @@ import javax.swing.DefaultComboBoxModel;
  *
  * @author rascencio
  */
-public class FormulaDAO implements CRUD
+public class FormulaDAO
 {
     Conexion conexion;
     
@@ -26,22 +26,6 @@ public class FormulaDAO implements CRUD
         conexion = new Conexion();
     }
 
-    @Override
-    public String insertInTable(String uno) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public String insertInTable(String uno, String dos) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public String insertInTable(String uno, String dos, String tres) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
     public String insertInTable(String idMed, String idSusAct, String cantSusAct, String umSusAct) 
     {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -68,61 +52,5 @@ public class FormulaDAO implements CRUD
             Logger.getLogger(MedicamentoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return rptaRegistro;
-    }
-
-    @Override
-    public String insertInTable(String uno, String dos, String tres, String cuatro, String cinco, String seis, int siete) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public String insertInTable(String uno, String dos, String tres, String cuatro, String cinco, String seis, String siete, String ocho, String nueve) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public ArrayList listOfTalbe() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public int deleteInTable(String uno) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public int editInTable(String uno) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public int editInTable(String uno, String dos) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public int editInTable(String uno, String dos, String tres) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public int editInTable(String uno, String dos, String tres, String cuatro) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public String findInTablee(String uno) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public ArrayList findInTable(String uno) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public DefaultComboBoxModel findInTable() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
+    }    
 }

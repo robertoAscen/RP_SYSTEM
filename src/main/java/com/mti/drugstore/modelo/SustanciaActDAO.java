@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
  *
  * @author rascencio
  */
-public class SustanciaActDAO implements CRUD
+public class SustanciaActDAO
 {
     Conexion conexion;
     
@@ -27,8 +27,7 @@ public class SustanciaActDAO implements CRUD
     {
         conexion = new Conexion();
     }
-
-    @Override
+    
     public String insertInTable(String strSustancia) 
     {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -53,64 +52,7 @@ public class SustanciaActDAO implements CRUD
         }
         return rptaRegistro;
     }
-
-    @Override
-    public String insertInTable(String descripcion, String cantidad) 
-    {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        
-    }
-
-    @Override
-    public String insertInTable(String uno, String dos, String tres) 
-    {
-        
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            
-            
-    }
-
-    @Override
-    public String insertInTable(String uno, String dos, String tres, String cuatro) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public ArrayList listOfTalbe() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public int deleteInTable(String uno) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public int editInTable(String uno) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public int editInTable(String uno, String dos) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public int editInTable(String uno, String dos, String tres) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public int editInTable(String uno, String dos, String tres, String cuatro) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public ArrayList findInTable(String uno) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
+    
     public DefaultComboBoxModel findInTable() 
     {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -137,18 +79,7 @@ public class SustanciaActDAO implements CRUD
         }
         return listaPresentacion;
     }
-
-    @Override
-    public String insertInTable(String uno, String dos, String tres, String cuatro, String cinco, String seis, int siete) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public String insertInTable(String uno, String dos, String tres, String cuatro, String cinco, String seis, String siete, String ocho, String nueve) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
+    
     public String findInTablee(String strSusAct) 
     {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

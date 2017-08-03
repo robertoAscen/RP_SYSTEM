@@ -16,20 +16,20 @@ public class Medicamento
     private String nombreMed;
     private String laboratorio;
     private String cantNeta;
-    private Presentacion presentacion;
+    private String presentacion;
     private String cantMed;
     private String umCantMed;
     private String imagen;
     
     
-    public Medicamento(Presentacion presentacion)
+    public Medicamento()
     {
         idMedicamento="";
         codBarra="";
         nombreMed="";
         laboratorio="";
         cantNeta="";
-        this.presentacion=presentacion;
+        presentacion="";
         cantMed="";
         umCantMed="";
         imagen="";
@@ -75,11 +75,11 @@ public class Medicamento
         this.cantNeta = cantNeta;
     }
 
-    public Presentacion getPresentacion() {
+    public String getPresentacion() {
         return presentacion;
     }
 
-    public void setPresentacion(Presentacion presentacion) {
+    public void setPresentacion(String presentacion) {
         this.presentacion = presentacion;
     }
 

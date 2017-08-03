@@ -27,15 +27,17 @@ import javax.swing.border.TitledBorder;
  */
 public class ViewCreateProduct extends JFrame
 {
-    private JMenuBar jMenuBar;
+    /*private JMenuBar jMenuBar;
     private JMenu jmAdd;
     private JMenu jmHelp;
     public JMenuItem jmiNewProduct;
     public JMenuItem jmiBack;
-    public JMenuItem jmiAbout;
+    public JMenuItem jmiAbout;*/
     
     private JToolBar jtoolBar;
-    public JButton jbGuardar;
+    public JButton jbNew;
+    public JButton jbGuardar;    
+    public JButton jbFinish;
     
     private JPanel jpCrearProducto;
     private TitledBorder ttbCrearProducto;
@@ -73,6 +75,7 @@ public class ViewCreateProduct extends JFrame
     public JLabel jlImagen;
     public JLabel jlRutaImagen;
     
+    private static String pathForImage = "/home/rascencio/Desktop/WORK/SW-PROJECTS/drugStoreSystem/src/main/resources/img/";
     
     public ViewCreateProduct()
     {
@@ -83,15 +86,17 @@ public class ViewCreateProduct extends JFrame
     {
         setLayout(null);
         
-        jMenuBar = new JMenuBar();
+        /*jMenuBar = new JMenuBar();
         jmAdd = new JMenu();
         jmHelp = new JMenu();
         jmiNewProduct = new JMenuItem();
         jmiBack = new JMenuItem();
-        jmiAbout = new JMenuItem();
+        jmiAbout = new JMenuItem();*/
         
         jtoolBar = new JToolBar();
+        jbNew = new JButton();
         jbGuardar = new JButton();
+        jbFinish = new JButton();
         
         jpCrearProducto = new JPanel();
         ttbCrearProducto = new TitledBorder("Crear Producto");
@@ -128,9 +133,9 @@ public class ViewCreateProduct extends JFrame
         dcbmUmSusAct = new DefaultComboBoxModel<String>(strUnidadMedida);
         jbAgregarFormula = new JButton();
         
-        jMenuBar.setBounds(0, 0, 640, 20);       
+        //jMenuBar.setBounds(0, 0, 640, 20);       
         
-        jmAdd.setText("Productos");
+        /*jmAdd.setText("Productos");
         jmHelp.setText("Ayuda");
         jmiNewProduct.setText("Nuevo Producto");
         jmiNewProduct.setToolTipText("Crear nuevo producto");
@@ -138,13 +143,24 @@ public class ViewCreateProduct extends JFrame
         jmiBack.setText("Menú Principal");
         jmiBack.setToolTipText("Regresar a menú principal");
         jmiAbout.setText("Acerca de");  
-        jmiAbout.setToolTipText("Información del software");
+        jmiAbout.setToolTipText("Información del software");*/
         
-        jbGuardar.setIcon(new ImageIcon("/home/rascencio/Desktop/WORK/SW-PROJECTS/drugStoreSystem/src/main/resources/img/save.png"));
-        jbGuardar.setToolTipText("Guardar");
+        jbNew.setIcon(new ImageIcon(pathForImage+"iconsMin/addProduct.png"));
+        jbNew.setEnabled(false);
+        //jbNew.setToolTipText("Guardar");
+        
+        jbGuardar.setIcon(new ImageIcon(pathForImage+"iconsMin/save.png"));
+        //jbGuardar.setToolTipText("Guardar");
+        
+        jbFinish.setText("Terminar");
+        //jbFinish.setIcon(new ImageIcon(pathForImage+"iconsMin/save.png"));
+        //jbGuardar.setToolTipText("Guardar");
         
         jtoolBar.setBounds(0, 20, 630, 30);
+        jtoolBar.add(jbNew);
         jtoolBar.add(jbGuardar);
+        jtoolBar.add(jbFinish);
+        
         
         jpCrearProducto.setLayout(null);
         jpCrearProducto.setBorder(ttbCrearProducto);
@@ -229,12 +245,12 @@ public class ViewCreateProduct extends JFrame
         jbAgregarFormula.setToolTipText("Presionar para agregar formula a este medicamento");
         jbAgregarFormula.setEnabled(false);
         
-        add(jMenuBar);
+        /*add(jMenuBar);
         jMenuBar.add(jmAdd);
         jMenuBar.add(jmHelp);
         jmAdd.add(jmiNewProduct);
         jmAdd.add(jmiBack);
-        jmHelp.add(jmiAbout);
+        jmHelp.add(jmiAbout);*/
         add(jtoolBar);
         add(jpCrearProducto);
         jpCrearProducto.add(jlCodBarraMedicamento);
@@ -263,10 +279,9 @@ public class ViewCreateProduct extends JFrame
         jpFormula.add(jcbUmSusAct);
         jpFormula.add(jbAgregarFormula);
         
+        setTitle("Agregar Productos");        
         setSize(630, 700);
         setResizable(false);
-        setTitle("Salutem");
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);        
     }    
 }

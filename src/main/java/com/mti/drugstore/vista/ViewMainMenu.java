@@ -11,6 +11,7 @@ import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -25,8 +26,63 @@ import javax.swing.border.TitledBorder;
  *
  * @author rascencio
  */
-public class ViewMainMenu extends JFrameMain implements Runnable
-{
+public class ViewMainMenu extends JFrame implements Runnable
+{	
+    private JMenuBar jmBar;
+    private JMenu  jmSystem;
+    
+    public JMenuItem jmiAdmonUser;
+    public JMenuItem jmiDB;
+    public JMenuItem jmiConfig;
+    public JMenuItem jmiExit;
+    
+    private JMenu jmRegister;
+    public JMenuItem jmiProduct;
+    public JMenuItem jmiVendor;    
+    public JMenuItem jmiCliente;
+    
+    private JMenu jmInformes;
+    public JMenuItem jmiDaySales;
+    public JMenuItem jmiSalesXProduct;
+    public JMenuItem jmiBestProduct;
+    private JMenu jmReportXMonth;
+    public JMenuItem jmiReportXMonthXProduct;
+    public JMenuItem jmiReportXMonthXCustomer;
+    private JMenu jmReportXYear;
+    public JMenuItem jmiReportXYearXProduct;
+    public JMenuItem jmiReportXYearXCustomer;
+    private JMenu jmListado;
+    public JMenuItem jmiListOfCustomers;
+    public JMenuItem jmiListOfVendors;
+    public JMenuItem jmiListOfProducts;
+    private JMenu jmGraphics;
+    public JMenuItem jmiGraphLines;
+    public JMenuItem jmiGraphBar;
+    public JMenuItem jmiGraphCake;
+    
+    private JMenu jmOperaciones;
+    private JMenu jmInventarios;
+    public JMenuItem jmiDoInventario;
+    public JMenuItem jmiProductFaltante;
+    public JMenuItem jmiProductSobrante;
+    public JMenuItem jmiPedidos;
+    
+    private JMenu jmFacturacion;
+    public JMenuItem jmiFacturasEmitidas;
+    
+    private JMenu jmPagos;
+    public JMenuItem jmiPagoNomina;
+    public JMenuItem jmiRetiro;
+    public JMenuItem jmiCierre;
+    
+    private JMenu jmRH;
+    public JMenuItem jmiVendedor;
+    public JMenuItem jmiMedico;
+    
+    private JMenu jmAbout;
+    public JMenuItem jmiInfo;  
+    public JMenuItem jmiFace;
+    
     private JSeparator jSep_1;
     private JSeparator jSep_2;
     private JSeparator jSep_3;
@@ -42,61 +98,6 @@ public class ViewMainMenu extends JFrameMain implements Runnable
     private JSeparator jSep_13;
     private JSeparator jSep_14;
 	
-    private JMenuBar jmBar;
-    private JMenu  jmSystem;
-    
-    private JMenuItem jmiAdmonUser;
-    private JMenuItem jmiDB;
-    private JMenuItem jmiConfig;
-    private JMenuItem jmiExit;
-    
-    private JMenu jmRegister;
-    private JMenuItem jmiProduct;
-    private JMenuItem jmiVendor;    
-    private JMenuItem jmiCliente;
-    
-    private JMenu jmInformes;
-    private JMenuItem jmiDaySales;
-    private JMenuItem jmiSalesXProduct;
-    private JMenuItem jmiBestProduct;
-    private JMenu jmReportXMonth;
-    private JMenuItem jmiReportXMonthXProduct;
-    private JMenuItem jmiReportXMonthXCustomer;
-    private JMenu jmReportXYear;
-    private JMenuItem jmiReportXYearXProduct;
-    private JMenuItem jmiReportXYearXCustomer;
-    private JMenu jmListado;
-    private JMenuItem jmiListOfCustomers;
-    private JMenuItem jmiListOfVendors;
-    private JMenuItem jmiListOfProducts;
-    private JMenu jmGraphics;
-    private JMenuItem jmiGraphLines;
-    private JMenuItem jmiGraphBar;
-    private JMenuItem jmiGraphCake;
-    
-    private JMenu jmOperaciones;
-    private JMenu jmInventarios;
-    private JMenuItem jmiDoInventario;
-    private JMenuItem jmiProductFaltante;
-    private JMenuItem jmiProductSobrante;
-    private JMenuItem jmiPedidos;
-    
-    private JMenu jmFacturacion;
-    private JMenuItem jmiFacturasEmitidas;
-    
-    private JMenu jmPagos;
-    private JMenuItem jmiPagoNomina;
-    private JMenuItem jmiRetiro;
-    private JMenuItem jmiCierre;
-    
-    private JMenu jmRH;
-    private JMenuItem jmiVendedor;
-    private JMenuItem jmiMedico;
-    
-    private JMenu jmAbout;
-    private JMenuItem jmiInfo;  
-    private JMenuItem jmiFace;
-	
     private JPanel jpIzq;
     private JPanel jpUsuario;
     private JPanel jpBienvenido;
@@ -108,10 +109,10 @@ public class ViewMainMenu extends JFrameMain implements Runnable
     private JLabel jlSalutem;
 	
     private JLabel jlName;
-    private JLabel jlNameUser;
+    public JLabel jlNameUser;
     private JLabel jlId;
-    private JLabel jlIdUser;
-    private JLabel jlImageUser;
+    public JLabel jlIdUser;
+    public JLabel jlImageUser;
     private JLabel jlCalendar;
     private JLabel jlFecha;
     private JLabel jlClock;
@@ -147,51 +148,51 @@ public class ViewMainMenu extends JFrameMain implements Runnable
 	clock = new DateAndHour();
 	
 	jmBar = new JMenuBar();
-	setJMenuBar(jmBar);
-		
-	jmSystem = new JMenu();
+	setJMenuBar(jmBar);         
+        
+        jmSystem = new JMenu();
 	jmSystem.setText("Sistema");
 	jmSystem.setIcon(new ImageIcon(pathImage+"iconsMin/Pc.png"));
-	jmBar.add(jmSystem);
+        jmBar.add(jmSystem);        
 	
-	jmiAdmonUser = new JMenuItem();
+        jmiAdmonUser = new JMenuItem();
 	jmiAdmonUser.setText("Administrador Usuarios");
 	jmiAdmonUser.setIcon(new ImageIcon(pathImage+"iconsMin/CopyUserSettings.png"));
-	jmSystem.add(jmiAdmonUser);
-	
-	jSep_1 = new JSeparator();
-	jmSystem.add(jSep_1);
-	
-	jmiDB = new JMenuItem();
-	jmiDB.setText("Base de Datos");
+        jmSystem.add(jmiAdmonUser);        
+        
+        jSep_1 = new JSeparator();
+        jmSystem.add(jSep_1);
+        
+        jmiDB = new JMenuItem();
+        jmiDB.setText("Base de Datos");
 	jmiDB.setIcon(new ImageIcon(pathImage+"iconsMin/Inicializar.png"));
-	jmSystem.add(jmiDB);
-		
-	jSep_2 = new JSeparator();
-	jmSystem.add(jSep_2);
+        jmSystem.add(jmiDB);
+        
+        jSep_2 = new JSeparator();
+        jmSystem.add(jSep_2);
 	
-	jmiConfig = new JMenuItem();
-	jmiConfig.setText("Configuraciones");
+        jmiConfig = new JMenuItem();
+        jmiConfig.setText("Configuraciones");
 	jmiConfig.setIcon(new ImageIcon(pathImage+"iconsMin/config.png"));
-	jmSystem.add(jmiConfig);
-	
-	jSep_3 = new JSeparator();
-	jmSystem.add(jSep_3);
-	
-	jmiExit = new JMenuItem();
-	jmiExit.setText("Salir");
+        jmSystem.add(jmiConfig);
+        
+        jSep_3 = new JSeparator();
+        jmSystem.add(jSep_3);
+        
+        jmiExit = new JMenuItem();        
+        jmiExit.setText("Salir");
 	jmiExit.setIcon(new ImageIcon(pathImage+"iconsMin/del.png"));
-	jmSystem.add(jmiExit);
-	
-	jmRegister = new JMenu();
-	jmRegister.setText("Registros");
+        jmSystem.add(jmiExit);
+        
+        jmRegister = new JMenu();        
+        jmRegister.setText("Registros");
 	jmRegister.setIcon(new ImageIcon(pathImage+"iconsMin/Registros.png"));
-	jmBar.add(jmRegister);
-		
-	jmiProduct = new JMenuItem();
+        jmBar.add(jmRegister);
+        
+        jmiProduct = new JMenuItem();
 	jmiProduct.setText("Registro Productos");
 	jmiProduct.setIcon(new ImageIcon(pathImage+"iconsMin/Productos.png"));
-	jmRegister.add(jmiProduct);
+        jmRegister.add(jmiProduct);
 	
 	jSep_4 = new JSeparator();
 	jmRegister.add(jSep_4);
@@ -296,12 +297,12 @@ public class ViewMainMenu extends JFrameMain implements Runnable
         jmGraphics.add(jmiGraphLines);
         
         jmiGraphBar = new JMenuItem();
-        jmiGraphBar.setText("Gráfica de líneas");
+        jmiGraphBar.setText("Gráfica de barras");
         jmiGraphBar.setIcon(new ImageIcon(pathImage+"iconsMin/graficoBarras.png"));
         jmGraphics.add(jmiGraphBar);
         
         jmiGraphCake = new JMenuItem();
-        jmiGraphCake.setText("Gráfica de líneas");
+        jmiGraphCake.setText("Gráfica de pastel");
         jmiGraphCake.setIcon(new ImageIcon(pathImage+"iconsMin/pie-chart-149727_640.png"));
         jmGraphics.add(jmiGraphCake);
 	
@@ -426,14 +427,12 @@ public class ViewMainMenu extends JFrameMain implements Runnable
 	jpIzq.setLayout(null);
 	jpIzq.setBorder(raisedBorder);
 	jpIzq.setBounds(10, 10, 300, 700);
-	//jpIzq.setBackground(Color.LIGHT_GRAY);
 	add(jpIzq);
 	
 	jpUsuario = new JPanel();
 	jpUsuario.setLayout(null);
 	jpUsuario.setBorder(titleUsuario);
 	jpUsuario.setBounds(10, 10, 280, 230);
-	//jpUsuario.setBackground(Color.LIGHT_GRAY);
 	jpIzq.add(jpUsuario);
 	
 	jlName = new JLabel();
@@ -457,7 +456,7 @@ public class ViewMainMenu extends JFrameMain implements Runnable
 	jpUsuario.add(jlIdUser);
 	
 	jlImageUser = new JLabel();
-	jlImageUser.setIcon(new ImageIcon("/home/rascencio/Desktop/WORK/SW-PROJECTS/drugStoreSystem/src/main/resources/img/icons/femaleUser.png"));
+	jlImageUser.setIcon(new ImageIcon(pathImage+"icons/femaleUser.png"));
 	jlImageUser.setBounds(90, 100, 100, 100);
 	jpUsuario.add(jlImageUser);
 	
@@ -468,7 +467,7 @@ public class ViewMainMenu extends JFrameMain implements Runnable
 	jpIzq.add(jpBienvenido);
 		
 	jlCalendar = new JLabel();
-	jlCalendar.setIcon(new ImageIcon("/home/rascencio/Desktop/WORK/SW-PROJECTS/drugStoreSystem/src/main/resources/img/iconsMin/calendar.png"));
+	jlCalendar.setIcon(new ImageIcon(pathImage+"iconsMin/calendar.png"));
 	jlCalendar.setBounds(10, 20, 16, 20);
 	jpBienvenido.add(jlCalendar);
 	
@@ -482,7 +481,7 @@ public class ViewMainMenu extends JFrameMain implements Runnable
 	jpBienvenido.add(jlHora);
 		
 	jlClock = new JLabel();
-	jlClock.setIcon(new ImageIcon("/home/rascencio/Desktop/WORK/SW-PROJECTS/drugStoreSystem/src/main/resources/img/iconsMin/clock.png"));
+	jlClock.setIcon(new ImageIcon(pathImage+"iconsMin/clock.png"));
 	jlClock.setBounds(155, 20, 16, 20);
 	jpBienvenido.add(jlClock);
 	
@@ -494,60 +493,60 @@ public class ViewMainMenu extends JFrameMain implements Runnable
 		
 	jb_1 = new JButton();
 	jb_1.setText("Productos");
-	jb_1.setIcon(new ImageIcon("/home/rascencio/Desktop/WORK/SW-PROJECTS/drugStoreSystem/src/main/resources/img/icons/Productos.png"));
+	jb_1.setIcon(new ImageIcon(pathImage+"icons/Productos.png"));
 	jb_1.setBounds(1175, 10, 175, 55);
-	add(jb_1);
+        add(jb_1);
 	
 	jb_2 = new JButton();
 	jb_2.setText("Proveedores");
-	jb_2.setIcon(new ImageIcon("/home/rascencio/Desktop/WORK/SW-PROJECTS/drugStoreSystem/src/main/resources/img/icons/proveedores_icono.png"));
+	jb_2.setIcon(new ImageIcon(pathImage+"icons/proveedores_icono.png"));
 	jb_2.setBounds(1175, 85, 175, 55);
 	add(jb_2);
 	
 	jb_3 = new JButton();
 	jb_3.setText("Medicos");
-	jb_3.setIcon(new ImageIcon("/home/rascencio/Desktop/WORK/SW-PROJECTS/drugStoreSystem/src/main/resources/img/icons/medico.png"));
+	jb_3.setIcon(new ImageIcon(pathImage+"icons/medico.png"));
 	jb_3.setBounds(1175, 155, 175, 55);
 	add(jb_3);		
 	
 	jb_4 = new JButton();
 	jb_4.setText("Agenda");
-	jb_4.setIcon(new ImageIcon("/home/rascencio/Desktop/WORK/SW-PROJECTS/drugStoreSystem/src/main/resources/img/icons/agenda.png"));
+	jb_4.setIcon(new ImageIcon(pathImage+"icons/agenda.png"));
 	jb_4.setBounds(1175, 225, 175, 55);
 	add(jb_4);
 	
 	jb_5 = new JButton();
 	jb_5.setText("Clientes");
-	jb_5.setIcon(new ImageIcon("/home/rascencio/Desktop/WORK/SW-PROJECTS/drugStoreSystem/src/main/resources/img/icons/Clientes.png"));
+	jb_5.setIcon(new ImageIcon(pathImage+"icons/Clientes.png"));
 	jb_5.setBounds(1175, 295, 175, 55);
 	add(jb_5);
 	
 	jb_6 = new JButton();
 	jb_6.setText("Facturación");
-	jb_6.setIcon(new ImageIcon("/home/rascencio/Desktop/WORK/SW-PROJECTS/drugStoreSystem/src/main/resources/img/icons/Facturacion.png"));
+	jb_6.setIcon(new ImageIcon(pathImage+"icons/Facturacion.png"));
 	jb_6.setBounds(1175, 365, 175, 55);
         add(jb_6);
 	
 	jb_7 = new JButton();
 	jb_7.setText("Vendedores");
-	jb_7.setIcon(new ImageIcon("/home/rascencio/Desktop/WORK/SW-PROJECTS/drugStoreSystem/src/main/resources/img/icons/Vendedor.png"));
+	jb_7.setIcon(new ImageIcon(pathImage+"icons/Vendedor.png"));
 	jb_7.setBounds(1175, 435, 175, 55);
 	add(jb_7);
 	
 	jb_8 = new JButton();
 	jb_8.setText("Información");
-	jb_8.setIcon(new ImageIcon("/home/rascencio/Desktop/WORK/SW-PROJECTS/drugStoreSystem/src/main/resources/img/icons/InformacionIcono.png"));
+	jb_8.setIcon(new ImageIcon(pathImage+"icons/InformacionIcono.png"));
 	jb_8.setBounds(1175, 505, 175, 55);
 	add(jb_8);
 	
-	setTitle("SALUTEM");
+	setTitle("SALUTEM");        
 	setMinimumSize(new Dimension(1366,768));
-	setDefaultCloseOperation(EXIT_ON_CLOSE);		
-	setMaximumSize(getMaximumSize());
-	setLocationRelativeTo(null);		
+        setMaximumSize(getMaximumSize());
+	setDefaultCloseOperation(EXIT_ON_CLOSE);			
+        setLocationRelativeTo(null);
     }
 
-    @Override
+   @Override
     public void run() 
     {
 	// TODO Auto-generated method stub
@@ -567,5 +566,5 @@ public class ViewMainMenu extends JFrameMain implements Runnable
 		jlHora.setText("falla hora");
             }
 	}
-    }   
+    } 
 }

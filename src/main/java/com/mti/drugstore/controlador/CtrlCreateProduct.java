@@ -9,10 +9,8 @@ import com.mti.drugstore.modelo.FormulaDAO;
 import com.mti.drugstore.modelo.MedicamentoDAO;
 import com.mti.drugstore.modelo.PresentacionDAO;
 import com.mti.drugstore.modelo.SustanciaActDAO;
-import com.mti.drugstore.vista.JFrameMain;
 import com.mti.drugstore.vista.ViewCreateProduct;
 import com.mti.drugstore.vista.ViewMainMenu;
-import com.mti.drugstore.vista.ViewSusAct;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -26,7 +24,7 @@ import java.util.ArrayList;
  *
  * @author rascencio
  */
-public class ControCrear implements ActionListener
+public class CtrlCreateProduct implements ActionListener
 {
     ViewCreateProduct vistaCrear = new ViewCreateProduct();
     MedicamentoDAO medDAO = new MedicamentoDAO();
@@ -34,22 +32,25 @@ public class ControCrear implements ActionListener
     SustanciaActDAO sustanciaDAO = new SustanciaActDAO();
     FormulaDAO formulaDAO = new FormulaDAO();
     
-    public ControCrear(ViewCreateProduct vistaCrear, MedicamentoDAO medDAO, PresentacionDAO presentacionDAO, SustanciaActDAO sustanciaDAO, FormulaDAO formulaDAO)
+    public CtrlCreateProduct(ViewCreateProduct vistaCrear, MedicamentoDAO medDAO, 
+                             PresentacionDAO presentacionDAO, SustanciaActDAO sustanciaDAO, FormulaDAO formulaDAO)
     {
         this.medDAO = medDAO;
         this.presentacionDAO = presentacionDAO;
         this.sustanciaDAO = sustanciaDAO;
         this.formulaDAO = formulaDAO;
         this.vistaCrear = vistaCrear;
-        this.vistaCrear.jmiAbout.addActionListener(this);
+        //this.vistaCrear.jmiAbout.addActionListener(this);
         this.vistaCrear.jbGuardar.addActionListener(this);
-        this.vistaCrear.jmiBack.addActionListener(this); 
+        this.vistaCrear.jbNew.addActionListener(this);
+        this.vistaCrear.jbFinish.addActionListener(this);
+        //this.vistaCrear.jmiBack.addActionListener(this); 
         this.vistaCrear.jbAgregarImagen.addActionListener(this);
         this.vistaCrear.jcbPresentacion.setModel(presentacionDAO.findInTable());
         this.vistaCrear.jbAgregarPresentacion.addActionListener(this);
         this.vistaCrear.jbAgregarSusAct.addActionListener(this);
         this.vistaCrear.jbAgregarFormula.addActionListener(this);
-        this.vistaCrear.jmiNewProduct.addActionListener(this);
+        //this.vistaCrear.jmiNewProduct.addActionListener(this);
     }
     
     public void CleanFielsUP()
@@ -119,7 +120,8 @@ public class ControCrear implements ActionListener
                     vistaCrear.jcbSusActDB.setModel(sustanciaDAO.findInTable());
                     vistaCrear.jcbUmSusAct.setEnabled(true);            
                     vistaCrear.jbAgregarFormula.setEnabled(true);    
-                    vistaCrear.jmiNewProduct.setEnabled(true);
+                    //vistaCrear.jmiNewProduct.setEnabled(true);
+                    vistaCrear.jbNew.setEnabled(true);
                 }                
             }          
             else
@@ -144,12 +146,12 @@ public class ControCrear implements ActionListener
             }
         }
         
-        if(e.getSource() == vistaCrear.jmiAbout)
+        /*if(e.getSource() == vistaCrear.jmiAbout)
         {
             JOptionPane.showMessageDialog(vistaCrear, "Software para control de inventarios farmacéuticos\nAutor:"
                     + "Roberto Ascencio\nCompañia: Enviromentec\nwww.enviromentec.com.mx\nFecha: 09/07/2017",
                     "Información",JOptionPane.INFORMATION_MESSAGE);
-        }
+        }*/
         
         if(e.getSource() == vistaCrear.jbAgregarPresentacion)
         {
@@ -216,7 +218,7 @@ public class ControCrear implements ActionListener
             }            
         }
         
-        if(e.getSource() == vistaCrear.jmiNewProduct)
+        if(e.getSource() == vistaCrear.jbNew)
         {
             int rpta = JOptionPane.showConfirmDialog(vistaCrear, "Si sale de este medicamento y no capturó todos los datos correspondientes"
                     + "\nno podrá regresar a modificarlo\n¿Esta seguro que quiere salir de este medicamento e ingresar uno nuevo?");
@@ -252,7 +254,7 @@ public class ControCrear implements ActionListener
         }
         
         
-        if(e.getSource() == vistaCrear.jmiBack)
+        if(e.getSource() == vistaCrear.jbFinish)
         {
             if(vistaCrear.jtfCodBarraMedicamento.getText().length() ==0
                     && vistaCrear.jtfNomMedicamento.getText().length() ==0
@@ -263,9 +265,9 @@ public class ControCrear implements ActionListener
                     && vistaCrear.jcbUnidadMedida.getSelectedIndex() ==0)
             {
                 vistaCrear.dispose();
-                ViewMainMenu mainMenu = new ViewMainMenu();
-                ControMainMenu controMain = new ControMainMenu(mainMenu);        
-                mainMenu.setVisible(true);
+                //ViewMainMenu mainMenu = new ViewMainMenu();
+                //CtrlMainMenu controMain = new CtrlMainMenu(mainMenu);        
+                //mainMenu.setVisible(true);
             }
             else
             {
@@ -275,9 +277,9 @@ public class ControCrear implements ActionListener
                 {
                     case 0:
                         vistaCrear.dispose();
-                        ViewMainMenu mainMenu = new ViewMainMenu();
-                        ControMainMenu controMain = new ControMainMenu(mainMenu);        
-                        mainMenu.setVisible(true);
+                        //ViewMainMenu mainMenu = new ViewMainMenu();
+                        //CtrlMainMenu controMain = new CtrlMainMenu(mainMenu);        
+                        //mainMenu.setVisible(true);
                         break;
                     case 1:
                         break;
