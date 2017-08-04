@@ -72,7 +72,8 @@ public class CtrlMainMenu implements ActionListener
         { 
                 ViewFindProduct viewProducts = new ViewFindProduct();
                 MedicamentoDAO medDAO = new MedicamentoDAO();
-                CtrlFindProduct ctrlFindProduct = new CtrlFindProduct(viewProducts, medDAO);
+                PresentacionDAO presentacionDAO = new PresentacionDAO();
+                CtrlFindProduct ctrlFindProduct = new CtrlFindProduct(viewProducts, medDAO, presentacionDAO);
                 viewProducts.setVisible(true);
         }
         if(e.getSource() == mainMenu.jmiExit)
