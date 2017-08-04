@@ -27,8 +27,9 @@ public class CtrlFindProduct implements ActionListener, KeyListener
 {
     ViewFindProduct viewFindProduct = new ViewFindProduct();
     MedicamentoDAO medDAO = new MedicamentoDAO();
+    PresentacionDAO presentacionDAO = new PresentacionDAO();
     
-    public CtrlFindProduct(ViewFindProduct viewFindProduct, MedicamentoDAO medDAO)
+    public CtrlFindProduct(ViewFindProduct viewFindProduct, MedicamentoDAO medDAO, PresentacionDAO presentacionDAO)
     {       
         this.viewFindProduct = viewFindProduct;
         this.viewFindProduct.jb_1.addActionListener(this);
@@ -36,6 +37,7 @@ public class CtrlFindProduct implements ActionListener, KeyListener
         this.viewFindProduct.jb_3.addActionListener(this);
         this.viewFindProduct.jtfFindObj.addKeyListener(this);
         this.medDAO = medDAO;
+        this.presentacionDAO = presentacionDAO;
     }    
     
     public void llenarTabla(JTable jjTable)
@@ -64,7 +66,7 @@ public class CtrlFindProduct implements ActionListener, KeyListener
             columna[1] = medDAO.listaMedicamento().get(i).getNombreMed();
             columna[2] = medDAO.listaMedicamento().get(i).getLaboratorio();
             //columna[4] = medDAO.listaMedicamento().get(i).getCantNeta();
-            columna[3] = medDAO.listaMedicamento().get(i).getPresentacion();
+            columna[3] = presentacionDAO.getDescripPresentacion(medDAO.listaMedicamento().get(i).getPresentacion());
             //columna[6] = medDAO.listaMedicamento().get(i).getCantMed();
             //columna[7] = medDAO.listaMedicamento().get(i).getUmCantMed();
             //columna[8] = medDAO.listaMedicamento().get(i).getImagen();
@@ -150,7 +152,7 @@ public class CtrlFindProduct implements ActionListener, KeyListener
                 columna[0] = medDAO.listaMedicamento().get(i).getCodBarra();
                 columna[1] = medDAO.listaMedicamento().get(i).getNombreMed();
                 columna[2] = medDAO.listaMedicamento().get(i).getLaboratorio();
-                columna[3] = medDAO.listaMedicamento().get(i).getPresentacion();
+                columna[3] = presentacionDAO.getDescripPresentacion(medDAO.listaMedicamento().get(i).getPresentacion());
                 //columna[4] = medDAO.listaMedicamento().get(i).getCantNeta();
                 //columna[5] = medDAO.listaMedicamento().get(i).getCodBarra();
                 //columna[6] = medDAO.listaMedicamento().get(i).getCodBarra();//cambiar por sustancia activa
