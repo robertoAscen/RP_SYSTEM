@@ -7,6 +7,7 @@ package com.mti.drugstore.modelo;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -25,6 +26,28 @@ public class PresentacionDAO
     public PresentacionDAO()
     {
         conexion = new Conexion();        
+    }
+    
+    public String getDescripPresentacion(String strNumPresentacion)
+    {
+        String descripPresentacion = null;
+        try
+        {
+            Connection acceDB = conexion.getConexion();
+            PreparedStatement ps = acceDB.prepareStatement("select descrip_presentacion from PRESENTACION where id_presentacion = ?");
+            ps.setString(1, strNumPresentacion);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next())
+            {
+                descripPresentacion = rs.getString(1);
+            }           
+        }
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(PresentacionDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return descripPresentacion;
     }
     
     public String insertInTable(String presentacion)
