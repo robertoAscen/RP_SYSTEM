@@ -31,7 +31,7 @@ public class VistaBuscarProducto extends JFrame
     public JButton jb_1;
     public JButton jb_2;
     public JButton jb_3;    
-    //public JButton jb_4; 
+    public JButton jb_4; 
     private JLabel jlImageObj;
     
     private JPanel jpUp;//Panel arriba    
@@ -69,16 +69,22 @@ public class VistaBuscarProducto extends JFrame
         jpIzq.add(jb_1);
         
         jb_2 = new JButton();
-        jb_2.setText("Ver");
-        jb_2.setIcon(new ImageIcon(pathForImage+"icons/ver.png"));
+        jb_2.setText("Listar");
+        jb_2.setIcon(new ImageIcon(pathForImage+"icons/listar.png"));
         jb_2.setBounds(20, 105, 175, 55);
         jpIzq.add(jb_2);
         
         jb_3 = new JButton();
-        jb_3.setText("Eliminar");
-        jb_3.setIcon(new ImageIcon(pathForImage+"icons/trash.png"));
+        jb_3.setText("Ver");
+        jb_3.setIcon(new ImageIcon(pathForImage+"icons/ver.png"));
         jb_3.setBounds(20, 190, 175, 55);
         jpIzq.add(jb_3);
+        
+        jb_4 = new JButton();
+        jb_4.setText("Eliminar");
+        jb_4.setIcon(new ImageIcon(pathForImage+"icons/trash.png"));
+        jb_4.setBounds(20, 280, 175, 55);
+        jpIzq.add(jb_4);
         
         jlImageObj = new JLabel();
         jlImageObj.setText("Imagen Obj");
