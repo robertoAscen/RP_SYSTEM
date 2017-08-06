@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mti.drugstore.modelo;
+package com.mti.drugstore.baseDatos;
 import java.sql.*;
 import javax.swing.JOptionPane;
 

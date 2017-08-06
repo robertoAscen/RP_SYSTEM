@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mti.drugstore.modelo;
+package com.mti.drugstore.modelos;
 
+import com.mti.drugstore.baseDatos.Conexion;
+import com.mti.drugstore.objetos.Medicamento;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,11 +21,11 @@ import javax.swing.DefaultComboBoxModel;
  *
  * @author rascencio
  */
-public class MedicamentoDAO
+public class DaoMedicamento
 {
     Conexion conexion;
     
-    public MedicamentoDAO()
+    public DaoMedicamento()
     {
         conexion = new Conexion();
     }
@@ -57,7 +59,7 @@ public class MedicamentoDAO
         }
         catch (SQLException ex) 
         {
-            Logger.getLogger(MedicamentoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DaoMedicamento.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return arrayMedicamento;
@@ -92,7 +94,7 @@ public class MedicamentoDAO
         }
         catch (SQLException ex) 
         {
-            Logger.getLogger(MedicamentoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DaoMedicamento.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return arrayMedicamento;
@@ -126,7 +128,7 @@ public class MedicamentoDAO
         } 
         catch (SQLException ex) 
         {
-            Logger.getLogger(MedicamentoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DaoMedicamento.class.getName()).log(Level.SEVERE, null, ex);
         }
         return rptaRegistro;
     }    

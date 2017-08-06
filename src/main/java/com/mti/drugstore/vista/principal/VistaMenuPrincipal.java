@@ -3,12 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mti.drugstore.vista;
+package com.mti.drugstore.vista.principal;
 
-import com.mti.drugstore.date.DateAndHour;
+import com.mti.drugstore.fecha.FechaYHora;
 import java.awt.Dimension;
 import javax.swing.BorderFactory;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -26,7 +25,7 @@ import javax.swing.border.TitledBorder;
  *
  * @author rascencio
  */
-public class ViewMainMenu extends JFrame implements Runnable
+public class VistaMenuPrincipal extends JFrame implements Runnable
 {	
     private JMenuBar jmBar;
     private JMenu  jmSystem;
@@ -119,7 +118,7 @@ public class ViewMainMenu extends JFrame implements Runnable
     private JLabel jlHora;
 	
     private Thread h1;
-    private DateAndHour clock;
+    private FechaYHora clock;
 
     public JButton jb_1;
     public JButton jb_2;
@@ -134,7 +133,7 @@ public class ViewMainMenu extends JFrame implements Runnable
 
     private String pathImage = "/home/rascencio/Desktop/WORK/SW-PROJECTS/drugStoreSystem/src/main/resources/img/";
     
-    public ViewMainMenu()
+    public VistaMenuPrincipal()
     {
     	initComponents();
 	h1 = new Thread(this);
@@ -145,7 +144,7 @@ public class ViewMainMenu extends JFrame implements Runnable
     {
 	setLayout(null);
 	
-	clock = new DateAndHour();
+	clock = new FechaYHora();
 	
 	jmBar = new JMenuBar();
 	setJMenuBar(jmBar);         

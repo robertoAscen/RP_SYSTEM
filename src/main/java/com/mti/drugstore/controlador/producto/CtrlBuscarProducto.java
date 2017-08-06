@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mti.drugstore.controlador;
+package com.mti.drugstore.controlador.producto;
 
-import com.mti.drugstore.modelo.FormulaDAO;
-import com.mti.drugstore.modelo.MedicamentoDAO;
-import com.mti.drugstore.modelo.PresentacionDAO;
-import com.mti.drugstore.modelo.SustanciaActDAO;
-import com.mti.drugstore.vista.ViewCreateProduct;
-import com.mti.drugstore.vista.ViewFindProduct;
+import com.mti.drugstore.modelos.DaoFormula;
+import com.mti.drugstore.modelos.DaoMedicamento;
+import com.mti.drugstore.modelos.DaoPresentacion;
+import com.mti.drugstore.modelos.DaoSustanciaAct;
+import com.mti.drugstore.vista.producto.VistaAgregarProducto;
+import com.mti.drugstore.vista.producto.VistaBuscarProducto;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -23,13 +23,13 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author rascencio
  */
-public class CtrlFindProduct implements ActionListener, KeyListener
+public class CtrlBuscarProducto implements ActionListener, KeyListener
 {
-    ViewFindProduct viewFindProduct = new ViewFindProduct();
-    MedicamentoDAO medDAO = new MedicamentoDAO();
-    PresentacionDAO presentacionDAO = new PresentacionDAO();
+    VistaBuscarProducto viewFindProduct = new VistaBuscarProducto();
+    DaoMedicamento medDAO = new DaoMedicamento();
+    DaoPresentacion presentacionDAO = new DaoPresentacion();
     
-    public CtrlFindProduct(ViewFindProduct viewFindProduct, MedicamentoDAO medDAO, PresentacionDAO presentacionDAO)
+    public CtrlBuscarProducto(VistaBuscarProducto viewFindProduct, DaoMedicamento medDAO, DaoPresentacion presentacionDAO)
     {       
         this.viewFindProduct = viewFindProduct;
         this.viewFindProduct.jb_1.addActionListener(this);
@@ -81,12 +81,12 @@ public class CtrlFindProduct implements ActionListener, KeyListener
         
         if(e.getSource() == viewFindProduct.jb_1)
         {
-            ViewCreateProduct createProduct = new ViewCreateProduct();
-            MedicamentoDAO med_DAO = new MedicamentoDAO();
-            PresentacionDAO presentDAO = new PresentacionDAO();
-            SustanciaActDAO susDAO = new SustanciaActDAO();
-            FormulaDAO formDAO = new FormulaDAO();
-            CtrlCreateProduct ctrlCreateProduct = new CtrlCreateProduct(createProduct, med_DAO, presentDAO, susDAO, formDAO);
+            VistaAgregarProducto createProduct = new VistaAgregarProducto();
+            DaoMedicamento med_DAO = new DaoMedicamento();
+            DaoPresentacion presentDAO = new DaoPresentacion();
+            DaoSustanciaAct susDAO = new DaoSustanciaAct();
+            DaoFormula formDAO = new DaoFormula();
+            CtrlAgregarProducto ctrlCreateProduct = new CtrlAgregarProducto(createProduct, med_DAO, presentDAO, susDAO, formDAO);
             createProduct.setVisible(true);   
         }
         if(e.getSource() == viewFindProduct.jb_2)

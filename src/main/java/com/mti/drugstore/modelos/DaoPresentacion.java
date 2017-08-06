@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mti.drugstore.modelo;
+package com.mti.drugstore.modelos;
 
+import com.mti.drugstore.baseDatos.Conexion;
+import com.mti.drugstore.objetos.Presentacion;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,11 +21,11 @@ import javax.swing.DefaultComboBoxModel;
  *
  * @author rascencio
  */
-public class PresentacionDAO
+public class DaoPresentacion
 {
     Conexion conexion;
     
-    public PresentacionDAO()
+    public DaoPresentacion()
     {
         conexion = new Conexion();        
     }
@@ -44,7 +46,7 @@ public class PresentacionDAO
         }
         catch (SQLException ex) 
         {
-            Logger.getLogger(PresentacionDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DaoPresentacion.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return descripPresentacion;
@@ -70,7 +72,7 @@ public class PresentacionDAO
         } 
         catch (SQLException ex) 
         {
-            Logger.getLogger(MedicamentoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DaoMedicamento.class.getName()).log(Level.SEVERE, null, ex);
         }
         return rptaRegistro;
     }
@@ -98,7 +100,7 @@ public class PresentacionDAO
         } 
         catch (SQLException ex) 
         {
-            Logger.getLogger(PresentacionDAO.class.getName()).log(Level.SEVERE, null, ex); 
+            Logger.getLogger(DaoPresentacion.class.getName()).log(Level.SEVERE, null, ex); 
         }
         return idPresentacion;
     }
@@ -126,7 +128,7 @@ public class PresentacionDAO
         } 
         catch (SQLException ex) 
         {
-            Logger.getLogger(PresentacionDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DaoPresentacion.class.getName()).log(Level.SEVERE, null, ex);
         }
         return listaPresentacion;
     }

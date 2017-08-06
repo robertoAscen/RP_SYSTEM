@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mti.drugstore.modelo;
+package com.mti.drugstore.modelos;
 
+import com.mti.drugstore.baseDatos.Conexion;
+import com.mti.drugstore.objetos.SustanciaAct;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -19,11 +21,11 @@ import javax.swing.JOptionPane;
  *
  * @author rascencio
  */
-public class SustanciaActDAO
+public class DaoSustanciaAct
 {
     Conexion conexion;
     
-    public SustanciaActDAO()
+    public DaoSustanciaAct()
     {
         conexion = new Conexion();
     }
@@ -48,7 +50,7 @@ public class SustanciaActDAO
         } 
         catch (SQLException ex) 
         {
-            Logger.getLogger(MedicamentoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DaoMedicamento.class.getName()).log(Level.SEVERE, null, ex);
         }
         return rptaRegistro;
     }
@@ -75,7 +77,7 @@ public class SustanciaActDAO
         } 
         catch (SQLException ex) 
         {
-            Logger.getLogger(PresentacionDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DaoPresentacion.class.getName()).log(Level.SEVERE, null, ex);
         }
         return listaPresentacion;
     }
@@ -101,7 +103,7 @@ public class SustanciaActDAO
         } 
         catch (SQLException ex) 
         {
-            Logger.getLogger(PresentacionDAO.class.getName()).log(Level.SEVERE, null, ex); 
+            Logger.getLogger(DaoPresentacion.class.getName()).log(Level.SEVERE, null, ex); 
         }
         return idPresentacion;
     }

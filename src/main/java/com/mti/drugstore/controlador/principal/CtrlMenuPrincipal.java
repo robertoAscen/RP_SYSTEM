@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mti.drugstore.controlador;
+package com.mti.drugstore.controlador.principal;
 
-import com.mti.drugstore.modelo.FormulaDAO;
-import com.mti.drugstore.modelo.MedicamentoDAO;
-import com.mti.drugstore.modelo.PresentacionDAO;
-import com.mti.drugstore.modelo.SustanciaActDAO;
-import com.mti.drugstore.vista.ViewCreateProduct;
-import com.mti.drugstore.vista.ViewMainMenu;
-import com.mti.drugstore.vista.ViewFindProduct;
+import com.mti.drugstore.controlador.producto.CtrlBuscarProducto;
+import com.mti.drugstore.modelos.DaoFormula;
+import com.mti.drugstore.modelos.DaoMedicamento;
+import com.mti.drugstore.modelos.DaoPresentacion;
+import com.mti.drugstore.modelos.DaoSustanciaAct;
+import com.mti.drugstore.vista.principal.VistaMenuPrincipal;
+import com.mti.drugstore.vista.producto.VistaBuscarProducto;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
@@ -20,11 +20,11 @@ import javax.swing.JOptionPane;
  *
  * @author rascencio
  */
-public class CtrlMainMenu implements ActionListener
+public class CtrlMenuPrincipal implements ActionListener
 {
-        ViewMainMenu mainMenu = new ViewMainMenu();
+        VistaMenuPrincipal mainMenu = new VistaMenuPrincipal();
     
-    public CtrlMainMenu(ViewMainMenu mainMenu)
+    public CtrlMenuPrincipal(VistaMenuPrincipal mainMenu)
     {
         this.mainMenu = mainMenu;
         this.mainMenu.jmiAdmonUser.addActionListener(this);
@@ -70,10 +70,10 @@ public class CtrlMainMenu implements ActionListener
         
         if(e.getSource() == mainMenu.jb_1)
         { 
-                ViewFindProduct viewProducts = new ViewFindProduct();
-                MedicamentoDAO medDAO = new MedicamentoDAO();
-                PresentacionDAO presentacionDAO = new PresentacionDAO();
-                CtrlFindProduct ctrlFindProduct = new CtrlFindProduct(viewProducts, medDAO, presentacionDAO);
+                VistaBuscarProducto viewProducts = new VistaBuscarProducto();
+                DaoMedicamento medDAO = new DaoMedicamento();
+                DaoPresentacion presentacionDAO = new DaoPresentacion();
+                CtrlBuscarProducto ctrlFindProduct = new CtrlBuscarProducto(viewProducts, medDAO, presentacionDAO);
                 viewProducts.setVisible(true);
         }
         if(e.getSource() == mainMenu.jmiExit)

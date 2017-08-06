@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mti.drugstore.modelo;
+package com.mti.drugstore.modelos;
 
+import com.mti.drugstore.baseDatos.Conexion;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -17,11 +18,11 @@ import javax.swing.DefaultComboBoxModel;
  *
  * @author rascencio
  */
-public class FormulaDAO
+public class DaoFormula
 {
     Conexion conexion;
     
-    public FormulaDAO()
+    public DaoFormula()
     {
         conexion = new Conexion();
     }
@@ -49,7 +50,7 @@ public class FormulaDAO
         } 
         catch (SQLException ex) 
         {
-            Logger.getLogger(MedicamentoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DaoMedicamento.class.getName()).log(Level.SEVERE, null, ex);
         }
         return rptaRegistro;
     }    

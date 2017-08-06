@@ -3,14 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mti.drugstore.controlador;
+package com.mti.drugstore.controlador.producto;
 
-import com.mti.drugstore.modelo.FormulaDAO;
-import com.mti.drugstore.modelo.MedicamentoDAO;
-import com.mti.drugstore.modelo.PresentacionDAO;
-import com.mti.drugstore.modelo.SustanciaActDAO;
-import com.mti.drugstore.vista.ViewCreateProduct;
-import com.mti.drugstore.vista.ViewMainMenu;
+import com.mti.drugstore.modelos.DaoFormula;
+import com.mti.drugstore.modelos.DaoMedicamento;
+import com.mti.drugstore.modelos.DaoPresentacion;
+import com.mti.drugstore.modelos.DaoSustanciaAct;
+import com.mti.drugstore.vista.producto.VistaAgregarProducto;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -24,16 +23,16 @@ import java.util.ArrayList;
  *
  * @author rascencio
  */
-public class CtrlCreateProduct implements ActionListener
+public class CtrlAgregarProducto implements ActionListener
 {
-    ViewCreateProduct vistaCrear = new ViewCreateProduct();
-    MedicamentoDAO medDAO = new MedicamentoDAO();
-    PresentacionDAO presentacionDAO = new PresentacionDAO();
-    SustanciaActDAO sustanciaDAO = new SustanciaActDAO();
-    FormulaDAO formulaDAO = new FormulaDAO();
+    VistaAgregarProducto vistaCrear = new VistaAgregarProducto();
+    DaoMedicamento medDAO = new DaoMedicamento();
+    DaoPresentacion presentacionDAO = new DaoPresentacion();
+    DaoSustanciaAct sustanciaDAO = new DaoSustanciaAct();
+    DaoFormula formulaDAO = new DaoFormula();
     
-    public CtrlCreateProduct(ViewCreateProduct vistaCrear, MedicamentoDAO medDAO, 
-                             PresentacionDAO presentacionDAO, SustanciaActDAO sustanciaDAO, FormulaDAO formulaDAO)
+    public CtrlAgregarProducto(VistaAgregarProducto vistaCrear, DaoMedicamento medDAO, 
+                             DaoPresentacion presentacionDAO, DaoSustanciaAct sustanciaDAO, DaoFormula formulaDAO)
     {
         this.medDAO = medDAO;
         this.presentacionDAO = presentacionDAO;
@@ -122,6 +121,7 @@ public class CtrlCreateProduct implements ActionListener
                     vistaCrear.jbAgregarFormula.setEnabled(true);    
                     //vistaCrear.jmiNewProduct.setEnabled(true);
                     vistaCrear.jbNew.setEnabled(true);
+                    vistaCrear.jbGuardar.setEnabled(false);
                 }                
             }          
             else
@@ -244,7 +244,8 @@ public class CtrlCreateProduct implements ActionListener
                     vistaCrear.jlImagen.setEnabled(true);
                     vistaCrear.jlImagen.setIcon(null);
                     vistaCrear.jlRutaImagen.setText("Ruta imagen");
-                    vistaCrear.jlRutaImagen.setEnabled(true);                    
+                    vistaCrear.jlRutaImagen.setEnabled(true);       
+                    vistaCrear.jbGuardar.setEnabled(true);
                     break;
                 case 1:
                     break;

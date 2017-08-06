@@ -5,8 +5,10 @@
  */
 package com.mti.drugstore.launcher;
 
-import com.mti.drugstore.controlador.CtrlMainMenu;
-import com.mti.drugstore.vista.ViewMainMenu;
+import com.mti.drugstore.controlador.principal.CtrlMenuPrincipal;
+import com.mti.drugstore.vista.principal.VistaMenuPrincipal;
+
+
 
 /**
  *
@@ -17,8 +19,8 @@ public class Launcher
     
     public static void main(String[] args)
     {
-        ViewMainMenu menuPrincipal = new ViewMainMenu();
-        CtrlMainMenu controMainMenu = new CtrlMainMenu(menuPrincipal);
+        VistaMenuPrincipal menuPrincipal = new VistaMenuPrincipal();
+        CtrlMenuPrincipal controMainMenu = new CtrlMenuPrincipal(menuPrincipal);
         
         menuPrincipal.setVisible(true);
     }    

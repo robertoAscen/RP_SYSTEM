@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mti.drugstore.vista;
+package com.mti.drugstore.vista.producto;
 
 import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDateChooser;
@@ -25,7 +25,7 @@ import javax.swing.border.TitledBorder;
  *
  * @author rascencio
  */
-public class ViewCreateProduct extends JFrame
+public class VistaAgregarProducto extends JFrame
 {
     /*private JMenuBar jMenuBar;
     private JMenu jmAdd;
@@ -77,7 +77,7 @@ public class ViewCreateProduct extends JFrame
     
     private static String pathForImage = "/home/rascencio/Desktop/WORK/SW-PROJECTS/drugStoreSystem/src/main/resources/img/";
     
-    public ViewCreateProduct()
+    public VistaAgregarProducto()
     {
         initComponents();
     }
@@ -147,14 +147,14 @@ public class ViewCreateProduct extends JFrame
         
         jbNew.setIcon(new ImageIcon(pathForImage+"iconsMin/addProduct.png"));
         jbNew.setEnabled(false);
-        //jbNew.setToolTipText("Guardar");
+        jbNew.setToolTipText("Presiona para agregar un nuevo producto");
         
         jbGuardar.setIcon(new ImageIcon(pathForImage+"iconsMin/save.png"));
-        //jbGuardar.setToolTipText("Guardar");
+        jbGuardar.setToolTipText("Guardar");
         
         jbFinish.setText("Terminar");
         //jbFinish.setIcon(new ImageIcon(pathForImage+"iconsMin/save.png"));
-        //jbGuardar.setToolTipText("Guardar");
+        jbFinish.setToolTipText("Salir de la ventana de nuevo producto");
         
         jtoolBar.setBounds(0, 20, 630, 30);
         jtoolBar.add(jbNew);
@@ -206,6 +206,7 @@ public class ViewCreateProduct extends JFrame
         jlCantMed.setText("Cant. Med.");
         jlCantMed.setBounds(10, 110, 130, 25);
         jtfCantMed.setBounds(140, 110, 50, 25);   
+        jtfCantMed.setToolTipText("Ingresa la cantidad de medicamento");
         
         jcbUnidadMedida.setModel(dcbmUnidadMedida);
         jcbUnidadMedida.setBounds(200, 110, 70, 25);
@@ -213,6 +214,7 @@ public class ViewCreateProduct extends JFrame
         
         jbAgregarImagen.setText("Agregar imagen");
         jbAgregarImagen.setBounds(350, 110, 250, 25);
+        jbAgregarImagen.setToolTipText("Presiona para seleccionar una imagen del medicamento");
         
         jpFormula.setLayout(null);
         jpFormula.setBorder(ttbFormula);

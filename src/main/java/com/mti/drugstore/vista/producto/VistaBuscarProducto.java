@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mti.drugstore.vista;
+package com.mti.drugstore.vista.producto;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -22,7 +22,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author rascencio
  */
-public class ViewFindProduct extends JFrame
+public class VistaBuscarProducto extends JFrame
 {    
     private Border lowerBorder;
     private TitledBorder titleTableObj;
@@ -45,7 +45,7 @@ public class ViewFindProduct extends JFrame
     
     private static String pathForImage = "/home/rascencio/Desktop/WORK/SW-PROJECTS/drugStoreSystem/src/main/resources/img/";
     
-    public ViewFindProduct()
+    public VistaBuscarProducto()
     {
         getVentana();
     }

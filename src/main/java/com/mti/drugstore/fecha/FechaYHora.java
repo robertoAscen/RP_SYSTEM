@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mti.drugstore.date;
+package com.mti.drugstore.fecha;
 
 import java.text.DateFormat;
 import java.util.Calendar;
@@ -13,7 +13,7 @@ import java.util.Date;
  *
  * @author rascencio
  */
-public class DateAndHour 
+public class FechaYHora 
 {
     private Calendar calendario;
     private Date HoraActual;
