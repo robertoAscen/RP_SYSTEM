@@ -42,21 +42,21 @@ public class VistaEditarProducto extends JFrame
     private JLabel jlCantMed;
     private JLabel jlUmMed;   
 
-    private JTextField jtfCodigoBarrasProducto;
-    private JTextField jtfNombreProducto;
-    private JTextField jtfFabricanteProducto;
-    private JTextField jtfCantNeta;
-    private JTextField jtfPresentacion;
-    private JTextField jtfCantMed;
-    private JTextField jtfUmMed;
+    public JTextField jtfCodigoBarrasProducto;
+    public JTextField jtfNombreProducto;
+    public JTextField jtfFabricanteProducto;
+    public JTextField jtfCantNeta;
+    public JTextField jtfPresentacion;
+    public JTextField jtfCantMed;
+    public JTextField jtfUmMed;
 
-    private JLabel jlImagen;
+    public JLabel jlImagen;
 
-    private JTable jtFormula;
+    public JTable jtFormula;
     private JScrollPane jScrollPane;
 
-    private JButton jbGuardar;
-    private JButton jbEditar;
+    public JButton jbGuardar;
+    public JButton jbEditar;
     
     private String pathIcons = "/home/rascencio/Desktop/WORK/SW-PROJECTS/drugStoreSystem/src/main/resources/img/";
     
@@ -83,6 +83,7 @@ public class VistaEditarProducto extends JFrame
         jpDetalleProducto.add(jlCodigoBarrasProducto);
         
         jtfCodigoBarrasProducto = new JTextField();
+        jtfCodigoBarrasProducto.setEnabled(false);
         jtfCodigoBarrasProducto.setBounds(120, 20, 130, 25);
         jpDetalleProducto.add(jtfCodigoBarrasProducto);
         
@@ -92,6 +93,7 @@ public class VistaEditarProducto extends JFrame
         jpDetalleProducto.add(jlNombreProducto);
         
         jtfNombreProducto = new JTextField();
+        jtfNombreProducto.setEnabled(false);
         jtfNombreProducto.setBounds(380, 20, 130, 25);
         jpDetalleProducto.add(jtfNombreProducto);
         
@@ -101,6 +103,7 @@ public class VistaEditarProducto extends JFrame
         jpDetalleProducto.add(jlFabricanteProducto);
         
         jtfFabricanteProducto = new JTextField();
+        jtfFabricanteProducto.setEnabled(false);
         jtfFabricanteProducto.setBounds(640, 20, 130, 25);
         jpDetalleProducto.add(jtfFabricanteProducto);
         
@@ -110,6 +113,7 @@ public class VistaEditarProducto extends JFrame
         jpDetalleProducto.add(jlCantNeta);
         
         jtfCantNeta = new JTextField();
+        jtfCantNeta.setEnabled(false);
         jtfCantNeta.setBounds(120, 60, 130, 25);
         jpDetalleProducto.add(jtfCantNeta);
         
@@ -119,6 +123,7 @@ public class VistaEditarProducto extends JFrame
         jpDetalleProducto.add(jlPresentacion);
         
         jtfPresentacion = new JTextField();
+        jtfPresentacion.setEnabled(false);
         jtfPresentacion.setBounds(380, 60, 130, 25);
         jpDetalleProducto.add(jtfPresentacion);
         
@@ -128,15 +133,17 @@ public class VistaEditarProducto extends JFrame
         jpDetalleProducto.add(jlCantMed);
         
         jtfCantMed = new JTextField();
+        jtfCantMed.setEnabled(false);
         jtfCantMed.setBounds(640, 60, 130, 25);
         jpDetalleProducto.add(jtfCantMed);
         
         jlUmMed = new JLabel();     
-        jlUmMed.setText("Cantidad N");
+        jlUmMed.setText("Unidad Medida");
         jlUmMed.setBounds(10, 100, 100, 25);
         jpDetalleProducto.add(jlUmMed);
         
         jtfUmMed = new JTextField();
+        jtfUmMed.setEnabled(false);
         jtfUmMed.setBounds(120, 100, 130, 25);
         jpDetalleProducto.add(jtfUmMed);
         
@@ -195,7 +202,7 @@ public class VistaEditarProducto extends JFrame
         add(jpImagenProducto); 
         
         jlImagen = new JLabel();
-        jlImagen.setText("Aquí va la imagen de producto");
+        //jlImagen.setText("Aquí va la imagen de producto");
         //jlImagen.setIcon(new ImageIcon());
         jlImagen.setBounds(10, 10, 380, 270);
         jpImagenProducto.add(jlImagen);
@@ -208,6 +215,7 @@ public class VistaEditarProducto extends JFrame
         
         jbGuardar = new JButton();
         jbGuardar.setText("GUARDAR");
+        jbGuardar.setEnabled(false);
         jbGuardar.setIcon(new ImageIcon(pathIcons+"icons/save128x128.png"));
         jbGuardar.setBounds(420, 577, 370, 130);
         add(jbGuardar);
@@ -217,5 +225,33 @@ public class VistaEditarProducto extends JFrame
         setResizable(false);
         //setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
+    }
+    
+    public void habilitarTodo()
+    {
+        //jtfCodigoBarrasProducto.setEnabled(true);
+        jtfNombreProducto.setEnabled(true);
+        jtfFabricanteProducto.setEnabled(true);
+        jtfCantNeta.setEnabled(true);
+        jtfPresentacion.setEnabled(true);
+        jtfCantMed.setEnabled(true);
+        jtfUmMed.setEnabled(true);
+        jtFormula.setEnabled(true);
+        jbGuardar.setEnabled(true);
+        jbEditar.setEnabled(false);
+    }
+    
+    public void desHabilitarTodo()
+    {
+        //jtfCodigoBarrasProducto.setEnabled(false);
+        jtfNombreProducto.setEnabled(false);
+        jtfFabricanteProducto.setEnabled(false);
+        jtfCantNeta.setEnabled(false);
+        jtfPresentacion.setEnabled(false);
+        jtfCantMed.setEnabled(false);
+        jtfUmMed.setEnabled(false);
+        jtFormula.setEnabled(false);
+        jbGuardar.setEnabled(false);
+        jbEditar.setEnabled(true);
     }
 }
