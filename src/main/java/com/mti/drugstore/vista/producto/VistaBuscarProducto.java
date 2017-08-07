@@ -39,7 +39,7 @@ public class VistaBuscarProducto extends JFrame
     public JTextField jtfFindObj;
     
     private JPanel jpTableObj;
-    //private DefaultTableModel tableModel;
+    private DefaultTableModel tableModel;
     public JTable jTable;
     private JScrollPane jScrollPane;
     
@@ -78,12 +78,14 @@ public class VistaBuscarProducto extends JFrame
         jb_3.setText("Ver");
         jb_3.setIcon(new ImageIcon(pathForImage+"icons/ver.png"));
         jb_3.setBounds(20, 190, 175, 55);
+        jb_3.setEnabled(false);
         jpIzq.add(jb_3);
         
         jb_4 = new JButton();
         jb_4.setText("Eliminar");
         jb_4.setIcon(new ImageIcon(pathForImage+"icons/trash.png"));
         jb_4.setBounds(20, 280, 175, 55);
+        jb_4.setEnabled(false);
         jpIzq.add(jb_4);
         
         jlImageObj = new JLabel();
@@ -107,11 +109,6 @@ public class VistaBuscarProducto extends JFrame
         jtfFindObj.setBounds(10, 30, 830, 25);
         jpUp.add(jtfFindObj);
         
-        //jb_4 = new JButton();
-        //jb_4.setText("buscar");
-        //jb_4.setBounds(750, 30, 80, 25);
-        //jpUp.add(jb_4);
-        
         titleTableObj = new TitledBorder("Productos");
         jpTableObj = new JPanel();
         jpTableObj.setLayout(null);
@@ -119,8 +116,7 @@ public class VistaBuscarProducto extends JFrame
         jpTableObj.setBounds(235, 80, 850, 480);
         add(jpTableObj);
         
-        jTable = new JTable();
-        jTable.setModel(new DefaultTableModel(
+        tableModel = new DefaultTableModel(
         new Object [][] 
         {
             {null, null, null, null, null, null, null, null, null},
@@ -130,21 +126,22 @@ public class VistaBuscarProducto extends JFrame
         new String []
         {
             "CÓDIGO BARRAS", "NOMBRE", "FABRICANTE", "PRESENTACIÓN"
-            
-            //"idMed","CÓDIGO BARRAS", "NOMBRE", "FABRICANTE", "neto", 
-            //"PRESENTACIÓN", "cant med", "um", "imagen"
         })
         {
             boolean[] canEdit = new boolean [] 
             {
-                false, false, false, false, false, false, false
+                false, false, false, false
             };
             
             public boolean isCellEditable(int rowIndex, int columnIndex)
             {
                 return canEdit [columnIndex];
             }
-        });
+        };
+        
+        jTable = new JTable();
+        jTable.setModel(tableModel);
+        jTable.setEnabled(false);
         jTable.getTableHeader().setReorderingAllowed(false);
         jScrollPane = new JScrollPane();
         jScrollPane.setViewportView(jTable);
@@ -154,14 +151,9 @@ public class VistaBuscarProducto extends JFrame
             jTable.getColumnModel().getColumn(1).setResizable(false);
             jTable.getColumnModel().getColumn(2).setResizable(false);
             jTable.getColumnModel().getColumn(3).setResizable(false);
-            //jTable.getColumnModel().getColumn(4).setResizable(false);
-            //jTable.getColumnModel().getColumn(5).setResizable(false);
-            //jTable.getColumnModel().getColumn(6).setResizable(false);
         }           
         
         jScrollPane.setBounds(10, 20, 830, 450);
-        //jScrollPane.setBounds(235, 80, 850, 480);//sin panel
-        //add(jScrollPane);//sin panel
         jpTableObj.add(jScrollPane);    
         
         setTitle("Productos");        
