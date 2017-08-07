@@ -11,19 +11,27 @@ import com.mti.drugstore.modelos.DaoPresentacion;
 import com.mti.drugstore.modelos.DaoSustanciaAct;
 import com.mti.drugstore.vista.producto.VistaAgregarProducto;
 import com.mti.drugstore.vista.producto.VistaBuscarProducto;
+import com.mti.drugstore.vista.producto.VistaEditarProducto;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseListener;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
+import org.w3c.dom.events.EventTarget;
+import org.w3c.dom.events.MouseEvent;
+import org.w3c.dom.views.AbstractView;
 
 /**
  *
  * @author rascencio
  */
-public class CtrlBuscarProducto implements ActionListener, KeyListener
+public class CtrlBuscarProducto implements ActionListener, KeyListener, MouseListener
 {
     VistaBuscarProducto viewFindProduct = new VistaBuscarProducto();
     DaoMedicamento medDAO = new DaoMedicamento();
@@ -35,7 +43,9 @@ public class CtrlBuscarProducto implements ActionListener, KeyListener
         this.viewFindProduct.jb_1.addActionListener(this);
         this.viewFindProduct.jb_2.addActionListener(this);
         this.viewFindProduct.jb_3.addActionListener(this);
+        this.viewFindProduct.jb_4.addActionListener(this);
         this.viewFindProduct.jtfFindObj.addKeyListener(this);
+        this.viewFindProduct.jTable.addMouseListener(this);
         this.medDAO = medDAO;
         this.presentacionDAO = presentacionDAO;
     }    
@@ -92,6 +102,21 @@ public class CtrlBuscarProducto implements ActionListener, KeyListener
         if(e.getSource() == viewFindProduct.jb_2)
         {
             llenarTabla(viewFindProduct.jTable);
+            viewFindProduct.jTable.setEnabled(true);
+        }
+        if(e.getSource() == viewFindProduct.jb_3)
+        {
+            int row = viewFindProduct.jTable.getSelectedRow();
+            DefaultTableModel m = (DefaultTableModel) viewFindProduct.jTable.getModel();
+            String strMed = m.getValueAt(row, 0).toString();
+            VistaEditarProducto vistaEditarProducto = new VistaEditarProducto();
+            //DaoMedicamento medDao = new DaoMedicamento();            
+            CtrlEditarProducto ctrlEditarProducto = new CtrlEditarProducto(vistaEditarProducto, strMed);
+            vistaEditarProducto.setVisible(true);
+        }
+        if(e.getSource() == viewFindProduct.jb_4)
+        {
+            JOptionPane.showMessageDialog(viewFindProduct, "Sin funcionalidad para esta version", "Advertencia",JOptionPane.WARNING_MESSAGE);
         }
     }
 
@@ -158,5 +183,60 @@ public class CtrlBuscarProducto implements ActionListener, KeyListener
                 //columna[6] = medDAO.listaMedicamento().get(i).getCodBarra();//cambiar por sustancia activa
                 modeloT.addRow(columna);
             }
+    }    
+
+    @Override
+    public void mouseClicked(java.awt.event.MouseEvent e) 
+    {
+       //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+               
+        viewFindProduct.jTable.getSelectionModel().addListSelectionListener(new ListSelectionListener() 
+        {
+            @Override
+            public void valueChanged(ListSelectionEvent e) 
+            {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            
+                ListSelectionModel sm = (ListSelectionModel) e.getSource();
+                int suma=0;
+                for(int i = sm.getMinSelectionIndex(); i <= sm.getMaxSelectionIndex(); i++)
+                {
+                    suma += sm.isSelectedIndex(i) ? 1 : 0;
+                }   
+                
+                if(suma>0 && suma<2)
+                {
+                    viewFindProduct.jb_3.setEnabled(true);
+                    viewFindProduct.jb_4.setEnabled(true);
+                }
+                else
+                {
+                    viewFindProduct.jb_3.setEnabled(false);
+                    viewFindProduct.jb_4.setEnabled(false);
+                }               
+            }   
+        });                        
     }
+
+    @Override
+    public void mousePressed(java.awt.event.MouseEvent e) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void mouseReleased(java.awt.event.MouseEvent e) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void mouseEntered(java.awt.event.MouseEvent e) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void mouseExited(java.awt.event.MouseEvent e) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }        
 }
+
+    
