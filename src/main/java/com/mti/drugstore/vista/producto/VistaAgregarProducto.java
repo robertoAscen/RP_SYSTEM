@@ -75,7 +75,9 @@ public class VistaAgregarProducto extends JFrame
     public JLabel jlImagen;
     public JLabel jlRutaImagen;
     
-    private static String pathForImage = "/home/rascencio/Desktop/WORK/SW-PROJECTS/drugStoreSystem/src/main/resources/img/";
+    private String pathImageIcons = "src/main/resources/img/icons/";
+    private String pathImageIconsMin = "src/main/resources/img/iconsMin/";
+    private String pathImageSalutem = "src/main/resources/img/imageSalutem/";
     
     public VistaAgregarProducto()
     {
@@ -145,11 +147,11 @@ public class VistaAgregarProducto extends JFrame
         jmiAbout.setText("Acerca de");  
         jmiAbout.setToolTipText("Información del software");*/
         
-        jbNew.setIcon(new ImageIcon(pathForImage+"iconsMin/addProduct.png"));
+        jbNew.setIcon(new ImageIcon(pathImageIconsMin+"addProduct.png"));
         jbNew.setEnabled(false);
         jbNew.setToolTipText("Presiona para agregar un nuevo producto");
         
-        jbGuardar.setIcon(new ImageIcon(pathForImage+"iconsMin/save.png"));
+        jbGuardar.setIcon(new ImageIcon(pathImageIconsMin+"save.png"));
         jbGuardar.setToolTipText("Guardar");
         
         jbFinish.setText("Terminar");

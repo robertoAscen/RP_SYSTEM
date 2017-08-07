@@ -58,7 +58,9 @@ public class VistaEditarProducto extends JFrame
     public JButton jbGuardar;
     public JButton jbEditar;
     
-    private String pathIcons = "/home/rascencio/Desktop/WORK/SW-PROJECTS/drugStoreSystem/src/main/resources/img/";
+    private String pathImageIcons = "src/main/resources/img/icons/";
+    private String pathImageIconsMin = "src/main/resources/img/iconsMin/";
+    private String pathImageSalutem = "src/main/resources/img/imageSalutem/";
     
     public VistaEditarProducto()
     {
@@ -209,14 +211,14 @@ public class VistaEditarProducto extends JFrame
         
         jbEditar = new JButton();
         jbEditar.setText("EDITAR");
-        jbEditar.setIcon(new ImageIcon(pathIcons+"icons/edit128x128.png"));
+        jbEditar.setIcon(new ImageIcon(pathImageIcons+"edit128x128.png"));
         jbEditar.setBounds(420, 437, 370, 130);
         add(jbEditar);
         
         jbGuardar = new JButton();
         jbGuardar.setText("GUARDAR");
         jbGuardar.setEnabled(false);
-        jbGuardar.setIcon(new ImageIcon(pathIcons+"icons/save128x128.png"));
+        jbGuardar.setIcon(new ImageIcon(pathImageIcons+"save128x128.png"));
         jbGuardar.setBounds(420, 577, 370, 130);
         add(jbGuardar);
         

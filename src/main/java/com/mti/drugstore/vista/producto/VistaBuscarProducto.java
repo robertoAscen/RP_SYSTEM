@@ -43,7 +43,9 @@ public class VistaBuscarProducto extends JFrame
     public JTable jTable;
     private JScrollPane jScrollPane;
     
-    private static String pathForImage = "/home/rascencio/Desktop/WORK/SW-PROJECTS/drugStoreSystem/src/main/resources/img/";
+    private String pathImageIcons = "src/main/resources/img/icons/";
+    private String pathImageIconsMin = "src/main/resources/img/iconsMin/";
+    private String pathImageSalutem = "src/main/resources/img/imageSalutem/";
     
     public VistaBuscarProducto()
     {
@@ -64,33 +66,33 @@ public class VistaBuscarProducto extends JFrame
         
         jb_1 = new JButton();
         jb_1.setText("Nuevo");
-        jb_1.setIcon(new ImageIcon(pathForImage+"icons/nuevoProducto.png"));
+        jb_1.setIcon(new ImageIcon(pathImageIcons+"nuevoProducto.png"));
         jb_1.setBounds(20, 20, 175, 55);
         jpIzq.add(jb_1);
         
         jb_2 = new JButton();
         jb_2.setText("Listar");
-        jb_2.setIcon(new ImageIcon(pathForImage+"icons/listar.png"));
+        jb_2.setIcon(new ImageIcon(pathImageIcons+"listar.png"));
         jb_2.setBounds(20, 105, 175, 55);
         jpIzq.add(jb_2);
         
         jb_3 = new JButton();
         jb_3.setText("Ver");
-        jb_3.setIcon(new ImageIcon(pathForImage+"icons/ver.png"));
+        jb_3.setIcon(new ImageIcon(pathImageIcons+"ver.png"));
         jb_3.setBounds(20, 190, 175, 55);
         jb_3.setEnabled(false);
         jpIzq.add(jb_3);
         
         jb_4 = new JButton();
         jb_4.setText("Eliminar");
-        jb_4.setIcon(new ImageIcon(pathForImage+"icons/trash.png"));
+        jb_4.setIcon(new ImageIcon(pathImageIcons+"trash.png"));
         jb_4.setBounds(20, 280, 175, 55);
         jb_4.setEnabled(false);
         jpIzq.add(jb_4);
         
         jlImageObj = new JLabel();
         jlImageObj.setText("Imagen Obj");
-        jlImageObj.setIcon(new ImageIcon(pathForImage+"icons/product128x128.png"));
+        jlImageObj.setIcon(new ImageIcon(pathImageIcons+"product128x128.png"));
         jlImageObj.setBounds(40, 400, 130, 130);
         jpIzq.add(jlImageObj);
         
