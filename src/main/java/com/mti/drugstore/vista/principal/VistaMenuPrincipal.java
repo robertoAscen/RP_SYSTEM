@@ -131,7 +131,9 @@ public class VistaMenuPrincipal extends JFrame implements Runnable
     public JButton jb_9;
     public JButton jb_10;
 
-    private String pathImage = "/home/rascencio/Desktop/WORK/SW-PROJECTS/drugStoreSystem/src/main/resources/img/";
+    private String pathImageIcons = "src/main/resources/img/icons/";
+    private String pathImageIconsMin = "src/main/resources/img/iconsMin/";
+    private String pathImageSalutem = "src/main/resources/img/imageSalutem/";
     
     public VistaMenuPrincipal()
     {
@@ -151,12 +153,12 @@ public class VistaMenuPrincipal extends JFrame implements Runnable
         
         jmSystem = new JMenu();
 	jmSystem.setText("Sistema");
-	jmSystem.setIcon(new ImageIcon(pathImage+"iconsMin/Pc.png"));
+	jmSystem.setIcon(new ImageIcon(pathImageIconsMin+"Pc.png"));
         jmBar.add(jmSystem);        
 	
         jmiAdmonUser = new JMenuItem();
 	jmiAdmonUser.setText("Administrador Usuarios");
-	jmiAdmonUser.setIcon(new ImageIcon(pathImage+"iconsMin/CopyUserSettings.png"));
+	jmiAdmonUser.setIcon(new ImageIcon(pathImageIconsMin+"CopyUserSettings.png"));
         jmSystem.add(jmiAdmonUser);        
         
         jSep_1 = new JSeparator();
@@ -164,7 +166,7 @@ public class VistaMenuPrincipal extends JFrame implements Runnable
         
         jmiDB = new JMenuItem();
         jmiDB.setText("Base de Datos");
-	jmiDB.setIcon(new ImageIcon(pathImage+"iconsMin/Inicializar.png"));
+	jmiDB.setIcon(new ImageIcon(pathImageIconsMin+"Inicializar.png"));
         jmSystem.add(jmiDB);
         
         jSep_2 = new JSeparator();
@@ -172,7 +174,7 @@ public class VistaMenuPrincipal extends JFrame implements Runnable
 	
         jmiConfig = new JMenuItem();
         jmiConfig.setText("Configuraciones");
-	jmiConfig.setIcon(new ImageIcon(pathImage+"iconsMin/config.png"));
+	jmiConfig.setIcon(new ImageIcon(pathImageIconsMin+"config.png"));
         jmSystem.add(jmiConfig);
         
         jSep_3 = new JSeparator();
@@ -180,17 +182,17 @@ public class VistaMenuPrincipal extends JFrame implements Runnable
         
         jmiExit = new JMenuItem();        
         jmiExit.setText("Salir");
-	jmiExit.setIcon(new ImageIcon(pathImage+"iconsMin/del.png"));
+	jmiExit.setIcon(new ImageIcon(pathImageIconsMin+"del.png"));
         jmSystem.add(jmiExit);
         
         jmRegister = new JMenu();        
         jmRegister.setText("Registros");
-	jmRegister.setIcon(new ImageIcon(pathImage+"iconsMin/Registros.png"));
+	jmRegister.setIcon(new ImageIcon(pathImageIconsMin+"Registros.png"));
         jmBar.add(jmRegister);
         
         jmiProduct = new JMenuItem();
 	jmiProduct.setText("Registro Productos");
-	jmiProduct.setIcon(new ImageIcon(pathImage+"iconsMin/Productos.png"));
+	jmiProduct.setIcon(new ImageIcon(pathImageIconsMin+"Productos.png"));
         jmRegister.add(jmiProduct);
 	
 	jSep_4 = new JSeparator();
@@ -198,7 +200,7 @@ public class VistaMenuPrincipal extends JFrame implements Runnable
 	
 	jmiVendor = new JMenuItem();
 	jmiVendor.setText("Registro Proveedores");
-	jmiVendor.setIcon(new ImageIcon(pathImage+"iconsMin/proveedores_icono.png"));
+	jmiVendor.setIcon(new ImageIcon(pathImageIconsMin+"proveedores_icono.png"));
 	jmRegister.add(jmiVendor);
 		
 	jSep_5 = new JSeparator();
@@ -206,7 +208,7 @@ public class VistaMenuPrincipal extends JFrame implements Runnable
 	
 	jmiCliente = new JMenuItem();
 	jmiCliente.setText("Registro Clientes");
-	jmiCliente.setIcon(new ImageIcon(pathImage+"iconsMin/Clientes.png"));
+	jmiCliente.setIcon(new ImageIcon(pathImageIconsMin+"Clientes.png"));
 	jmRegister.add(jmiCliente);
 	
 	jSep_7 = new JSeparator();
@@ -214,22 +216,22 @@ public class VistaMenuPrincipal extends JFrame implements Runnable
         
         jmInformes = new JMenu();
         jmInformes.setText("Reportes");
-        jmInformes.setIcon(new ImageIcon(pathImage+"iconsMin/Consultar.png"));
+        jmInformes.setIcon(new ImageIcon(pathImageIconsMin+"Consultar.png"));
         jmBar.add(jmInformes);
         
         jmiDaySales = new JMenuItem();
         jmiDaySales.setText("Venta del día");
-        jmiDaySales.setIcon(new ImageIcon(pathImage+"iconsMin/VentaDelDia.png"));
+        jmiDaySales.setIcon(new ImageIcon(pathImageIconsMin+"VentaDelDia.png"));
         jmInformes.add(jmiDaySales);
                 
         jmiSalesXProduct = new JMenuItem();
         jmiSalesXProduct.setText("Ventas X producto");
-        jmiSalesXProduct.setIcon(new ImageIcon(pathImage+"iconsMin/VentaInfoProducto.png"));
+        jmiSalesXProduct.setIcon(new ImageIcon(pathImageIconsMin+"VentaInfoProducto.png"));
         jmInformes.add(jmiSalesXProduct);       
         
         jmiBestProduct = new JMenuItem();
         jmiBestProduct.setText("Mejor Producto");
-        jmiBestProduct.setIcon(new ImageIcon(pathImage+"iconsMin/MejorProducto.png"));
+        jmiBestProduct.setIcon(new ImageIcon(pathImageIconsMin+"MejorProducto.png"));
         jmInformes.add(jmiBestProduct);
         
         jSep_6 = new JSeparator();
@@ -264,22 +266,22 @@ public class VistaMenuPrincipal extends JFrame implements Runnable
         
         jmListado = new JMenu();
         jmListado.setText("Listados");
-        jmListado.setIcon(new ImageIcon(pathImage+"iconsMin/BoxList.png"));
+        jmListado.setIcon(new ImageIcon(pathImageIconsMin+"BoxList.png"));
         jmInformes.add(jmListado);
                 
         jmiListOfCustomers = new JMenuItem();
         jmiListOfCustomers.setText("Lista de clientes");
-        jmiListOfCustomers.setIcon(new ImageIcon(pathImage+"iconsMin/IconList.png"));
+        jmiListOfCustomers.setIcon(new ImageIcon(pathImageIconsMin+"IconList.png"));
         jmListado.add(jmiListOfCustomers);        
         
         jmiListOfVendors = new JMenuItem();
         jmiListOfVendors.setText("Lista de proveedores");
-        jmiListOfVendors.setIcon(new ImageIcon(pathImage+"iconsMin/IconList.png"));
+        jmiListOfVendors.setIcon(new ImageIcon(pathImageIconsMin+"IconList.png"));
         jmListado.add(jmiListOfVendors);
         
         jmiListOfProducts = new JMenuItem();
         jmiListOfProducts.setText("Lista de productos");
-        jmiListOfProducts.setIcon(new ImageIcon(pathImage+"iconsMin/IconList.png"));
+        jmiListOfProducts.setIcon(new ImageIcon(pathImageIconsMin+"IconList.png"));
         jmListado.add(jmiListOfProducts);
         
         jSep_9 = new JSeparator();
@@ -287,47 +289,47 @@ public class VistaMenuPrincipal extends JFrame implements Runnable
         
         jmGraphics = new JMenu();
         jmGraphics.setText("Gráficas");
-        jmGraphics.setIcon(new ImageIcon(pathImage+"iconsMin/48px-Crystal_Clear_mimetype_log.png"));
+        jmGraphics.setIcon(new ImageIcon(pathImageIconsMin+"48px-Crystal_Clear_mimetype_log.png"));
         jmInformes.add(jmGraphics);
         
         jmiGraphLines = new JMenuItem();
         jmiGraphLines.setText("Gráfica de líneas");
-        jmiGraphLines.setIcon(new ImageIcon(pathImage+"iconsMin/GraficoLineal.png"));
+        jmiGraphLines.setIcon(new ImageIcon(pathImageIconsMin+"GraficoLineal.png"));
         jmGraphics.add(jmiGraphLines);
         
         jmiGraphBar = new JMenuItem();
         jmiGraphBar.setText("Gráfica de barras");
-        jmiGraphBar.setIcon(new ImageIcon(pathImage+"iconsMin/graficoBarras.png"));
+        jmiGraphBar.setIcon(new ImageIcon(pathImageIconsMin+"graficoBarras.png"));
         jmGraphics.add(jmiGraphBar);
         
         jmiGraphCake = new JMenuItem();
         jmiGraphCake.setText("Gráfica de pastel");
-        jmiGraphCake.setIcon(new ImageIcon(pathImage+"iconsMin/pie-chart-149727_640.png"));
+        jmiGraphCake.setIcon(new ImageIcon(pathImageIconsMin+"pie-chart-149727_640.png"));
         jmGraphics.add(jmiGraphCake);
 	
 	jmOperaciones = new JMenu();
 	jmOperaciones.setText("Operaciones");
-	jmOperaciones.setIcon(new ImageIcon(pathImage+"iconsMin/Procesos.png"));
+	jmOperaciones.setIcon(new ImageIcon(pathImageIconsMin+"Procesos.png"));
 	jmBar.add(jmOperaciones);
 	
         jmInventarios = new JMenu();
         jmInventarios.setText("Inventarios");
-        jmInventarios.setIcon(new ImageIcon(pathImage+"iconsMin/Notepad.png"));
+        jmInventarios.setIcon(new ImageIcon(pathImageIconsMin+"Notepad.png"));
         jmOperaciones.add(jmInventarios);
         
         jmiDoInventario = new JMenuItem();
         jmiDoInventario.setText("Hacer Inventario");
-        jmiDoInventario.setIcon(new ImageIcon(pathImage+"iconsMin/servicios_auditoria_icono - copia.png"));
+        jmiDoInventario.setIcon(new ImageIcon(pathImageIconsMin+"servicios_auditoria_icono - copia.png"));
         jmInventarios.add(jmiDoInventario);
         
         jmiProductFaltante = new JMenuItem();
         jmiProductFaltante.setText("Productos Faltantes");
-        jmiProductFaltante.setIcon(new ImageIcon(pathImage+"iconsMin/48px-Crystal_Clear_action_edit_remove.png"));
+        jmiProductFaltante.setIcon(new ImageIcon(pathImageIconsMin+"48px-Crystal_Clear_action_edit_remove.png"));
         jmInventarios.add(jmiProductFaltante);
         
         jmiProductSobrante = new JMenuItem();
         jmiProductSobrante.setText("Productos Sobrantes");
-        jmiProductSobrante.setIcon(new ImageIcon(pathImage+"iconsMin/48px-Crystal_Clear_action_edit_add.png"));
+        jmiProductSobrante.setIcon(new ImageIcon(pathImageIconsMin+"48px-Crystal_Clear_action_edit_add.png"));
         jmInventarios.add(jmiProductSobrante);
         
         jSep_10 = new JSeparator();
@@ -335,27 +337,27 @@ public class VistaMenuPrincipal extends JFrame implements Runnable
         
 	jmiPedidos = new JMenuItem();
 	jmiPedidos.setText("Pedidos");
-	jmiPedidos.setIcon(new ImageIcon(pathImage+"iconsMin/pedidosMin.png"));
+	jmiPedidos.setIcon(new ImageIcon(pathImageIconsMin+"pedidosMin.png"));
 	jmOperaciones.add(jmiPedidos);
         
         jmFacturacion = new JMenu();
         jmFacturacion.setText("Facturación");
-        jmFacturacion.setIcon(new ImageIcon(pathImage+"iconsMin/CarritoCompra.png"));
+        jmFacturacion.setIcon(new ImageIcon(pathImageIconsMin+"CarritoCompra.png"));
         jmBar.add(jmFacturacion);
         
         jmiFacturasEmitidas = new JMenuItem();
         jmiFacturasEmitidas.setText("Facturas emitidas");
-        jmiFacturasEmitidas.setIcon(new ImageIcon(pathImage+"iconsMin/Facturas.png"));
+        jmiFacturasEmitidas.setIcon(new ImageIcon(pathImageIconsMin+"Facturas.png"));
         jmFacturacion.add(jmiFacturasEmitidas);
         
         jmPagos = new JMenu();
         jmPagos.setText("Pagos");
-        jmPagos.setIcon(new ImageIcon(pathImage+"iconsMin/48px-Crystal_Clear_app_mylinspire.png"));
+        jmPagos.setIcon(new ImageIcon(pathImageIconsMin+"48px-Crystal_Clear_app_mylinspire.png"));
         jmBar.add(jmPagos);
         
         jmiPagoNomina = new JMenuItem();
         jmiPagoNomina.setText("Pago Nomina");
-        jmiPagoNomina.setIcon(new ImageIcon(pathImage+"iconsMin/money.png"));
+        jmiPagoNomina.setIcon(new ImageIcon(pathImageIconsMin+"money.png"));
         jmPagos.add(jmiPagoNomina);
         
         jSep_11 = new JSeparator();
@@ -363,7 +365,7 @@ public class VistaMenuPrincipal extends JFrame implements Runnable
         
         jmiRetiro = new JMenuItem();
         jmiRetiro.setText("Retiro de efectivo");
-        jmiRetiro.setIcon(new ImageIcon(pathImage+"iconsMin/Retiro.png"));
+        jmiRetiro.setIcon(new ImageIcon(pathImageIconsMin+"Retiro.png"));
         jmPagos.add(jmiRetiro);
         
         jSep_12 = new JSeparator();
@@ -371,17 +373,17 @@ public class VistaMenuPrincipal extends JFrame implements Runnable
         
         jmiCierre = new JMenuItem();
         jmiCierre.setText("Cierre de caja");
-        jmiCierre.setIcon(new ImageIcon(pathImage+"iconsMin/CierreCaja.png"));
+        jmiCierre.setIcon(new ImageIcon(pathImageIconsMin+"CierreCaja.png"));
         jmPagos.add(jmiCierre);
         
         jmRH = new JMenu();
         jmRH.setText("RRHH");
-        jmRH.setIcon(new ImageIcon(pathImage+"iconsMin/RecursosHumanos.png"));
+        jmRH.setIcon(new ImageIcon(pathImageIconsMin+"RecursosHumanos.png"));
         jmBar.add(jmRH);
         
         jmiVendedor = new JMenuItem();
         jmiVendedor.setText("Registro Vendedor");
-        jmiVendedor.setIcon(new ImageIcon(pathImage+"iconsMin/Vendedor.png"));
+        jmiVendedor.setIcon(new ImageIcon(pathImageIconsMin+"Vendedor.png"));
         jmRH.add(jmiVendedor);
         
         jSep_13 = new JSeparator();
@@ -389,17 +391,17 @@ public class VistaMenuPrincipal extends JFrame implements Runnable
         
         jmiMedico = new JMenuItem();
         jmiMedico.setText("Registro Medico");
-        jmiMedico.setIcon(new ImageIcon(pathImage+"iconsMin/medico.png"));
+        jmiMedico.setIcon(new ImageIcon(pathImageIconsMin+"medico.png"));
         jmRH.add(jmiMedico);
 	
 	jmAbout = new JMenu();
 	jmAbout.setText("Acerca");
-	jmAbout.setIcon(new ImageIcon(pathImage+"iconsMin/Informacion.png"));
+	jmAbout.setIcon(new ImageIcon(pathImageIconsMin+"Informacion.png"));
 	jmBar.add(jmAbout);
 	
 	jmiInfo = new JMenuItem();
 	jmiInfo.setText("Más Información");
-	jmiInfo.setIcon(new ImageIcon(pathImage+"iconsMin/Informacion.png"));
+	jmiInfo.setIcon(new ImageIcon(pathImageIconsMin+"Informacion.png"));
 	jmAbout.add(jmiInfo);
 	
         jSep_14 = new JSeparator();
@@ -407,11 +409,12 @@ public class VistaMenuPrincipal extends JFrame implements Runnable
         
         jmiFace= new JMenuItem();
 	jmiFace.setText("Facebook");
-	jmiFace.setIcon(new ImageIcon(pathImage+"iconsMin/Facebook.png"));
+	jmiFace.setIcon(new ImageIcon(pathImageIconsMin+"Facebook.png"));
 	jmAbout.add(jmiFace);
         
 	jlSalutem = new JLabel();
-	jlSalutem.setIcon(new ImageIcon(pathImage+"imageSalutem/logo.png"));
+        jlSalutem.setIcon(new ImageIcon(pathImageSalutem+"logo.png"));
+        
 	jlSalutem.setBounds(425, 20, 645, 652);
 	add(jlSalutem);
 	
@@ -455,7 +458,7 @@ public class VistaMenuPrincipal extends JFrame implements Runnable
 	jpUsuario.add(jlIdUser);
 	
 	jlImageUser = new JLabel();
-	jlImageUser.setIcon(new ImageIcon(pathImage+"icons/femaleUser.png"));
+	jlImageUser.setIcon(new ImageIcon(pathImageIcons+"femaleUser.png"));
 	jlImageUser.setBounds(90, 100, 100, 100);
 	jpUsuario.add(jlImageUser);
 	
@@ -466,7 +469,7 @@ public class VistaMenuPrincipal extends JFrame implements Runnable
 	jpIzq.add(jpBienvenido);
 		
 	jlCalendar = new JLabel();
-	jlCalendar.setIcon(new ImageIcon(pathImage+"iconsMin/calendar.png"));
+	jlCalendar.setIcon(new ImageIcon(pathImageIconsMin+"calendar.png"));
 	jlCalendar.setBounds(10, 20, 16, 20);
 	jpBienvenido.add(jlCalendar);
 	
@@ -480,7 +483,7 @@ public class VistaMenuPrincipal extends JFrame implements Runnable
 	jpBienvenido.add(jlHora);
 		
 	jlClock = new JLabel();
-	jlClock.setIcon(new ImageIcon(pathImage+"iconsMin/clock.png"));
+	jlClock.setIcon(new ImageIcon(pathImageIconsMin+"clock.png"));
 	jlClock.setBounds(155, 20, 16, 20);
 	jpBienvenido.add(jlClock);
 	
@@ -492,49 +495,49 @@ public class VistaMenuPrincipal extends JFrame implements Runnable
 		
 	jb_1 = new JButton();
 	jb_1.setText("Productos");
-	jb_1.setIcon(new ImageIcon(pathImage+"icons/Productos.png"));
+	jb_1.setIcon(new ImageIcon(pathImageIcons+"Productos.png"));
 	jb_1.setBounds(1175, 10, 175, 55);
         add(jb_1);
 	
 	jb_2 = new JButton();
 	jb_2.setText("Proveedores");
-	jb_2.setIcon(new ImageIcon(pathImage+"icons/proveedores_icono.png"));
+	jb_2.setIcon(new ImageIcon(pathImageIcons+"proveedores_icono.png"));
 	jb_2.setBounds(1175, 85, 175, 55);
 	add(jb_2);
 	
 	jb_3 = new JButton();
 	jb_3.setText("Medicos");
-	jb_3.setIcon(new ImageIcon(pathImage+"icons/medico.png"));
+	jb_3.setIcon(new ImageIcon(pathImageIcons+"medico.png"));
 	jb_3.setBounds(1175, 155, 175, 55);
 	add(jb_3);		
 	
 	jb_4 = new JButton();
 	jb_4.setText("Agenda");
-	jb_4.setIcon(new ImageIcon(pathImage+"icons/agenda.png"));
+	jb_4.setIcon(new ImageIcon(pathImageIcons+"agenda.png"));
 	jb_4.setBounds(1175, 225, 175, 55);
 	add(jb_4);
 	
 	jb_5 = new JButton();
 	jb_5.setText("Clientes");
-	jb_5.setIcon(new ImageIcon(pathImage+"icons/Clientes.png"));
+	jb_5.setIcon(new ImageIcon(pathImageIcons+"Clientes.png"));
 	jb_5.setBounds(1175, 295, 175, 55);
 	add(jb_5);
 	
 	jb_6 = new JButton();
 	jb_6.setText("Facturación");
-	jb_6.setIcon(new ImageIcon(pathImage+"icons/Facturacion.png"));
+	jb_6.setIcon(new ImageIcon(pathImageIcons+"Facturacion.png"));
 	jb_6.setBounds(1175, 365, 175, 55);
         add(jb_6);
 	
 	jb_7 = new JButton();
 	jb_7.setText("Vendedores");
-	jb_7.setIcon(new ImageIcon(pathImage+"icons/Vendedor.png"));
+	jb_7.setIcon(new ImageIcon(pathImageIcons+"Vendedor.png"));
 	jb_7.setBounds(1175, 435, 175, 55);
 	add(jb_7);
 	
 	jb_8 = new JButton();
 	jb_8.setText("Información");
-	jb_8.setIcon(new ImageIcon(pathImage+"icons/InformacionIcono.png"));
+	jb_8.setIcon(new ImageIcon(pathImageIcons+"InformacionIcono.png"));
 	jb_8.setBounds(1175, 505, 175, 55);
 	add(jb_8);
 	
