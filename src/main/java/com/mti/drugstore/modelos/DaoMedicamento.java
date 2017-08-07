@@ -100,6 +100,39 @@ public class DaoMedicamento
         return arrayMedicamento;
     }
     
+    public Medicamento getDetalleMedicamento(String barCodeMed)
+    {
+        Medicamento medicamento=null;
+            
+        try
+        {
+            Connection acceDB = conexion.getConexion();
+            PreparedStatement ps = acceDB.prepareStatement("select * from MEDICAMENTO where id_medicamento = ?");
+            ps.setString(1, barCodeMed);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next())
+            {
+                medicamento = new Medicamento();
+                medicamento.setIdMedicamento(rs.getString(1));
+                medicamento.setCodBarra(rs.getString(2));
+                medicamento.setNombreMed(rs.getString(3));
+                medicamento.setLaboratorio(rs.getString(4));
+                medicamento.setCantNeta(rs.getString(5));
+                medicamento.setPresentacion(rs.getString(6));
+                medicamento.setCantMed(rs.getString(7));
+                medicamento.setUmCantMed(rs.getString(8));
+                medicamento.setImagen(rs.getString(9));  
+            }            
+        }
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(DaoMedicamento.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return medicamento;        
+    }
+    
     public String insertInTable(String idMed, String barCode, String nombreMed, String nombreLab, String cant_neta, String idPresentacion, String cantMed, String umCantMed, String imagen)
     {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
