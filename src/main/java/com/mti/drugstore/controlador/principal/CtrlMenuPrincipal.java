@@ -83,7 +83,8 @@ public class CtrlMenuPrincipal implements ActionListener
             switch(rpta)
             {
                 case 0:
-                    mainMenu.dispose();
+                    System.exit(0);
+                    //mainMenu.dispose();
                     break;
                 case 1:
                     break;
