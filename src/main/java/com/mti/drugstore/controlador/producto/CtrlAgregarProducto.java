@@ -289,6 +289,5 @@ public class CtrlAgregarProducto implements ActionListener
                 }
             }
         }
-    }
-    
+    }    
 }
