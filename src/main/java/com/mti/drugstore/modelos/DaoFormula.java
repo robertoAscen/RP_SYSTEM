@@ -6,8 +6,11 @@
 package com.mti.drugstore.modelos;
 
 import com.mti.drugstore.baseDatos.Conexion;
+import com.mti.drugstore.objetos.Formula;
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -53,5 +56,37 @@ public class DaoFormula
             Logger.getLogger(DaoMedicamento.class.getName()).log(Level.SEVERE, null, ex);
         }
         return rptaRegistro;
-    }    
+    }   
+    
+    public ArrayList<Formula> listaFormula(String barCodeMedicamento)
+    {
+        ArrayList arrayFormula = new ArrayList();
+        Formula formula;
+            
+        try
+        {
+            Connection acceDB = conexion.getConexion();
+            PreparedStatement ps = acceDB.prepareStatement("select * from FORMULA_MED where medicamento = ?");
+            ps.setString(1, barCodeMedicamento);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next())
+            {
+                formula = new Formula();
+                formula.setIdFormula(rs.getString(1));
+                formula.setMedicamento(rs.getString(2));
+                formula.setSustanciaAct(rs.getString(3));
+                formula.setContenido(rs.getString(4));
+                formula.setUmContenido(rs.getString(5));
+                arrayFormula.add(formula);
+                
+            }            
+        }
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(DaoMedicamento.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return arrayFormula;
+    }
 }
