@@ -17,6 +17,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
@@ -31,7 +33,7 @@ import org.w3c.dom.views.AbstractView;
  *
  * @author rascencio
  */
-public class CtrlBuscarProducto implements ActionListener, KeyListener, MouseListener
+public class CtrlBuscarProducto implements ActionListener, KeyListener, MouseListener, WindowListener
 {
     VistaBuscarProducto viewFindProduct = new VistaBuscarProducto();
     DaoMedicamento medDAO = new DaoMedicamento();
@@ -46,6 +48,7 @@ public class CtrlBuscarProducto implements ActionListener, KeyListener, MouseLis
         this.viewFindProduct.jb_4.addActionListener(this);
         this.viewFindProduct.jtfFindObj.addKeyListener(this);
         this.viewFindProduct.jTable.addMouseListener(this);
+        this.viewFindProduct.addWindowListener(this);
         this.medDAO = medDAO;
         this.presentacionDAO = presentacionDAO;
     }    
@@ -101,8 +104,7 @@ public class CtrlBuscarProducto implements ActionListener, KeyListener, MouseLis
         }
         if(e.getSource() == viewFindProduct.jb_2)
         {
-            llenarTabla(viewFindProduct.jTable);
-            viewFindProduct.jTable.setEnabled(true);
+            
         }
         if(e.getSource() == viewFindProduct.jb_3)
         {
@@ -237,6 +239,45 @@ public class CtrlBuscarProducto implements ActionListener, KeyListener, MouseLis
     public void mouseExited(java.awt.event.MouseEvent e) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }        
+
+    @Override
+    public void windowOpened(WindowEvent e) 
+    {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        llenarTabla(viewFindProduct.jTable);
+        viewFindProduct.jTable.setEnabled(true);
+    }
+
+    @Override
+    public void windowClosing(WindowEvent e) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void windowClosed(WindowEvent e) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void windowIconified(WindowEvent e) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void windowDeiconified(WindowEvent e) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void windowActivated(WindowEvent e) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void windowDeactivated(WindowEvent e) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
 
     
