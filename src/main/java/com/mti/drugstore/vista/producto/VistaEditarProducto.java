@@ -160,15 +160,16 @@ public class VistaEditarProducto extends JFrame
         jtFormula.setModel(new DefaultTableModel(
         new Object[] []
         {
-        	{null, null, null, null},
-        	{null, null, null, null},
-        	{null, null, null, null},
-        	{null, null, null, null},
-        	{null, null, null, null}
+        	{null, null, null},
+        	{null, null, null},
+        	{null, null, null},
+        	{null, null, null},
+        	{null, null, null}
         },
         new String []
         {
-        	"MEDICAMENTO", "SUSTANCIA ACTIVA", "CONTENIDO", "UNIDAD MEDIDA"
+        	//"MEDICAMENTO", "SUSTANCIA ACTIVA", "CONTENIDO", "UNIDAD MEDIDA"
+                "SUSTANCIA ACTIVA", "CONTENIDO", "UNIDAD MEDIDA"
         })
         {
         	boolean[] cantEdit = new boolean[]
@@ -190,7 +191,7 @@ public class VistaEditarProducto extends JFrame
         	jtFormula.getColumnModel().getColumn(0).setResizable(false);
         	jtFormula.getColumnModel().getColumn(1).setResizable(false);
         	jtFormula.getColumnModel().getColumn(2).setResizable(false);
-        	jtFormula.getColumnModel().getColumn(3).setResizable(false);
+        	//jtFormula.getColumnModel().getColumn(3).setResizable(false);
         }
         jScrollPane.setBounds(10, 20, 760, 220);
         jpFormula.add(jScrollPane);
