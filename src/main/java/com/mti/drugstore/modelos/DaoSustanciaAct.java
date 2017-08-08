@@ -9,6 +9,7 @@ import com.mti.drugstore.baseDatos.Conexion;
 import com.mti.drugstore.objetos.SustanciaAct;
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -106,5 +107,27 @@ public class DaoSustanciaAct
             Logger.getLogger(DaoPresentacion.class.getName()).log(Level.SEVERE, null, ex); 
         }
         return idPresentacion;
+    }
+    
+    public String getDescripSustAct(String strNumSusAct)
+    {
+        String descripSustAct = null;
+        try
+        {
+            Connection acceDB = conexion.getConexion();
+            PreparedStatement ps = acceDB.prepareStatement("select descrip_susAct from SUSTANCIA_ACTIVA where id_sustanciaAct = ?");
+            ps.setString(1, strNumSusAct);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next())
+            {
+                descripSustAct = rs.getString(1);
+            }           
+        }
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(DaoPresentacion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return descripSustAct;
     }
 }
