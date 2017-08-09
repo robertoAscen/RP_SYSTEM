@@ -5,12 +5,14 @@
  */
 package com.mti.drugstore.controlador.principal;
 
+import com.mti.drugstore.controlador.baseDatos.CtrlConfigBaseDatos;
 import com.mti.drugstore.controlador.producto.CtrlAgregarProducto;
 import com.mti.drugstore.controlador.producto.CtrlBuscarProducto;
 import com.mti.drugstore.modelos.DaoFormula;
 import com.mti.drugstore.modelos.DaoMedicamento;
 import com.mti.drugstore.modelos.DaoPresentacion;
 import com.mti.drugstore.modelos.DaoSustanciaAct;
+import com.mti.drugstore.vista.baseDatos.VistaConfigDB;
 import com.mti.drugstore.vista.principal.VistaMenuPrincipal;
 import com.mti.drugstore.vista.producto.VistaAgregarProducto;
 import com.mti.drugstore.vista.producto.VistaBuscarProducto;
@@ -76,7 +78,9 @@ public class CtrlMenuPrincipal implements ActionListener
         }
         if(e.getSource() == mainMenu.jmiDB)
         {
-            
+            VistaConfigDB vistaConfigDB = new VistaConfigDB();
+            CtrlConfigBaseDatos ctrlConfigDB = new CtrlConfigBaseDatos(vistaConfigDB);
+            vistaConfigDB.setVisible(true);
         }
         if(e.getSource() == mainMenu.jmiConfig)
         {

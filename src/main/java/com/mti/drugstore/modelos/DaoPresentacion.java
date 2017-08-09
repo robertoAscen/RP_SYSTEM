@@ -5,7 +5,11 @@
  */
 package com.mti.drugstore.modelos;
 
-import com.mti.drugstore.baseDatos.Conexion;
+
+import com.mti.drugstore.manejadores.archivos.ManejadorArchivos;
+import com.mti.drugstore.manejadores.baseDatos.Conexion;
+import com.mti.drugstore.manejadores.baseDatos.ConfigBaseDatos;
+import com.mti.drugstore.manejadores.seguridad.Encriptador;
 import com.mti.drugstore.objetos.Presentacion;
 import java.sql.CallableStatement;
 import java.sql.Connection;
@@ -23,11 +27,19 @@ import javax.swing.DefaultComboBoxModel;
  */
 public class DaoPresentacion
 {
+    Encriptador encript = new Encriptador();
+    ManejadorArchivos mnjFiles = new ManejadorArchivos();
+    ConfigBaseDatos ctlrConfigDB = new ConfigBaseDatos(mnjFiles, encript);
     Conexion conexion;
     
     public DaoPresentacion()
     {
-        conexion = new Conexion();        
+        String hostDB = ctlrConfigDB.getHostDB();
+        String puertoDB = ctlrConfigDB.getPuertoDB();
+        String nombreDB =  ctlrConfigDB.getNombreDB();
+        String usuarioDB = ctlrConfigDB.getUsuarioDB();
+        String passDB = ctlrConfigDB.getPasswordDB();
+        conexion = new Conexion(hostDB, puertoDB, nombreDB, usuarioDB, passDB);       
     }
     
     public String getDescripPresentacion(String strNumPresentacion)
