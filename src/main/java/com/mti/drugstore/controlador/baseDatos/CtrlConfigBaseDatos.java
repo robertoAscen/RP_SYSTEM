@@ -6,6 +6,7 @@
 package com.mti.drugstore.controlador.baseDatos;
 
 import com.mti.drugstore.manejadores.archivos.ManejadorArchivos;
+import com.mti.drugstore.manejadores.baseDatos.Conexion;
 import com.mti.drugstore.manejadores.baseDatos.ConfigBaseDatos;
 import com.mti.drugstore.manejadores.seguridad.Encriptador;
 import com.mti.drugstore.vista.baseDatos.VistaConfigDB;
@@ -38,18 +39,41 @@ public class CtrlConfigBaseDatos implements ActionListener
     
         if(ae.getSource() == vistaConfigDB.jbGuardar)
         {
-            encript = new Encriptador();
-            mnjArchivos = new ManejadorArchivos();
-            configDB = new ConfigBaseDatos(mnjArchivos, encript);
-            
-            configDB.setHostDB(vistaConfigDB.jtfHost.getText());
-            configDB.setPuertoDB(vistaConfigDB.jtfPuerto.getText());
-            configDB.setNombreDB(vistaConfigDB.jtfNombreDB.getText());
-            configDB.setUsuarioDB(vistaConfigDB.jtfUsuario.getText());
-            configDB.setPasswordDB(vistaConfigDB.jtfPassDB.getText());  
-            
-            JOptionPane.showMessageDialog(vistaConfigDB, "Configuración guardada exitosamente!!!","Informacion", JOptionPane.INFORMATION_MESSAGE);
+            //encript = new Encriptador();
+            if(vistaConfigDB.jtfHost.getText().length() != 0 && vistaConfigDB.jtfPuerto.getText().length() != 0
+                && vistaConfigDB.jtfNombreDB.getText().length() != 0 && vistaConfigDB.jtfUsuario.getText().length() != 0
+                && vistaConfigDB.jtfPassDB.getText().length() != 0)
+            {
+                mnjArchivos = new ManejadorArchivos();
+                configDB = new ConfigBaseDatos(mnjArchivos);
+
+                configDB.setHostDB(vistaConfigDB.jtfHost.getText());
+                configDB.setPuertoDB(vistaConfigDB.jtfPuerto.getText());
+                configDB.setNombreDB(vistaConfigDB.jtfNombreDB.getText());
+                configDB.setUsuarioDB(vistaConfigDB.jtfUsuario.getText());
+                configDB.setPasswordDB(vistaConfigDB.jtfPassDB.getText());  
+
+                String host = configDB.getHostDB();
+                String puerto = configDB.getPuertoDB();
+                String nombre = configDB.getNombreDB();
+                String usuario = configDB.getUsuarioDB();
+                String pass = configDB.getPasswordDB();
+                
+                Conexion conexion = new Conexion(host, puerto, nombre, usuario, pass);
+                if(conexion.getConexion() != null)
+                {
+                    JOptionPane.showMessageDialog(vistaConfigDB, "Prueba de conexión exitosa!!!","Informacion", JOptionPane.INFORMATION_MESSAGE);
+                    vistaConfigDB.dispose();
+                }   
+                else
+                {
+                    JOptionPane.showMessageDialog(vistaConfigDB, "Revise que sus parámetros esten bien escritos","Error", JOptionPane.ERROR);
+                }
+            }    
+            else
+            {
+                JOptionPane.showMessageDialog(vistaConfigDB, "Complete todos los campos","Advertencia", JOptionPane.WARNING_MESSAGE);
+            }
         }
-    }
-    
+    }    
 }

@@ -7,7 +7,11 @@ package com.mti.drugstore.manejadores.archivos;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -22,21 +26,28 @@ public class ManejadorArchivos
     public String AbrirTexto(File archivo)
     {
         String contenido = "";
-        try
-        {
-            this.entrada = new FileInputStream(archivo);
+        try 
+        {            
+            entrada = new FileInputStream(archivo);
             int ascci;
-            while ((ascci = this.entrada.read()) != -1)
+            try {
+                while ((ascci = entrada.read()) != -1)
+                {
+                    //int asccci=0;
+                    char caracter = (char)ascci;
+                    contenido = contenido + caracter;
+                }
+            } 
+            catch (IOException ex) 
             {
-                int asccci=0;
-                char caracter = (char)asccci;
-                contenido = contenido + caracter;
-            }
-        }
-        catch (Exception localException) 
+                Logger.getLogger(ManejadorArchivos.class.getName()).log(Level.SEVERE, null, ex);
+            }            
+        } 
+        catch (FileNotFoundException ex)
         {
+            Logger.getLogger(ManejadorArchivos.class.getName()).log(Level.SEVERE, null, ex);
         }
-    return contenido;
+        return contenido;
   }
   
     public String GuardarTexto(File archivo, String contenido)
@@ -47,7 +58,7 @@ public class ManejadorArchivos
             this.salida = new FileOutputStream(archivo);
             byte[] bytestxt = contenido.getBytes();
             this.salida.write(bytestxt);
-            respuesta = "El archivo se ha guardado con �xito.";
+            respuesta = "El archivo se ha guardado con exito.";
         }
         catch (Exception localException) 
         {
@@ -76,7 +87,7 @@ public class ManejadorArchivos
         {
             this.salida = new FileOutputStream(archivo);
             this.salida.write(bytesImg);
-            respuesta = "La imagen se ha guardado con �xito.";
+            respuesta = "La imagen se ha guardado con exito.";
         }
         catch (Exception localException) 
         {

@@ -17,17 +17,17 @@ import java.io.File;
 public class ConfigBaseDatos 
 {
     ManejadorArchivos mnjArchivos;
-    Encriptador encriptador;
-    static File nombreDB = new File(new File("src/main/resources/data/servidor/data_base_name.dll").getAbsolutePath());
-    static File hostDB = new File(new File("src/main/resources/data/servidor/data_base_host.dll").getAbsolutePath());
-    static File puertoDB = new File(new File("src/main/resources/data/servidor/data_base_puerto.dll").getAbsolutePath());
-    static File passwordDB = new File(new File("src/main/resources/data/servidor/data_base_password.dll").getAbsolutePath());
-    static File usuarioDB = new File(new File("src/main/resources/data/servidor/data_base_usuario.dll").getAbsolutePath());
-    private String hostDesencrypt;
-    private String prtDesencrypt;    
-    private String BDDesencrypt;
-    private String usuDesencrypt;
-    private String passDesencrypt;
+    //Encriptador encriptador;    
+    private File hostDBFile = new File(new File("src/main/resources/data/DBServidor/data_base_host.dll").getAbsolutePath());
+    private File puertoDBFile = new File(new File("src/main/resources/data/DBServidor/data_base_puerto.dll").getAbsolutePath());
+    private File nombreDBFile = new File(new File("src/main/resources/data/DBServidor/data_base_name.dll").getAbsolutePath());
+    private File usuarioDBFile = new File(new File("src/main/resources/data/DBServidor/data_base_usuario.dll").getAbsolutePath());
+    private File passwordDBFile = new File(new File("src/main/resources/data/DBServidor/data_base_password.dll").getAbsolutePath());
+    //private String hostDesencrypt;
+    //private String prtDesencrypt;    
+    //private String BDDesencrypt;
+    //private String usuDesencrypt;
+    //private String passDesencrypt;
     //private String hostEncrypt;
     //private String puertoEncrypt;
     //private String nombreBDEncrypt;
@@ -35,10 +35,10 @@ public class ConfigBaseDatos
     //private String usuarioEncrypt;
             
             
-    public ConfigBaseDatos(ManejadorArchivos mnjArchivos, Encriptador encriptador)
+    public ConfigBaseDatos(ManejadorArchivos mnjArchivos)
     {
         this.mnjArchivos = mnjArchivos;
-        this.encriptador = encriptador;
+        //this.encriptador = encriptador;
     }  
     
     /*public ConfigBaseDatos(ManejadorArchivos mnjArchivos, Encriptador encriptador, String hostEncrypt, String puertoEncrypt, String nombreBDEncrypt, String passEncrypt, String usuarioEncrypt)
@@ -54,71 +54,71 @@ public class ConfigBaseDatos
     
     public void setHostDB(String hostEncrypt)
     {
-        String hostDb = encriptador.encriptar(hostEncrypt, encriptador.ClaveEncryption());
-        mnjArchivos.GuardarTexto(hostDB, hostDb);
+        //String hostDb = encriptador.encriptar(hostEncrypt, encriptador.ClaveEncryption());
+        mnjArchivos.GuardarTexto(hostDBFile, hostEncrypt);
     }   
     
     public void setPuertoDB(String puertoEncrypt)
     {
-        String puertoDb = encriptador.encriptar(puertoEncrypt, encriptador.ClaveEncryption());
-        mnjArchivos.GuardarTexto(puertoDB, puertoDb);
+        //String puertoDb = encriptador.encriptar(puertoEncrypt, encriptador.ClaveEncryption());
+        mnjArchivos.GuardarTexto(puertoDBFile, puertoEncrypt);
     }
             
     public void setNombreDB(String nombreBDEncrypt)
     {
-        String nombDb = encriptador.encriptar(nombreBDEncrypt, encriptador.ClaveEncryption());
-        mnjArchivos.GuardarTexto(nombreDB, nombDb);
+        //String nombDb = encriptador.encriptar(nombreBDEncrypt, encriptador.ClaveEncryption());
+        mnjArchivos.GuardarTexto(nombreDBFile, nombreBDEncrypt);
     }
             
     public void setUsuarioDB(String usuarioEncrypt)
     {
-        String usuarioDb = encriptador.encriptar(usuarioEncrypt, encriptador.ClaveEncryption());
-        mnjArchivos.GuardarTexto(usuarioDB, usuarioDb);
+        //String usuarioDb = encriptador.encriptar(usuarioEncrypt, encriptador.ClaveEncryption());
+        mnjArchivos.GuardarTexto(usuarioDBFile, usuarioEncrypt);
     }
             
     public void setPasswordDB(String passEncrypt)
     {
-        String passDb = encriptador.encriptar(passEncrypt,encriptador.ClaveEncryption());
-        mnjArchivos.GuardarTexto(passwordDB, passDb);
+        //String passDb = encriptador.encriptar(passEncrypt,encriptador.ClaveEncryption());
+        mnjArchivos.GuardarTexto(passwordDBFile, passEncrypt);
     }
     
     public String getHostDB()
     {
-        String hostDb = mnjArchivos.AbrirTexto(hostDB);
-        hostDesencrypt = encriptador.desencriptar(hostDb, encriptador.ClaveEncryption());
+        String hostDb = mnjArchivos.AbrirTexto(hostDBFile);
+        //hostDesencrypt = encriptador.desencriptar(hostDb, encriptador.ClaveEncryption());
         
-        return hostDesencrypt;
+        return hostDb;
     }
     
     public String getPuertoDB()
     {
-        String puertoDb = mnjArchivos.AbrirTexto(puertoDB);        
-        prtDesencrypt = encriptador.desencriptar(puertoDb, encriptador.ClaveEncryption());
+        String puertoDb = mnjArchivos.AbrirTexto(puertoDBFile);        
+        //prtDesencrypt = encriptador.desencriptar(puertoDb, encriptador.ClaveEncryption());
         
-        return prtDesencrypt;
+        return puertoDb;
     }
     
     public String getNombreDB()
     {
-        String nombDb = mnjArchivos.AbrirTexto(nombreDB);
-        BDDesencrypt = encriptador.desencriptar(nombDb, encriptador.ClaveEncryption());
+        String nombDb = mnjArchivos.AbrirTexto(nombreDBFile);
+        //BDDesencrypt = encriptador.desencriptar(nombDb, encriptador.ClaveEncryption());
         
-        return BDDesencrypt;
+        return nombDb;
     }
     
     public String getUsuarioDB()
     {
-        String usuarioDb = mnjArchivos.AbrirTexto(usuarioDB);
-        usuDesencrypt = encriptador.desencriptar(usuarioDb, encriptador.ClaveEncryption());
+        String usuarioDb = mnjArchivos.AbrirTexto(usuarioDBFile);
+        //usuDesencrypt = encriptador.desencriptar(usuarioDb, encriptador.ClaveEncryption());
         
-        return usuDesencrypt;
+        return usuarioDb;
     }
     
     public String getPasswordDB()
     {
-        String passDb = mnjArchivos.AbrirTexto(passwordDB);
-        passDesencrypt = encriptador.desencriptar(passDb, encriptador.ClaveEncryption());
+        String passDb = mnjArchivos.AbrirTexto(passwordDBFile);
+        //passDesencrypt = encriptador.desencriptar(passDb, encriptador.ClaveEncryption());
         
-        return passDesencrypt;
+        return passDb;
     }   
 }

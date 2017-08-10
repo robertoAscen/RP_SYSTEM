@@ -38,8 +38,10 @@ public class Conexion
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             //con = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_farmacia", "root", "Ascencio1234"); //usuario linux mint
             //con = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_farmacia", "root", "ascencio"); //usuario windows
-            con = DriverManager.getConnection("jdbc:mysql://" + strHost + ":" + strPuerto + "/" + strNombreDB +", "+ strUsuario +", "+ strPassword);
-            System.out.println("Conexión exitosa!!!");
+            //System.out.print("jdbc:mysql://" + strHost + ":" + strPuerto + "/", strNombreDB, strUsuario, strPassword);
+            //String strDatosConexion = strHost + ":" + strPuerto + "/" + strNombreDB +", "+ strUsuario +", "+ strPassword;
+            con = DriverManager.getConnection("jdbc:mysql://" + strHost + ":" + strPuerto + "/" + strNombreDB , strUsuario , strPassword);
+            System.out.println("Conexión exitosa!!!");            
         }
         catch (Exception e) 
         {

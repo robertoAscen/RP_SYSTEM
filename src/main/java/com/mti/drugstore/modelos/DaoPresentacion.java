@@ -27,9 +27,9 @@ import javax.swing.DefaultComboBoxModel;
  */
 public class DaoPresentacion
 {
-    Encriptador encript = new Encriptador();
+    //Encriptador encript = new Encriptador();
     ManejadorArchivos mnjFiles = new ManejadorArchivos();
-    ConfigBaseDatos ctlrConfigDB = new ConfigBaseDatos(mnjFiles, encript);
+    ConfigBaseDatos ctlrConfigDB = new ConfigBaseDatos(mnjFiles);
     Conexion conexion;
     
     public DaoPresentacion()
