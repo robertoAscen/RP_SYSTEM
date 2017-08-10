@@ -64,7 +64,9 @@ public class VistaMenuPrincipal extends JFrame implements Runnable
     public JMenuItem jmiDoInventario;
     public JMenuItem jmiProductFaltante;
     public JMenuItem jmiProductSobrante;
-    public JMenuItem jmiPedidos;
+    private JMenu jmPedidos;
+    public JMenuItem jmiHacerPedido;
+    public JMenuItem jmiComprarPedido;
     
     private JMenu jmFacturacion;
     public JMenuItem jmiFacturasEmitidas;
@@ -153,7 +155,7 @@ public class VistaMenuPrincipal extends JFrame implements Runnable
         
         jmSystem = new JMenu();
 	jmSystem.setText("Sistema");
-	jmSystem.setIcon(new ImageIcon(pathImageIconsMin+"Pc.png"));
+	jmSystem.setIcon(new ImageIcon(pathImageIconsMin+"sistema.png"));
         jmBar.add(jmSystem);        
 	
         jmiAdmonUser = new JMenuItem();
@@ -335,14 +337,24 @@ public class VistaMenuPrincipal extends JFrame implements Runnable
         jSep_10 = new JSeparator();
         jmOperaciones.add(jSep_10);
         
-	jmiPedidos = new JMenuItem();
-	jmiPedidos.setText("Pedidos");
-	jmiPedidos.setIcon(new ImageIcon(pathImageIconsMin+"pedidosMin.png"));
-	jmOperaciones.add(jmiPedidos);
+	jmPedidos = new JMenu();
+	jmPedidos.setText("Pedidos");
+	jmPedidos.setIcon(new ImageIcon(pathImageIconsMin+"pedidosMin.png"));
+	jmOperaciones.add(jmPedidos);
+        
+        jmiHacerPedido = new JMenuItem();
+        jmiHacerPedido.setText("Hacer Pedido");
+        jmiHacerPedido.setIcon(new ImageIcon(pathImageIconsMin+"pedido.png"));
+        jmPedidos.add(jmiHacerPedido);
+        
+        jmiComprarPedido = new JMenuItem();
+        jmiComprarPedido.setText("Comprar Pedido");
+        jmiComprarPedido.setIcon(new ImageIcon(pathImageIconsMin+"comprarPedido.png"));
+        jmPedidos.add(jmiComprarPedido);
         
         jmFacturacion = new JMenu();
         jmFacturacion.setText("Facturación");
-        jmFacturacion.setIcon(new ImageIcon(pathImageIconsMin+"CarritoCompra.png"));
+        jmFacturacion.setIcon(new ImageIcon(pathImageIconsMin+"Facturacion1.png"));
         jmBar.add(jmFacturacion);
         
         jmiFacturasEmitidas = new JMenuItem();
@@ -352,7 +364,7 @@ public class VistaMenuPrincipal extends JFrame implements Runnable
         
         jmPagos = new JMenu();
         jmPagos.setText("Pagos");
-        jmPagos.setIcon(new ImageIcon(pathImageIconsMin+"48px-Crystal_Clear_app_mylinspire.png"));
+        jmPagos.setIcon(new ImageIcon(pathImageIconsMin+"pagos.png"));
         jmBar.add(jmPagos);
         
         jmiPagoNomina = new JMenuItem();
@@ -396,12 +408,12 @@ public class VistaMenuPrincipal extends JFrame implements Runnable
 	
 	jmAbout = new JMenu();
 	jmAbout.setText("Acerca");
-	jmAbout.setIcon(new ImageIcon(pathImageIconsMin+"Informacion.png"));
+	jmAbout.setIcon(new ImageIcon(pathImageIconsMin+"Informacion1.png"));
 	jmBar.add(jmAbout);
 	
 	jmiInfo = new JMenuItem();
 	jmiInfo.setText("Más Información");
-	jmiInfo.setIcon(new ImageIcon(pathImageIconsMin+"Informacion.png"));
+	jmiInfo.setIcon(new ImageIcon(pathImageIconsMin+"Informacion1.png"));
 	jmAbout.add(jmiInfo);
 	
         jSep_14 = new JSeparator();
@@ -409,7 +421,7 @@ public class VistaMenuPrincipal extends JFrame implements Runnable
         
         jmiFace= new JMenuItem();
 	jmiFace.setText("Facebook");
-	jmiFace.setIcon(new ImageIcon(pathImageIconsMin+"Facebook.png"));
+	jmiFace.setIcon(new ImageIcon(pathImageIconsMin+"Facebook1.png"));
 	jmAbout.add(jmiFace);
         
 	jlSalutem = new JLabel();
