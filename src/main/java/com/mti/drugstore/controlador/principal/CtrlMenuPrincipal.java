@@ -48,7 +48,8 @@ public class CtrlMenuPrincipal implements ActionListener
         this.mainMenu.jmiDoInventario.addActionListener(this);
         this.mainMenu.jmiProductFaltante.addActionListener(this);
         this.mainMenu.jmiProductSobrante.addActionListener(this);
-        this.mainMenu.jmiPedidos.addActionListener(this);
+        this.mainMenu.jmiHacerPedido.addActionListener(this);
+        this.mainMenu.jmiComprarPedido.addActionListener(this);
         this.mainMenu.jmiFacturasEmitidas.addActionListener(this);
         this.mainMenu.jmiPagoNomina.addActionListener(this);
         this.mainMenu.jmiRetiro.addActionListener(this);
@@ -184,7 +185,11 @@ public class CtrlMenuPrincipal implements ActionListener
         {
             
         }
-        if(e.getSource() == mainMenu.jmiPedidos)
+        if(e.getSource() == mainMenu.jmiHacerPedido)
+        {
+            
+        }
+        if(e.getSource() == mainMenu.jmiComprarPedido)
         {
             
         }
