@@ -13,9 +13,13 @@ import com.mti.drugstore.modelos.DaoMedicamento;
 import com.mti.drugstore.modelos.DaoPresentacion;
 import com.mti.drugstore.modelos.DaoSustanciaAct;
 import com.mti.drugstore.vista.baseDatos.VistaConfigDB;
+import com.mti.drugstore.vista.cliente.VistaBuscarCliente;
+import com.mti.drugstore.vista.empleado.VistaBuscarEmpleado;
+import com.mti.drugstore.vista.medico.VistaBuscarMedico;
 import com.mti.drugstore.vista.principal.VistaMenuPrincipal;
 import com.mti.drugstore.vista.producto.VistaAgregarProducto;
 import com.mti.drugstore.vista.producto.VistaBuscarProducto;
+import com.mti.drugstore.vista.proveedor.VistaBuscarProveedor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
@@ -235,19 +239,23 @@ public class CtrlMenuPrincipal implements ActionListener
         }   
         if(e.getSource() == mainMenu.jb_2)
         {
-            
+            VistaBuscarProveedor vistaBuscarProveedor = new VistaBuscarProveedor();
+            vistaBuscarProveedor.setVisible(true);
         }
         if(e.getSource() == mainMenu.jb_3)
         {
-            
+            VistaBuscarMedico vistaBuscarMedico = new VistaBuscarMedico();
+            vistaBuscarMedico.setVisible(true);
         }
         if(e.getSource() == mainMenu.jb_4)
         {
-            
+            VistaBuscarCliente vistaBuscarCliente = new VistaBuscarCliente();
+            vistaBuscarCliente.setVisible(true);
         }
         if(e.getSource() == mainMenu.jb_5)
         {
-            
+            VistaBuscarEmpleado vistaBuscarEmpleado = new VistaBuscarEmpleado();
+            vistaBuscarEmpleado.setVisible(true);
         }
         if(e.getSource() == mainMenu.jb_6)
         {

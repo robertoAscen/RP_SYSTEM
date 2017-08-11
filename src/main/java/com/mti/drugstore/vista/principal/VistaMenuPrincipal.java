@@ -523,29 +523,35 @@ public class VistaMenuPrincipal extends JFrame implements Runnable
 	jb_3.setBounds(1175, 155, 175, 55);
 	add(jb_3);		
 	
-	jb_4 = new JButton();
-	jb_4.setText("Agenda");
-	jb_4.setIcon(new ImageIcon(pathImageIcons+"agenda.png"));
+        jb_4 = new JButton();
+	jb_4.setText("Clientes");
+	jb_4.setIcon(new ImageIcon(pathImageIcons+"Clientes1.png"));
 	jb_4.setBounds(1175, 225, 175, 55);
 	add(jb_4);
-	
-	jb_5 = new JButton();
-	jb_5.setText("Clientes");
-	jb_5.setIcon(new ImageIcon(pathImageIcons+"Clientes.png"));
+        
+        jb_5 = new JButton();
+	jb_5.setText("Vendedores");
+	jb_5.setIcon(new ImageIcon(pathImageIcons+"employee.png"));
 	jb_5.setBounds(1175, 295, 175, 55);
 	add(jb_5);
-	
+        
 	jb_6 = new JButton();
-	jb_6.setText("Facturación");
-	jb_6.setIcon(new ImageIcon(pathImageIcons+"Facturacion.png"));
+	jb_6.setText("Agenda");
+	jb_6.setIcon(new ImageIcon(pathImageIcons+"agenda.png"));
 	jb_6.setBounds(1175, 365, 175, 55);
-        add(jb_6);
+	add(jb_6);
 	
 	jb_7 = new JButton();
+	jb_7.setText("Facturación");
+	jb_7.setIcon(new ImageIcon(pathImageIcons+"Facturacion.png"));
+	jb_7.setBounds(1175, 435, 175, 55);
+        add(jb_7);
+	
+	/*jb_7 = new JButton();
 	jb_7.setText("Vendedores");
 	jb_7.setIcon(new ImageIcon(pathImageIcons+"Vendedor.png"));
 	jb_7.setBounds(1175, 435, 175, 55);
-	add(jb_7);
+	add(jb_7);*/
 	
 	jb_8 = new JButton();
 	jb_8.setText("Información");
